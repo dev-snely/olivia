@@ -67,27 +67,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `InStage`.`Entreprise`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `InStage`.`Entreprise` ;
-
-CREATE TABLE IF NOT EXISTS `InStage`.`Entreprise` (
-  `IdEntreprise` INT NOT NULL AUTO_INCREMENT,
-  `Description` TEXT NULL,
-  `PersonneReference` VARCHAR(45) NULL,
-  `Compte_IdCompte` INT NOT NULL,
-  PRIMARY KEY (`IdEntreprise`, `Compte_IdCompte`),
-  UNIQUE INDEX `IdEntreprise_UNIQUE` (`IdEntreprise` ASC) VISIBLE,
-  INDEX `fk_Entreprise_Compte1_idx` (`Compte_IdCompte` ASC) VISIBLE,
-  CONSTRAINT `fk_Entreprise_Compte1`
-    FOREIGN KEY (`Compte_IdCompte`)
-    REFERENCES `InStage`.`Compte` (`IdCompte`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `InStage`.`Offre`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `InStage`.`Offre` ;
@@ -100,13 +79,7 @@ CREATE TABLE IF NOT EXISTS `InStage`.`Offre` (
   `Entreprise_IdEntreprise` INT NOT NULL,
   `Entreprise_Compte_IdCompte` INT NOT NULL,
   PRIMARY KEY (`IdOffre`, `Entreprise_IdEntreprise`, `Entreprise_Compte_IdCompte`),
-  UNIQUE INDEX `IdOffre_UNIQUE` (`IdOffre` ASC) VISIBLE,
-  INDEX `fk_Offre_Entreprise1_idx` (`Entreprise_IdEntreprise` ASC, `Entreprise_Compte_IdCompte` ASC) VISIBLE,
-  CONSTRAINT `fk_Offre_Entreprise1`
-    FOREIGN KEY (`Entreprise_IdEntreprise` , `Entreprise_Compte_IdCompte`)
-    REFERENCES `InStage`.`Entreprise` (`IdEntreprise` , `Compte_IdCompte`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `IdOffre_UNIQUE` (`IdOffre` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -192,19 +165,27 @@ CREATE TABLE IF NOT EXISTS `InStage`.`Professeur` (
   `Prenom` VARCHAR(45) NOT NULL,
   `NumeroDa` INT(7) NOT NULL,
   `Compte_IdCompte` INT NOT NULL,
-  `Entreprise_IdEntreprise` INT NOT NULL,
-  `Entreprise_Compte_IdCompte` INT NOT NULL,
-  PRIMARY KEY (`IdProfesseur`, `Compte_IdCompte`, `Entreprise_IdEntreprise`, `Entreprise_Compte_IdCompte`),
+  `Etudiant_IdEtudiant` INT NOT NULL,
+  `Etudiant_Compte_IdCompte` INT NOT NULL,
+  `Etudiant_CV_IdCV` INT NOT NULL,
+  `Etudiant_LettreMotivation_IdLettreMotivation` INT NOT NULL,
+  `Etudiant_Postulation_Offre_IdOffre` INT NOT NULL,
+  `Etudiant_Postulation_Offre_Entreprise_IdEntreprise` INT NOT NULL,
+  `Etudiant_Postulation_Offre_Entreprise_Compte_IdCompte` INT NOT NULL,
+  `Etudiant_Postulation_Etudiant_Occupation_IdOccupation` INT NOT NULL,
+  `Etudiant_Occupation_IdOccupation` INT NOT NULL,
+  `Etudiant_Occupation_Offre_IdOffre` INT NOT NULL,
+  PRIMARY KEY (`IdProfesseur`, `Compte_IdCompte`, `Etudiant_IdEtudiant`, `Etudiant_Compte_IdCompte`, `Etudiant_CV_IdCV`, `Etudiant_LettreMotivation_IdLettreMotivation`, `Etudiant_Postulation_Offre_IdOffre`, `Etudiant_Postulation_Offre_Entreprise_IdEntreprise`, `Etudiant_Postulation_Offre_Entreprise_Compte_IdCompte`, `Etudiant_Postulation_Etudiant_Occupation_IdOccupation`, `Etudiant_Occupation_IdOccupation`, `Etudiant_Occupation_Offre_IdOffre`),
   INDEX `fk_Professeur_Compte1_idx` (`Compte_IdCompte` ASC) VISIBLE,
-  INDEX `fk_Professeur_Entreprise1_idx` (`Entreprise_IdEntreprise` ASC, `Entreprise_Compte_IdCompte` ASC) VISIBLE,
+  INDEX `fk_Professeur_Etudiant1_idx` (`Etudiant_IdEtudiant` ASC, `Etudiant_Compte_IdCompte` ASC, `Etudiant_CV_IdCV` ASC, `Etudiant_LettreMotivation_IdLettreMotivation` ASC, `Etudiant_Postulation_Offre_IdOffre` ASC, `Etudiant_Postulation_Offre_Entreprise_IdEntreprise` ASC, `Etudiant_Postulation_Offre_Entreprise_Compte_IdCompte` ASC, `Etudiant_Postulation_Etudiant_Occupation_IdOccupation` ASC, `Etudiant_Occupation_IdOccupation` ASC, `Etudiant_Occupation_Offre_IdOffre` ASC) VISIBLE,
   CONSTRAINT `fk_Professeur_Compte1`
     FOREIGN KEY (`Compte_IdCompte`)
     REFERENCES `InStage`.`Compte` (`IdCompte`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Professeur_Entreprise1`
-    FOREIGN KEY (`Entreprise_IdEntreprise` , `Entreprise_Compte_IdCompte`)
-    REFERENCES `InStage`.`Entreprise` (`IdEntreprise` , `Compte_IdCompte`)
+  CONSTRAINT `fk_Professeur_Etudiant1`
+    FOREIGN KEY (`Etudiant_IdEtudiant` , `Etudiant_Compte_IdCompte` , `Etudiant_CV_IdCV` , `Etudiant_LettreMotivation_IdLettreMotivation` , `Etudiant_Postulation_Offre_IdOffre` , `Etudiant_Postulation_Offre_Entreprise_IdEntreprise` , `Etudiant_Postulation_Offre_Entreprise_Compte_IdCompte` , `Etudiant_Postulation_Etudiant_Occupation_IdOccupation` , `Etudiant_Occupation_IdOccupation` , `Etudiant_Occupation_Offre_IdOffre`)
+    REFERENCES `InStage`.`Etudiant` (`IdEtudiant` , `Compte_IdCompte` , `CV_IdCV` , `LettreMotivation_IdLettreMotivation` , `Postulation_Offre_IdOffre` , `Postulation_Offre_Entreprise_IdEntreprise` , `Postulation_Offre_Entreprise_Compte_IdCompte` , `Postulation_Etudiant_Occupation_IdOccupation` , `Occupation_IdOccupation` , `Occupation_Offre_IdOffre`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -240,14 +221,43 @@ CREATE TABLE IF NOT EXISTS `InStage`.`Publicite` (
   `idPublicite` INT NOT NULL AUTO_INCREMENT,
   `Contenu` TEXT NOT NULL,
   `ImgLink` VARCHAR(45) NOT NULL,
-  `Entreprise_IdEntreprise` INT NOT NULL,
-  `Entreprise_Compte_IdCompte` INT NOT NULL,
-  PRIMARY KEY (`idPublicite`, `Entreprise_IdEntreprise`, `Entreprise_Compte_IdCompte`),
-  UNIQUE INDEX `idPublicite_UNIQUE` (`idPublicite` ASC) VISIBLE,
-  INDEX `fk_Publicite_Entreprise1_idx` (`Entreprise_IdEntreprise` ASC, `Entreprise_Compte_IdCompte` ASC) VISIBLE,
-  CONSTRAINT `fk_Publicite_Entreprise1`
-    FOREIGN KEY (`Entreprise_IdEntreprise` , `Entreprise_Compte_IdCompte`)
-    REFERENCES `InStage`.`Entreprise` (`IdEntreprise` , `Compte_IdCompte`)
+  PRIMARY KEY (`idPublicite`),
+  UNIQUE INDEX `idPublicite_UNIQUE` (`idPublicite` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `InStage`.`Entreprise`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `InStage`.`Entreprise` ;
+
+CREATE TABLE IF NOT EXISTS `InStage`.`Entreprise` (
+  `IdEntreprise` INT NOT NULL AUTO_INCREMENT,
+  `Description` TEXT NULL,
+  `PersonneReference` VARCHAR(45) NULL,
+  `Compte_IdCompte` INT NOT NULL,
+  `Offre_IdOffre` INT NOT NULL,
+  `Offre_Entreprise_IdEntreprise` INT NOT NULL,
+  `Offre_Entreprise_Compte_IdCompte` INT NOT NULL,
+  `Publicite_idPublicite` INT NOT NULL,
+  PRIMARY KEY (`IdEntreprise`, `Compte_IdCompte`, `Offre_IdOffre`, `Offre_Entreprise_IdEntreprise`, `Offre_Entreprise_Compte_IdCompte`, `Publicite_idPublicite`),
+  UNIQUE INDEX `IdEntreprise_UNIQUE` (`IdEntreprise` ASC) VISIBLE,
+  INDEX `fk_Entreprise_Compte1_idx` (`Compte_IdCompte` ASC) VISIBLE,
+  INDEX `fk_Entreprise_Offre1_idx` (`Offre_IdOffre` ASC, `Offre_Entreprise_IdEntreprise` ASC, `Offre_Entreprise_Compte_IdCompte` ASC) VISIBLE,
+  INDEX `fk_Entreprise_Publicite1_idx` (`Publicite_idPublicite` ASC) VISIBLE,
+  CONSTRAINT `fk_Entreprise_Compte1`
+    FOREIGN KEY (`Compte_IdCompte`)
+    REFERENCES `InStage`.`Compte` (`IdCompte`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Entreprise_Offre1`
+    FOREIGN KEY (`Offre_IdOffre` , `Offre_Entreprise_IdEntreprise` , `Offre_Entreprise_Compte_IdCompte`)
+    REFERENCES `InStage`.`Offre` (`IdOffre` , `Entreprise_IdEntreprise` , `Entreprise_Compte_IdCompte`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Entreprise_Publicite1`
+    FOREIGN KEY (`Publicite_idPublicite`)
+    REFERENCES `InStage`.`Publicite` (`idPublicite`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
