@@ -200,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `InStage`.`Admin` (
   `IdAdmin` INT NOT NULL AUTO_INCREMENT,
   `Nom` VARCHAR(45) NOT NULL,
   `Prenom` VARCHAR(45) NOT NULL,
-  `Compte_IdCompte` INT NOT NULL,
-  PRIMARY KEY (`IdAdmin`, `Compte_IdCompte`),
+  `Compte_IdCompte` INT NULL,
+  PRIMARY KEY (`IdAdmin`),
   UNIQUE INDEX `IdAdmin_UNIQUE` (`IdAdmin` ASC) VISIBLE,
   INDEX `fk_Admin_Compte1_idx` (`Compte_IdCompte` ASC) VISIBLE,
   CONSTRAINT `fk_Admin_Compte1`
