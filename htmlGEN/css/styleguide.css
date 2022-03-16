@@ -1,0 +1,21 @@
+:root { 
+  --black: #000000;
+  --blue-dianne: #1f454d;
+  --cascade: #8fa2a6;
+  --white: #ffffff;
+ 
+  --font-size-l: 36px;
+  --font-size-m: 25px;
+  --font-size-s: 24px;
+  --font-size-xl: 64px;
+  --font-size-xxl: 72px;
+ 
+  --font-family-montserrat: "Montserrat", Helvetica;
+}
+.montserrat-medium-cascade-24px {
+  color: var(--cascade);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 500;
+}

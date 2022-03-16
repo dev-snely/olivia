@@ -1,0 +1,238 @@
+/* screen - pageaccueil */
+
+.pageaccueil {
+  align-items: flex-start;
+  display: flex;
+  height: auto;
+  height: 1117px;
+  min-width: 1024px;
+  
+ 
+  overflow-x: hidden;
+}
+
+.pageaccueil .overlap-group2 {
+  align-items: flex-start;
+  background-color: var(--blue-dianne);
+  display: flex;
+  flex-direction: column;
+  min-height: 1080px;
+  padding: 0 133px;
+  width: 1920px;
+}
+
+.pageaccueil .flex-row {
+  align-items: center;
+  display: flex;
+  margin-top: 43px;
+  min-width: 1650px;
+}
+
+.pageaccueil .logo {
+  align-items: center;
+  display: flex;
+  min-width: auto;
+}
+
+.pageaccueil .graduation-cap-xxl-1 {
+  height: 64px;
+  object-fit: cover;
+  width: 63px;
+}
+
+.pageaccueil .name {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  height: 51px;
+  letter-spacing: 0;
+  margin-bottom: 1.0px;
+  width: 173px;
+}
+
+.pageaccueil .options-navbar {
+  align-items: flex-start;
+  display: flex;
+  margin-left: 310px;
+  margin-top: 1.0px;
+  min-width: 566px;
+}
+
+.pageaccueil .emploi {
+  height: 29px;
+  letter-spacing: 0;
+  min-width: 87px;
+}
+
+.pageaccueil .stages {
+  height: 29px;
+  letter-spacing: 0;
+  margin-left: 43px;
+  min-width: 83px;
+}
+
+.pageaccueil .entreprises {
+  height: 29px;
+  letter-spacing: 0;
+  margin-left: 43px;
+  min-width: 139px;
+}
+
+.pageaccueil .publicits {
+  height: 29px;
+  letter-spacing: 0;
+  margin-left: 43px;
+}
+
+.pageaccueil .overlap-group1 {
+  background-color: var(--white);
+  height: 50px;
+  margin-bottom: 2.0px;
+  margin-left: 178px;
+  position: relative;
+  width: 153px;
+}
+
+.pageaccueil .rectangle-2 {
+  background-color: var(--blue-dianne);
+  height: 43px;
+  left: 4px;
+  position: absolute;
+  top: 3px;
+  width: 145px;
+}
+
+.pageaccueil .inscription {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  height: 29px;
+  left: 10px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 9px;
+}
+
+.pageaccueil .overlap-group {
+  background-color: #3c8d93bf;
+  height: 50px;
+  margin-bottom: 2.0px;
+  margin-left: 52px;
+  position: relative;
+  width: 153px;
+}
+
+.pageaccueil .connexion {
+  color: #3c8d93bf;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  height: 29px;
+  left: 10px;
+  letter-spacing: 0;
+  position: absolute;
+  top: 9px;
+}
+
+.pageaccueil .overlap-group4 {
+  height: 827px;
+  margin-top: 146px;
+  position: relative;
+  width: 1584px;
+}
+
+.pageaccueil .overlap-group3 {
+  height: 827px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1584px;
+}
+
+.pageaccueil .bg-image {
+  height: 827px;
+  left: 632px;
+  position: absolute;
+  top: 0;
+  width: 952px;
+}
+
+.pageaccueil .image-accueil-1 {
+  height: 545px;
+  left: 752px;
+  object-fit: cover;
+  position: absolute;
+  top: 96px;
+  width: 832px;
+}
+
+.pageaccueil .titre-accueil {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 38px;
+  width: 752px;
+}
+
+.pageaccueil .sous-titre-accueil-2 {
+  color: var(--cascade);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 285px;
+  width: 713px;
+}
+
+.pageaccueil .text-1 {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  height: 118px;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 400px;
+  width: 752px;
+}
+
+.pageaccueil .titre-accueil-1 {
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 530px;
+  width: 632px;
+}
+
+.pageaccueil .sous-titre-accueil-1 {
+  color: transparent;
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+  width: 632px;
+}
+
+.pageaccueil .span0 {
+  color: var(--cascade);
+}
+
+.pageaccueil .span1 {
+  color: var(--white);
+}
