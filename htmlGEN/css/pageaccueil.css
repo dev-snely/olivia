@@ -3,12 +3,13 @@
 .pageaccueil {
   align-items: flex-start;
   display: flex;
-  height: auto;
-  height: 1117px;
-  min-width: 1024px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
   
  
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .pageaccueil .overlap-group2 {
@@ -16,9 +17,9 @@
   background-color: var(--blue-dianne);
   display: flex;
   flex-direction: column;
-  min-height: 1080px;
-  padding: 0 133px;
-  width: 1920px;
+ /* min-height: 1080px;
+  padding: 0 133px;*/
+  width: auto;
 }
 
 .pageaccueil .flex-row {
@@ -140,7 +141,7 @@
   height: 827px;
   margin-top: 146px;
   position: relative;
-  width: 1584px;
+  width: 100%;
 }
 
 .pageaccueil .overlap-group3 {
@@ -148,7 +149,7 @@
   left: 0;
   position: absolute;
   top: 0;
-  width: 1584px;
+  width: 100%;
 }
 
 .pageaccueil .bg-image {

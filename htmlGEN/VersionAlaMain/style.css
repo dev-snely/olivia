@@ -1,0 +1,26 @@
+.titrepilogo{
+    align-items: center;
+    display:inline-flex;
+  
+}
+.tailleLogo {
+    height: 64px;
+    width: 63px;
+}
+nav{
+   display: inline;
+   
+}
+#espaceElem{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#barcon{
+    float: right;
+}
+
+.alignerelementshaut{
+    align-items: center;
+    display:inline-flex;
+}
