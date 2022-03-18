@@ -1,26 +1,89 @@
 .titrepilogo{
-    align-items: center;
+   
     display:inline-flex;
+    float: left;
   
 }
 .tailleLogo {
     height: 64px;
     width: 63px;
 }
-nav{
-   display: inline;
-   
-}
+
 #espaceElem{
     padding-left: 20px;
     padding-right: 20px;
 }
 
-#barcon{
-    float: right;
+#milieu{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    
 }
-
 .alignerelementshaut{
     align-items: center;
     display:inline-flex;
+    
 }
+li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 70px;
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.barcon{
+    justify-content: right;
+    align-items: center;
+    display:inline-flex;
+}
+#block{
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+
+body{
+    background-color: #1f454d;
+}
+
+.categories a:hover{
+    font-size:20px;
+    font-size-adjust: 20px;
+    color: orange;
+}
+
+#block a:hover{
+    font-size:20px;
+    font-size-adjust: 20px;
+    color: aqua;
+
+}
+.imagebleu{
+  height: 80%;
+  left: 700px;
+  position: absolute;
+  bottom: 0;
+  width: 952px;
+}
+
+.imageacc{
+  height: 70%;
+  left: 752px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 25px;
+  width: 832px;
+}
+
+p{
+    font-weight: 600;
+}
+
