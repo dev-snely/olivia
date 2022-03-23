@@ -8,6 +8,10 @@
     height: 64px;
     width: 63px;
 }
+.whitey  {
+    color: white;
+}
+
 
 #espaceElem{
     padding-left: 20px;
@@ -69,7 +73,7 @@ body{
 .imagebleu{
   height: 80%;
   left: 700px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 952px;
 }
@@ -85,5 +89,10 @@ body{
 
 p{
     font-weight: 600;
+}
+
+#recherche{
+    position: fixed;
+    font-size: 18px;
 }
 
