@@ -47,10 +47,15 @@ a{
     justify-content: right;
     align-items: center;
     display:inline-flex;
+    
+    
 }
 #block{
     border: 1px solid white;
     margin-left: 20px;
+    text-align: center;
+    padding-right: 70px;
+    
 }
 
 
