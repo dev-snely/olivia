@@ -1,15 +1,80 @@
-.titrepilogo{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap%27');
+
+
+.alignerElementsHaut{
    
-    display:inline-flex;
-    float: left;
-  
+    
+    padding: 20px 6%; 
+    display: flex;
+    align-items: center;
+   justify-content: center;
+
+
+    
 }
+.titrePiLogo{
+   
+    
+    
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+    cursor: pointer;
+    
+}
+.buttonsConnexionInscription{
+    margin-left: auto;
+}
+.ConnexionButon{
+    padding: 5px;
+    font-size: 25px;
+    border: 0.15em solid #3C8D93;
+    color: #3C8D93;
+    background: none;
+    cursor: pointer;
+    transition-duration: 0.25s;
+
+}
+.ConnexionButon:hover{
+    background-color: #3C8D93;
+    color: #FFFFFF;
+    
+}
+.ConnexionButon:active{
+    border-color: black;
+}
+.InscriptionButon{
+    padding: 5px;
+    font-size: 25px;
+    border: 0.15em solid #FFFFFF;
+    color: #FFFFFF;
+    background: none;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    margin-left: 25px;
+
+}
+.InscriptionButon:hover{
+    background-color: #FFFFFF;
+    color: #000000;
+    
+}
+.InscriptionButon:active{
+    border-color: black;
+}
+
 .tailleLogo {
     height: 64px;
     width: 63px;
 }
 .whitey  {
     color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
 }
 
 
@@ -24,11 +89,16 @@
     margin: 0 auto;
     
 }
-.alignerelementshaut{
-    align-items: center;
-    display:inline-flex;
-    
+
+.TextPrincipalAccueil{
+    float: left;
+   margin-left: 7%;
+   width: 35%;
+
 }
+
+
+
 li {
     list-style: none;
     display: inline-block;
@@ -47,6 +117,7 @@ a{
     justify-content: right;
     align-items: center;
     display:inline-flex;
+    float: right;
     
     
 }
@@ -84,20 +155,27 @@ body{
 }
 
 .imageacc{
-  height: 70%;
-  left: 752px;
+  margin-top: 50px;
+  margin-left: 5%;
   object-fit: cover;
-  position: absolute;
+ /*  position: absolute;*/
   bottom: 25px;
-  width: 832px;
+  width: 43%;
+  /*box-shadow:#3C8D93 -50px -10px  ;*/
+   box-shadow: -30px 40px 50px 0 #3C8D93;
+   border-radius: 30px;
+
 }
 
 p{
     font-weight: 600;
 }
 
-#recherche{
-    position: fixed;
+.recherche{
+    
     font-size: 18px;
+    color: #8FA2A6;
+    font-family: "Montserrat", sans-serif;
 }
+
 
