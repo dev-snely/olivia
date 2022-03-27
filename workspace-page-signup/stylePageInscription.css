@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+----------------------------------------------------------
+----- INFOS SUR HEADER DE L'ÉCRAN D'INSCRIPTION ----------
+----------------------------------------------------------
+*/
+
+.page{
+    height: 100vh;
+    background: linear-gradient(
+        to right,
+        #1F454D 0%,
+        #1F454D 50%,
+        #fff 50%,
+        #fff 100%
+    );
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+}
+
+.conteneur-du-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logo{
+    width: 55px;
+    height: 55px;
+}
+
+.titre-du-site{
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 23px;
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+.btn-connexion{
+    background-color:#ffffff;
+    border: 0.15em solid #000000;
+    color: #000000;
+    padding: 0.2em 0.3em;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 23px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.btn-connexion:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-connexion:active {
+    background-color: #555555;
+    border: 0.19em solid #555555;
+}
+/*
+-----------------------------------------
+----- MOITIÉ GAUCHE DE L'ÉCRAN ----------
+-----------------------------------------
+*/
+.img-poignee-de-main {
+    float:left;
+    width:50%;
+    max-width: 40vw;
+    padding-top: 70px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 50px 155px 0px #3C8D93; 
+}
+
+/*
+------------------------------------------------------------
+------- MOITIÉ DROITE DE L'ÉCRAN POUR LE FORMULAIRE --------
+------------------------------------------------------------
+*/
+
+.formulaire-inscription {
+    margin-left: 50%;
+    padding: 35px 5%;
+    margin-right: 10%; 
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 15px;
+}
+
+.formulaire-inscripiton-titre {
+    font-size: 32px;
+}
+
+.formlaire-inscription-paragraphe{
+    color: #c4c4c4;
+}
+
+.controle-formulaire {
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.controle-formulaire p {
+    font-size: 13px;
+    color:#c4c4c4;
+    line-height: 1.5em;
+    width:80%;
+}
+
+.controle-formulaire small{
+    visibility: hidden;
+    bottom: 0;
+    left:0;
+}
+
+.ctrl-form {
+    visibility: hidden;
+}
+
+.entree{
+    align-items: center;
+    line-height: 1.2em;
+    padding: 5px 0px;
+    background-color: #e5e5e5;
+    border-radius: 15px;
+    padding: 8px 10px 8px 20px;
+    width: 80%;
+}
+
+.entree:hover{
+    border: 2px solid darkgray;
+}
+
+.entree:focus-within{
+    border: 2px solid black;
+}
+
+.entree input {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 15px;
+    width:75%;
+    background-color: transparent;
+    border-style: none;
+}
+
+.entree input:focus{
+    outline: none;
+}
+
+.entree input::placeholder{
+    color: #c8baba;
+}
+
+.fa, .fas{
+    color:#3C8D93;
+}
+
+.fas{
+    margin-right: 15px;
+}
+
+.yeux{
+    margin-left: 0;
+}
+
+#hide1{
+    display:none;
+}
+
+#hide2{
+    cursor: pointer;
+}
+
+#hide3{
+    display:none;
+}
+
+#hide4{
+    cursor: pointer;
+}
+
+.btn-inscription {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 20px;
+    padding:10px;
+    margin-top: 10px;
+    border-style: none;
+    color: #ffffff;
+    background-color: #3C8D93;
+    font-size: 23px;
+    width:80%;
+    border-radius: 55px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+}
+
+.btn-inscription:hover {
+    background-color:#1F454D;    
+    color: #ffffff;
+}
+
+.btn-inscription:active {
+    background-color:darkgoldenrod;  
+}
+
+/*
+-----------------------------------------------------------
+------ INFOS SUR FOOTER DE L'ÉCRAN D'INSCRIPTION ----------
+-----------------------------------------------------------
+*/
+
+.footer-contenu {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: 50vw;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 20px;
+    padding: 30px;
+    color: #c4c4c4;
+}
+
+/*
+-----------------------------------------------------------
+---------------- CSS SUR VALIDATION JS --------------------
+-----------------------------------------------------------
+*/
+
+.controle-formulaire.js-success .entree{
+    border: 2px solid lightgreen;
+}
+
+.controle-formulaire.js-success i.fa-check-circle{
+    color: lightgreen;
+    visibility: visible;
+}
+
+
+.controle-formulaire.js-error .entree{
+    border: 2px solid red;
+}
+
+.controle-formulaire.js-error i.fa-exclamation-circle{
+    color: red;
+    visibility: visible;
+}
+
+.controle-formulaire.js-error small{
+    color: red;
+    visibility: visible;
+}
