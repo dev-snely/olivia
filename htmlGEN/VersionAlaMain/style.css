@@ -130,7 +130,7 @@ a{
 }
 
 
-body{
+.PageAccueil{
     background-color: #1f454d;
 }
 
@@ -177,5 +177,32 @@ p{
     color: #8FA2A6;
     font-family: "Montserrat", sans-serif;
 }
+
+header{
+    background-color: #1f454d;
+}
+
+.nomCompte{
+    font-size: 25px;
+}
+footer{
+    background-color: #1f454d;
+    top: 0;
+    margin-top: auto;
+    text-align: center;
+    
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.navcote{
+    color: black;
+}
+li a {
+    
+}
+
 
 
