@@ -129,10 +129,6 @@
     left:0;
 }
 
-.ctrl-form {
-    visibility: hidden;
-}
-
 .entree{
     align-items: center;
     line-height: 1.2em;
@@ -155,7 +151,7 @@
     font-family: inherit;
     font-weight: inherit;
     font-size: 15px;
-    width:75%;
+    width:83%;
     background-color: transparent;
     border-style: none;
 }
@@ -249,25 +245,15 @@
 */
 
 .controle-formulaire.js-success .entree{
-    border: 2px solid lightgreen;
-}
-
-.controle-formulaire.js-success i.fa-check-circle{
-    color: lightgreen;
-    visibility: visible;
+    border: 2px solid #00e600;
 }
 
 
 .controle-formulaire.js-error .entree{
-    border: 2px solid red;
-}
-
-.controle-formulaire.js-error i.fa-exclamation-circle{
-    color: red;
-    visibility: visible;
+    border: 2px solid #e60000;
 }
 
 .controle-formulaire.js-error small{
-    color: red;
+    color: 	#e60000;
     visibility: visible;
 }

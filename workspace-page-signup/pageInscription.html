@@ -31,23 +31,19 @@
             <div class="formulaire-inscripiton-titre">Crée ton compte</div>
             <p class="formlaire-inscription-paragraphe">Olivia augmente tes chances d’obtenir une entrevue d’embauche!</p><br>
 
-            <div class="controle-formulaire js-success">
+            <div class="controle-formulaire ">
                 <label for="nom">Nom:</label><br>
                 <div class="entree">
                     <i class="fas fa-user"></i>
                     <input type="text" id="nom" name="nom" placeholder="Entre ton nom">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                 </div>
                 <small>Message Erreur</small>
             </div>
-            <div class="controle-formulaire js-error">
+            <div class="controle-formulaire">
                 <label for="prenom">Prenom:</label><br>
                 <div class="entree">
                     <i class="fas fa-user"></i>
                     <input type="text" id="prenom" name="prenom" placeholder="Entre ton prenom">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                 </div>
                 <small>Message Erreur</small>
             </div>
@@ -56,8 +52,6 @@
                 <div class="entree">
                     <i class="fas fa-lock"></i>
                     <input type="password" id="mdp" name="mdp" placeholder="Entre ton mot de passe">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                     <span class="yeux" onclick="voirTexteMDP()">
                         <i id="hide1" class="fa fa-eye-slash"></i>
                         <i id="hide2" class="fa fa-eye"></i>
@@ -70,8 +64,6 @@
                 <div class="entree">
                     <i class="fas fa-key"></i>
                     <input type="password" id="mdp2" name="mdp2" placeholder="Confirme ton mot de passe">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                     <span class="yeux" onclick="voirTexteMDP2()">
                         <i id="hide3" class="fa fa-eye-slash"></i>
                         <i id="hide4" class="fa fa-eye"></i>
@@ -84,8 +76,6 @@
                 <div class="entree">
                     <i class="fas fa-hashtag"></i>
                     <input type="text" id="numDA" name="numDA" placeholder="Entre ton numero DA">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                 </div>
                 <small>Message Erreur</small>
             </div>
@@ -94,8 +84,6 @@
                 <div class="entree">
                     <i class="fas fa-envelope"></i>
                     <input type="email" id="courriel" name="courriel" placeholder="Entre ton adresse courriel">
-                    <i class="fa fa-check-circle ctrl-form "></i>
-                    <i class="fa fa-exclamation-circle ctrl-form "></i>
                 </div>
                 <small>Message Erreur</small>
                 <br>
@@ -103,6 +91,7 @@
             <button class="btn-inscription" type="submit">S'inscrire</button>
 
         </form>
+
 
     </main>
     <footer>
@@ -113,40 +102,42 @@
 
     <script>
         function voirTexteMDP() {
-            var x = document.getElementById("mdp");
+            var motDePasse = document.getElementById("mdp");
             const YEUXOUVERT = document.getElementById("hide1");
             const YEUXFERME = document.getElementById("hide2");
 
-            if (x.type === "password") {
-                x.type = "text";
+            if (motDePasse.type === "password") {
+                motDePasse.type = "text";
                 YEUXOUVERT.style.display = "inherit";
                 YEUXOUVERT.style.cursor = "pointer";
                 YEUXFERME.style.display = "none";
             } else {
-                x.type = "password";
+                motDePasse.type = "password";
                 YEUXOUVERT.style.display = "none";
                 YEUXFERME.style.display = "inherit";
                 YEUXFERME.style.cursor = "pointer";
             }
         }
         function voirTexteMDP2() {
-            var x = document.getElementById("mdp2");
+            var motDePasse2 = document.getElementById("mdp2");
             const YEUXOUVERT = document.getElementById("hide3");
             const YEUXFERME = document.getElementById("hide4");
 
-            if (x.type === "password") {
-                x.type = "text";
+            if (motDePasse2.type === "password") {
+                motDePasse2.type = "text";
                 YEUXOUVERT.style.display = "inherit";
                 YEUXOUVERT.style.cursor = "pointer";
                 YEUXFERME.style.display = "none";
             } else {
-                x.type = "password";
+                motDePasse2.type = "password";
                 YEUXOUVERT.style.display = "none";
                 YEUXFERME.style.display = "inherit";
                 YEUXFERME.style.cursor = "pointer";
             }
         }
     </script>
+    <script src="validationInscription.js">  
+    </script>  
 
 
 </body>
