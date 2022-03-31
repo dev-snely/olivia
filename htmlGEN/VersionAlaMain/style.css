@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap%27');
 
 
-.alignerElementsHaut{
-   
-    
-    padding: 20px 6%; 
+.alignerElementsHaut {
+
+
+    padding: 20px 6%;
     display: flex;
     align-items: center;
-   justify-content: center;
+    justify-content: center;
 
 
-    
+
 }
-.titrePiLogo{
-   
-    
-    
+
+.titrePiLogo {
+
+
+
     color: white;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -23,12 +24,14 @@
     align-items: center;
     font-size: 27px;
     cursor: pointer;
-    
+
 }
-.buttonsConnexionInscription{
+
+.buttonsConnexionInscription {
     margin-left: auto;
 }
-.ConnexionButon{
+
+.ConnexionButon {
     padding: 5px;
     font-size: 25px;
     border: 0.15em solid #3C8D93;
@@ -38,15 +41,18 @@
     transition-duration: 0.25s;
 
 }
-.ConnexionButon:hover{
+
+.ConnexionButon:hover {
     background-color: #3C8D93;
     color: #FFFFFF;
-    
+
 }
-.ConnexionButon:active{
+
+.ConnexionButon:active {
     border-color: black;
 }
-.InscriptionButon{
+
+.InscriptionButon {
     padding: 5px;
     font-size: 25px;
     border: 0.15em solid #FFFFFF;
@@ -57,12 +63,14 @@
     margin-left: 25px;
 
 }
-.InscriptionButon:hover{
+
+.InscriptionButon:hover {
     background-color: #FFFFFF;
     color: #000000;
-    
+
 }
-.InscriptionButon:active{
+
+.InscriptionButon:active {
     border-color: black;
 }
 
@@ -70,7 +78,8 @@
     height: 64px;
     width: 63px;
 }
-.whitey  {
+
+.whitey {
     color: white;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -78,131 +87,156 @@
 }
 
 
-#espaceElem{
+#espaceElem {
     padding-left: 20px;
     padding-right: 20px;
 }
 
-#milieu{
+#milieu {
     display: inline-block;
     text-align: center;
     margin: 0 auto;
-    
+
 }
 
-.TextPrincipalAccueil{
+.TextPrincipalAccueil {
     float: left;
-   margin-left: 7%;
-   width: 35%;
+    margin-left: 7%;
+    width: 35%;
 
 }
 
 
 
-li {
-    list-style: none;
-    display: inline-block;
-    margin-left: 70px;
-    
-}
 
-a{
+
+a {
     text-decoration: none;
     color: white;
 }
 
 
 
-.barcon{
+.barcon {
     justify-content: right;
     align-items: center;
-    display:inline-flex;
+    display: inline-flex;
     float: right;
-    
-    
+
+
 }
-#block{
+
+#block {
     border: 1px solid white;
     margin-left: 20px;
     text-align: center;
     padding-right: 70px;
-    
+
 }
 
 
-.PageAccueil{
+.PageAccueil {
     background-color: #1f454d;
 }
 
-.categories a:hover{
-    font-size:20px;
+.categories a:hover {
+    font-size: 20px;
     font-size-adjust: 20px;
     color: orange;
 }
 
-#block a:hover{
-    font-size:20px;
+#block a:hover {
+    font-size: 20px;
     font-size-adjust: 20px;
     color: aqua;
 
 }
-.imagebleu{
-  height: 80%;
-  left: 700px;
-  position: fixed;
-  bottom: 0;
-  width: 952px;
+
+.imagebleu {
+    height: 80%;
+    left: 700px;
+    position: fixed;
+    bottom: 0;
+    width: 952px;
 }
 
-.imageacc{
-  margin-top: 50px;
-  margin-left: 5%;
-  object-fit: cover;
- /*  position: absolute;*/
-  bottom: 25px;
-  width: 43%;
-  /*box-shadow:#3C8D93 -50px -10px  ;*/
-   box-shadow: -30px 40px 50px 0 #3C8D93;
-   border-radius: 30px;
+.imageacc {
+    margin-top: 50px;
+    margin-left: 5%;
+    object-fit: cover;
+    /*  position: absolute;*/
+    bottom: 25px;
+    width: 43%;
+    /*box-shadow:#3C8D93 -50px -10px  ;*/
+    box-shadow: -30px 40px 50px 0 #3C8D93;
+    border-radius: 30px;
 
 }
 
-p{
+p {
     font-weight: 600;
 }
 
-.recherche{
-    
+.recherche {
+
     font-size: 18px;
     color: #8FA2A6;
     font-family: "Montserrat", sans-serif;
 }
 
-header{
+header {
     background-color: #1f454d;
+    width: auto;
+    height: auto;
+    position: static;
 }
 
-.nomCompte{
+.nomCompte {
     font-size: 25px;
 }
-footer{
+
+footer {
     background-color: #1f454d;
     top: 0;
     margin-top: auto;
     text-align: center;
-    
+    position: static;
+
 }
-body{
+
+body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-.navcote{
+
+
+.sidenav {
+    float: left;
+    height: 100%;
+
+    top: 50%;
+    right: 85%;
+    overflow: hidden;
+    width: 20%;
+    background-color: #3C8D93;
+    margin-bottom: 5px;
+}
+
+.navcote {
     color: black;
+    padding: 20%;
+    font-size: 20px;
+    margin: 20px 0;
+
 }
+
+
+
 li a {
-    
+    margin-bottom: 20px;
+    margin-left: 80px;
+
+
+
 }
-
-
-
