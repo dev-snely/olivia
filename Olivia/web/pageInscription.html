@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/stylePageInscription.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <title>Inscription</title>
+</head>
+
+<body class="page">
+    <header class="page-header">
+
+        <div class="conteneur-du-logo">
+            <img class="logo" src="images/logo.png" alt="logo">
+            <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
+        </div>
+
+        <a href="pageConnexion.html"><button class="btn-connexion">Connexion</button></a>
+
+    </header>
+
+    <main class="page-main">
+
+        <img class="img-poignee-de-main" src="images/poigneeDeMain.jpg" alt="logo">
+
+        <form class="formulaire-inscription" id="formulaire-inscription" action="/">
+
+            <div class="formulaire-inscripiton-titre">Crée ton compte</div>
+            <p class="formlaire-inscription-paragraphe">Olivia augmente tes chances d’obtenir une entrevue d’embauche!</p><br>
+
+            <div class="controle-formulaire ">
+                <label for="nom">Nom:</label><br>
+                <div class="entree">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nom" name="nom" placeholder="Entre ton nom">
+                </div>
+                <small>Message Erreur</small>
+            </div>
+            <div class="controle-formulaire">
+                <label for="prenom">Prenom:</label><br>
+                <div class="entree">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entre ton prenom">
+                </div>
+                <small>Message Erreur</small>
+            </div>
+            <div class="controle-formulaire">
+                <label for="mdp">Mot de passe:</label><br>
+                <div class="entree">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="mdp" name="mdp" placeholder="Entre ton mot de passe">
+                    <span class="yeux" onclick="voirTexteMDP()">
+                        <i id="hide1" class="fa fa-eye-slash"></i>
+                        <i id="hide2" class="fa fa-eye"></i>
+                    </span>
+                </div>
+                <small>Message Erreur</small>
+            </div>
+            <div class="controle-formulaire">
+                <label for="mdp">Confirmation:</label><br>
+                <div class="entree">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="mdp2" name="mdp2" placeholder="Confirme ton mot de passe">
+                    <span class="yeux" onclick="voirTexteMDP2()">
+                        <i id="hide3" class="fa fa-eye-slash"></i>
+                        <i id="hide4" class="fa fa-eye"></i>
+                    </span>
+                </div>
+                <small>Message Erreur</small>
+            </div>
+            <div class="controle-formulaire">
+                <label for="numDA">Numero DA:</label><br>
+                <div class="entree">
+                    <i class="fas fa-hashtag"></i>
+                    <input type="text" id="numDA" name="numDA" placeholder="Entre ton numero DA">
+                </div>
+                <small>Message Erreur</small>
+            </div>
+            <div class="controle-formulaire">
+                <label for="courriel">Courriel:</label><br>
+                <div class="entree">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="courriel" name="courriel" placeholder="Entre ton adresse courriel">
+                </div>
+                <small>Message Erreur</small>
+                <br>
+            </div>
+            <button class="btn-inscription" type="submit">S'inscrire</button>
+
+        </form>
+
+
+    </main>
+    <footer>
+        <div class="footer-contenu">
+            <p>© Olivia 2022</p>
+        </div>
+    </footer>
+
+    <script>
+        function voirTexteMDP() {
+            var motDePasse = document.getElementById("mdp");
+            const YEUXOUVERT = document.getElementById("hide1");
+            const YEUXFERME = document.getElementById("hide2");
+
+            if (motDePasse.type === "password") {
+                motDePasse.type = "text";
+                YEUXOUVERT.style.display = "inherit";
+                YEUXOUVERT.style.cursor = "pointer";
+                YEUXFERME.style.display = "none";
+            } else {
+                motDePasse.type = "password";
+                YEUXOUVERT.style.display = "none";
+                YEUXFERME.style.display = "inherit";
+                YEUXFERME.style.cursor = "pointer";
+            }
+        }
+        function voirTexteMDP2() {
+            var motDePasse2 = document.getElementById("mdp2");
+            const YEUXOUVERT = document.getElementById("hide3");
+            const YEUXFERME = document.getElementById("hide4");
+
+            if (motDePasse2.type === "password") {
+                motDePasse2.type = "text";
+                YEUXOUVERT.style.display = "inherit";
+                YEUXOUVERT.style.cursor = "pointer";
+                YEUXFERME.style.display = "none";
+            } else {
+                motDePasse2.type = "password";
+                YEUXOUVERT.style.display = "none";
+                YEUXFERME.style.display = "inherit";
+                YEUXFERME.style.cursor = "pointer";
+            }
+        }
+    </script>
+    <script src="js/validationInscription.js">  
+    </script>  
+
+
+</body>
+
+</html>
