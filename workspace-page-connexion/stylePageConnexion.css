@@ -12,10 +12,9 @@
 ----------------------------------------------------------
 */
 
-.page{
+.page {
     height: 100vh;
-    background: rgb(60,141,147);
-    background: radial-gradient(circle, rgba(60,141,147,1) 5%, rgba(31,69,77,1) 150%);
+    background-color: #1F454D;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
 }
