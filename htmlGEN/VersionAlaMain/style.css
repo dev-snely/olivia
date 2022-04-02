@@ -197,10 +197,10 @@ header {
 
 footer {
     background-color: #1f454d;
-    top: 0;
-    margin-top: auto;
+    margin-top: 20%;
     text-align: center;
-    position: static;
+    max-height: 10%;
+    
 
 }
 
@@ -221,22 +221,23 @@ body {
     width: 20%;
     background-color: #3C8D93;
     margin-bottom: 5px;
-}
-
+    
+    
+    
+}   
 .navcote {
-    color: black;
+    color: #FFFFFF;
     padding: 20%;
     font-size: 20px;
     margin: 20px 0;
 
 }
 
-
-
+li{
+    list-style-type: none;
+    
+}
 li a {
     margin-bottom: 20px;
     margin-left: 80px;
-
-
-
 }
