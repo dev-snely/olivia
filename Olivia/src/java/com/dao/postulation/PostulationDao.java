@@ -5,10 +5,22 @@
  */
 package com.dao.postulation;
 
+import com.model.entities.Postulation;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class PostulationDao {
-    
+public interface PostulationDao {
+
+    List<Postulation> findAll();
+
+    Postulation findById(int id);
+
+    boolean create(Postulation post);
+
+    boolean delete(int id);
+
+    boolean update(Postulation post);
 }

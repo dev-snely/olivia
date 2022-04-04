@@ -5,10 +5,23 @@
  */
 package com.dao.cv;
 
+import com.model.entities.CV;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class CvDao {
+public interface CvDao {
     
+    List<CV> findAll();
+
+    CV findById(int id);
+
+    boolean create(CV admin);
+
+    boolean delete(int id);
+
+    boolean update(CV admin);
+  
 }
