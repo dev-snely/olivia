@@ -5,10 +5,22 @@
  */
 package com.dao.admin;
 
+import com.model.entities.Admin;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class AdminDao {
+public interface AdminDao {
     
+    List<Admin> findAll();
+
+    Admin findById(int id);
+    
+    boolean create(Admin admin);
+
+    boolean delete(int id);
+
+    boolean update(Admin admin);
 }

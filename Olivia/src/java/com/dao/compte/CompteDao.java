@@ -5,10 +5,23 @@
  */
 package com.dao.compte;
 
+import com.model.entities.Compte;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class CompteDao {
+public interface CompteDao  {
+    
+    List<Compte> findAll();
+
+    Compte findById(int id);
+    
+    boolean create(Compte compte);
+
+    boolean delete(int id);
+
+    boolean update(Compte compte);
     
 }
