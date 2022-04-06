@@ -5,6 +5,7 @@
  */
 package com.dao.offre;
 
+import com.model.entities.Entreprise;
 import com.model.entities.Offre;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public interface OffreDao {
 
 
 
-    boolean create(Offre ocup);
+    boolean create(Offre ocup,Entreprise ent);
 
     boolean delete(int id);
 
-    boolean update(Offre ocup);
+    boolean update(Offre ocup, int id);
 }
