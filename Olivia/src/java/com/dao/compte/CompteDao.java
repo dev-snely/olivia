@@ -12,16 +12,24 @@ import java.util.List;
  *
  * @author gabri
  */
-public interface CompteDao  {
-    
+public interface CompteDao {
+
     List<Compte> findAll();
 
     Compte findById(int id);
-    
+
     boolean create(Compte compte);
 
     boolean delete(int id);
 
     boolean update(Compte compte);
-    
+
+    Compte findByCourriel(String email);
+
+    List<Compte> findByPassword(String password);
+
+    List<Compte> findByTypeCompte(String type);
+
+    Compte isExiste(String email, String motDePasse);
+
 }
