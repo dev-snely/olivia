@@ -39,6 +39,7 @@ public class CompteDaoTests {
                     if (compte1 != null) {
                         System.out.println(compte1);
                     }
+                    break;
                 case 3:
                     System.out.println("********Test méthode create()******");
                     System.out.println("Entrez le courriel  :");
@@ -110,6 +111,7 @@ public class CompteDaoTests {
                     if (unCompte != null) {
                         System.out.println(unCompte);
                     }
+                    break;
                 case 7:
                     System.out.println("*****Test methode findByPassword********");
                     System.out.println("Entrez le mot de passe souhaité :");

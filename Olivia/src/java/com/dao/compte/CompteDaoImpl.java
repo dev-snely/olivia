@@ -104,7 +104,7 @@ public class CompteDaoImpl implements CompteDao {
 
             ps.setString(1, compte.getCourriel());
             ps.setString(2, compte.getPassword());
-            ps.setString(3, compte.getTypeCompte());
+            ps.setString(3, compte.getTypeCompte()); 
 
             nbLigne = ps.executeUpdate();
 

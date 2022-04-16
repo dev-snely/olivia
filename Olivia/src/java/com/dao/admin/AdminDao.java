@@ -6,6 +6,7 @@
 package com.dao.admin;
 
 import com.model.entities.Admin;
+import com.model.entities.Compte;
 import java.util.List;
 
 /**
@@ -13,14 +14,17 @@ import java.util.List;
  * @author gabri
  */
 public interface AdminDao {
-    
-    List<Admin> findAll();
+     List<Admin> findAll();
 
     Admin findById(int id);
+
+    List<Admin> findByNom(String nom);
+    List<Admin> findByPrenom(String prenom);
     
     boolean create(Admin admin);
 
-    boolean delete(int id);
+    boolean delete(int idAdmin);
 
     boolean update(Admin admin);
+
 }
