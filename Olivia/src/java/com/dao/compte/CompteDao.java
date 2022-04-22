@@ -17,13 +17,13 @@ public interface CompteDao {
 
     Compte findById(int id);
 
-    List<Compte> findByCourriel(String email);
-    List<Compte> findByPassword(String password);
+    Compte findByCourriel(String email);
+     List<Compte> findByPassword(String password);
     List<Compte> findByTypeCompte(String type);
     boolean create(Compte admin);
 
     boolean delete(int id);
 
-    boolean update(Compte admin);
+    boolean update(Compte compte);
     Compte isExiste(String email, String motDePasse);
 }

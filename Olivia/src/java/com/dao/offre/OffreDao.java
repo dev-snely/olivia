@@ -25,5 +25,5 @@ public interface OffreDao {
 
     boolean delete(int id);
 
-    boolean update(Offre ocup, int id);
+    boolean update(Offre ocup);
 }

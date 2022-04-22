@@ -22,10 +22,10 @@ import java.util.logging.Logger;
  */
 public class OffreDaoImpl implements OffreDao{
     private static final String SQL_SELECT = "select * from offre";
-    private static final String SQL_SELECT_PAR_ID = "select * from offre where idOffre = ?";
+    private static final String SQL_SELECT_PAR_ID = "select * from offre where IdOffre = ?";
     private static final String SQL_INSET = "insert into offre(Poste,Description,Remuneration,Entreprise_IdEntreprise) value(?,?,?,?)";
-    private static final String SQL_UPDATE = "update offre set Poste =?,Description = ?,Remuneration = ? where idOffre = ?";
-    private static final String SQL_DELETE = "delete from offre where idOffre = ?";
+    private static final String SQL_UPDATE = "update offre set Poste =?,Description = ?,Remuneration = ? where IdOffre = ?";
+    private static final String SQL_DELETE = "delete from offre where IdOffre = ?";
     
 
     @Override
@@ -147,7 +147,7 @@ public class OffreDaoImpl implements OffreDao{
     
 
     @Override
-    public boolean update(Offre ocup, int id) {
+    public boolean update(Offre ocup) {
         boolean retour = false;
         int nbLigne = 0;
         PreparedStatement ps;
@@ -157,7 +157,7 @@ public class OffreDaoImpl implements OffreDao{
             ps.setString(1, ocup.getPoste());
             ps.setString(2, ocup.getDescription());
             ps.setFloat(3, ocup.getRemuneration());
-            ps.setInt(4, id);
+            ps.setInt(4, ocup.getId());
             
 
             nbLigne = ps.executeUpdate();
