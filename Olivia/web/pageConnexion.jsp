@@ -22,7 +22,7 @@
                 <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
             </div>
 
-            <a href="pageInscription.html"><button class="btn-inscription">Inscription</button></a>
+            <a href="pageInscriptionEtudiant.html"><button class="btn-inscription">Inscription</button></a>
 
         </header>
 
@@ -57,8 +57,8 @@
                 <button class="btn-connexion" type="submit">Se connecter</button>
 
             </form>
-
-
+            
+            
         </main>
         <footer class="page-footer">
             <div class="footer-contenu">

@@ -2,10 +2,8 @@
 
 const FORM = document.getElementById("formulaire-inscription");
 const NOM = document.getElementById("nom");
-const PRENOM = document.getElementById("prenom");
 const MDP = document.getElementById("mdp");
 const MDP2 = document.getElementById("mdp2");
-const NUMDA = document.getElementById("numDA");
 const COURRIEL = document.getElementById("courriel");
 
 FORM.addEventListener("submit", (e) => {
@@ -17,10 +15,8 @@ FORM.addEventListener("submit", (e) => {
 function verificationEntrees() {
     // prendre les valeurs des entrees
     const valeurNom = NOM.value.trim();
-    const valeurPrenom = PRENOM.value.trim();
     const valeurMdp = MDP.value.trim();
     const valeurMdp2 = MDP2.value.trim();
-    const valeurNumDA = NUMDA.value.trim();
     const valeurCourriel = COURRIEL.value.trim();
 
     if (valeurNom === '') {
@@ -30,12 +26,6 @@ function verificationEntrees() {
         setSuccessFor(NOM);
     }
 
-    if (valeurPrenom === '') {
-        //Montrer error class
-        setErrorFor(PRENOM, "Le prénom ne peut pas être vide.");
-    } else {
-        setSuccessFor(PRENOM);
-    }
 
     if (valeurMdp === '') {
         setErrorFor(MDP, "Le mot de passe ne peut pas être vide.");
@@ -57,16 +47,6 @@ function verificationEntrees() {
         setErrorFor(MDP2, "Vos mots de passe ne correspondent pas.");
     } else {
         setSuccessFor(MDP2);
-    }
-
-    if (valeurNumDA === '') {
-        setErrorFor(NUMDA, "La numéro DA ne peut pas être vide.");
-    } else if (!checkForNums(valeurNumDA)) {
-        setErrorFor(NUMDA, "La numéro DA ne contient que des chiffres.");
-    } else if (valeurNumDA.length != 7){
-        setErrorFor(NUMDA,"Le numéro DA doit contenir 7 chiffres.")
-    } else {
-        setSuccessFor(NUMDA);
     }
 
     if (valeurCourriel === '') {

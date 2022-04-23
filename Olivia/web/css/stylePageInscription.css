@@ -20,7 +20,7 @@
         #1F454D 50%,
         #fff 50%,
         #fff 100%
-    );
+        );
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
 }
@@ -74,6 +74,25 @@
     background-color: #555555;
     border: 0.19em solid #555555;
 }
+
+/*
+-----------------------------------------
+----- COPRS DE TEXTE ----------
+-----------------------------------------
+*/
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 /*
 -----------------------------------------
 ----- MOITIÉ GAUCHE DE L'ÉCRAN ----------
@@ -94,6 +113,64 @@
 ------------------------------------------------------------
 */
 
+
+.formulaire-inscripiton-titre-1 {
+    padding-left: 5%;
+    margin-left: 50%; 
+    margin-right: 10%; 
+    font-size: 30px;
+}
+
+.formlaire-inscription-paragraphe{
+    padding-left: 5%;
+    margin-left: 50%;
+    margin-right: 10%;
+    font-size:17px;
+    color: #c4c4c4;
+}
+
+.espace-btn-choix{
+    display: flex;
+    padding: 25px 5% 5px;
+    margin-left: 50%;  
+}
+
+.btn-choix{
+    display: inline-block;
+    padding: 1em;
+    margin-right: 30px;
+    vertical-align: top;
+    text-align: center;
+    width: 130px;
+    color: #000000;
+    background-color: #e5e5e5;
+    border-radius: 20px;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.btn-choix:hover {
+    border:2px solid #000000;
+}
+
+.btn-choix img{
+    width: 100px;
+    height: 100px;
+}
+
+.btn-choix-titre{
+    display: block;
+} 
+
+.btn-choix-active{
+    color: #ffffff;
+    background-color: #004953;
+}
+
 .formulaire-inscription {
     margin-left: 50%;
     padding: 35px 5%;
@@ -103,16 +180,8 @@
     font-size: 15px;
 }
 
-.formulaire-inscripiton-titre {
-    font-size: 32px;
-}
-
-.formlaire-inscription-paragraphe{
-    color: #c4c4c4;
-}
 
 .controle-formulaire {
-    padding-bottom: 10px;
     position: relative;
 }
 
@@ -257,3 +326,4 @@
     color: 	#e60000;
     visibility: visible;
 }
+

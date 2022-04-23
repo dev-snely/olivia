@@ -56,7 +56,7 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    transition-duration: 0.1s;
+    transition-duration: 0.25s;
 }
 
 .btn-inscription:hover {
@@ -106,7 +106,6 @@
 }
 
 .controle-formulaire {
-    padding-bottom: 10px;
     position: relative;
 }
 

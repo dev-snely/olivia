@@ -2,7 +2,7 @@
 
 const FORM = document.getElementById("formulaire-connexion");
 const MDP = document.getElementById("mdp");
-const NUMDA = document.getElementById("numDA");
+const COURRIEL = document.getElementById("courriel");
 
 FORM.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -13,23 +13,20 @@ FORM.addEventListener("submit", (e) => {
 function verificationEntrees() {
     // prendre les valeurs des entrees
     const valeurMdp = MDP.value.trim();
-    const valeurNumDA = NUMDA.value.trim();
+    const valeurCourriel = COURRIEL.value.trim();
+    
+    if (valeurCourriel === '') {
+        setErrorFor(COURRIEL, "Cet adresse courriel est vide.");
+    } else if (!isCourriel(valeurCourriel)) {
+        setErrorFor(COURRIEL, "Cet adresse courriel n'est pas valide.");
+    } else {
+        setSuccessFor(COURRIEL);
+    }
 
     if (valeurMdp === '') {
         setErrorFor(MDP, "Le mot de passe ne peut pas être vide.");
     } else {
         setSuccessFor(MDP);
-    }
-
-
-    if (valeurNumDA === '') {
-        setErrorFor(NUMDA, "Le numéro DA ne peut pas être vide.");
-    } else if (!checkForNums(valeurNumDA)) {
-        setErrorFor(NUMDA, "Le numéro DA n'est pas valide.");
-    } else if (valeurNumDA.length != 7){
-        setErrorFor(NUMDA,"Le numéro DA n'est pas valide.")
-    } else {
-        setSuccessFor(NUMDA);
     }
 
 }
@@ -48,6 +45,10 @@ function setErrorFor(input, message) {
 function setSuccessFor(input) {
     const ctrlForm = input.parentElement.parentElement;
     ctrlForm.className = 'controle-formulaire js-success';
+}
+
+function isCourriel(courriel) {
+    return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(courriel);
 }
 
 // Teste si le string contient seulement des chiffres entre 0 et 9
