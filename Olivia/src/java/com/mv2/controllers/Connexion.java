@@ -5,9 +5,13 @@
  */
 package com.mv2.controllers;
 
+import com.dao.admin.AdminDaoImpl;
+import com.model.entities.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,17 +36,45 @@ public class Connexion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        boolean connexion = false;
+
         //On prend les paramètres du formulaire de connexion.
-        String numDA = request.getParameter("numDA");
+        String courriel = request.getParameter("courriel");
         String mdp = request.getParameter("mdp");
-        
-        if (numDA.equals("1234567") && mdp.equals("Monmotdepasse123")){
-        
-            HttpSession session = request.getSession();
+        String sauvegarde = request.getParameter("sauvegarde");
+
+        //Verification Admin 
+        List<Admin> listeCompteAdmin = null;
+        AdminDaoImpl daoAdmin = new AdminDaoImpl();
+
+        listeCompteAdmin = daoAdmin.findAll();
+        if (listeCompteAdmin != null) {
+            for (Admin admin : listeCompteAdmin) {
+                if (admin != null) {
+                    if (courriel.equals(admin.getCompte().getCourriel())
+                            && mdp.equals(admin.getCompte().getPassword())) {
+
+                        connexion = true;
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("nom", admin.getNom());
+                        session.setAttribute("prenom", admin.getPrenom());
+
+                        if (sauvegarde != null) {
+                            if (sauvegarde.equals("yes")) {
+                                Cookie courrielCookie = new Cookie("courriel", courriel);
+                                Cookie mdpCookie = new Cookie("mdp", mdp);
+                                courrielCookie.setMaxAge(60 * 60);//1 heure (60 x 60secs)
+                                mdpCookie.setMaxAge(60 * 60);
+                                response.addCookie(courrielCookie);
+                                response.addCookie(mdpCookie);
+                            }
+                        }
+                        request.getRequestDispatcher("").forward(request, response);
+                    }
+                }
+            }
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
