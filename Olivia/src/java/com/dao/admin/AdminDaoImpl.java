@@ -22,18 +22,20 @@ import java.util.logging.Logger;
  * @author gabri
  */
 public class AdminDaoImpl implements AdminDao {
-    
+
     private static final String SQL_SELECT = "select * from admin";
     private static final String SQL_SELECT_PAR_ID = "select * from admin where IdAdmin = ?";
-    private static final String SQL_INSERT = "insert into admin ( Nom, Prenom, Compte_IdCompte ) value(?,?,?)";
+    private static final String SQL_SELECT_PAR_NOM = "select * from admin where Nom = ?";
+    private static final String SQL_SELECT_PAR_PRENOM = "select * from admin where Prenom = ?";
+    private static final String SQL_INSET = "insert into admin(Nom,Prenom,Compte_IdCompte) value(?,?,?)";
     private static final String SQL_UPDATE = "update admin set Nom =?,Prenom = ? where IdAdmin = ?";
-    private static final String SQL_DELETE = "delete from admin where idAdmin = ?";
-    private static final String SQL_FIND_BY_NOM = "select * from admin where Nom = ?";
-    private static final String SQL_FIND_BY_PRENOM = "select * from admin where Prenom = ?";
+    private static final String SQL_DELETE = "delete from admin where IdAdmin = ?";
+    CompteDaoImpl daoCompte = new CompteDaoImpl();
 
     @Override
     public List<Admin> findAll() {
-        List<Admin> listeCompte = null;
+        List<Admin> listeAdmin = null;
+
         try {
             //Initialise la requête préparée basée sur la connexion 
             // la requête SQL passé en argument pour construire l'objet preparedStatement
@@ -41,86 +43,133 @@ public class AdminDaoImpl implements AdminDao {
             //On execute la requête et on récupère les résultats dans la requête 
             // dans ResultSet
             ResultSet result = ps.executeQuery();
-            listeCompte = new ArrayList<>();
+
+            listeAdmin = new ArrayList<>();
+
             //// la méthode next() pour se déplacer sur l'enregistrement suivant
             //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 //on enregistre les données dans un entities (bean, classe java)
-                Admin unAdmin = new Admin();
-                unAdmin.setId(result.getInt("idAdmin"));
-                unAdmin.setNom(result.getString("Nom"));
-                unAdmin.setPrenom(result.getString("Prenom"));
-                
-                
-                int idCompte;
-                idCompte = result.getInt("Compte_IdCompte");
-                
-                CompteDaoImpl dao = new CompteDaoImpl();
-                Compte compte = dao.findById(idCompte);
-                
-                unAdmin.setCompte(compte);
-                listeCompte.add(unAdmin);
-            }
 
+                Admin admin = new Admin();
+                admin.setId(result.getInt("IdAdmin"));
+                admin.setNom(result.getString("Nom"));
+                admin.setPrenom(result.getString("Prenom"));
+                admin.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+
+                listeAdmin.add(admin);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
-        return listeCompte;
+        return listeAdmin;
     }
 
     @Override
     public Admin findById(int id) {
-        Admin unAdmin = null;
+        Admin admin = new Admin();
         try {
-            //Initialise la requête préparée base sur la connexion 
+            //Initialise la requête préparée basée sur la connexion 
             // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID);
-            // on initialise la propriété id du bean avec sa valeur
-            ps.setInt(1, id);
             //On execute la requête et on récupère les résultats dans la requête 
             // dans ResultSet
-            
+            ps.setInt(1, id);
             ResultSet result = ps.executeQuery();
-            unAdmin = new Admin();
+           while (result.next()) {
             //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les resultats retournés
-            while (result.next()) {
-                //on enregistre les données dans un entities (bean, classe java)
-
-                unAdmin.setId(result.getInt("idAdmin"));
-                unAdmin.setNom(result.getString("Nom"));
-                unAdmin.setPrenom(result.getString("Prenom"));
-                
-                int idCompte;
-                idCompte = result.getInt("Compte_IdCompte");
-                
-                CompteDaoImpl dao = new CompteDaoImpl();
-                Compte compte = dao.findById(idCompte);
-                
-                unAdmin.setCompte(compte);
-            }
+            //on parcours ligne par ligne les résultas retournés
+            //on enregistre les données dans un entities (bean, classe java)
+                admin.setId(result.getInt("IdAdmin"));
+                admin.setNom(result.getString("Nom"));
+                admin.setPrenom(result.getString("Prenom"));
+                admin.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+           }     
 
         } catch (SQLException ex) {
             Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
-        return unAdmin;
+        return admin;
+    }
+
+    @Override
+    public List<Admin> findByNom(String nom) {
+               List<Admin> listeAdmin = null;
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_NOM);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+             ps.setString(1, nom);
+            ResultSet result = ps.executeQuery();
+            listeAdmin = new ArrayList<>();
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les résultas retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                Admin admin = new Admin();
+                admin.setId(result.getInt("IdAdmin"));
+                admin.setNom(result.getString("Nom"));
+                admin.setPrenom(result.getString("Prenom"));
+                admin.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+
+                listeAdmin.add(admin);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return listeAdmin;
+    }
+
+    @Override
+    public List<Admin> findByPrenom(String prenom) {
+                      List<Admin> listeAdmin = null;
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_PRENOM);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+             ps.setString(1, prenom);
+            ResultSet result = ps.executeQuery();
+            listeAdmin = new ArrayList<>();
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les résultas retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                Admin admin = new Admin();
+                admin.setId(result.getInt("IdAdmin"));
+                admin.setNom(result.getString("Nom"));
+                admin.setPrenom(result.getString("Prenom"));
+                admin.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+
+                listeAdmin.add(admin);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return listeAdmin;
+
     }
 
     @Override
     public boolean create(Admin admin) {
+        Compte compte =admin.getCompte();
         boolean retour = false;
         int nbLigne = 0;
         PreparedStatement ps;
         try {
-            ps = ConnexionBD.getConnection().prepareStatement(SQL_INSERT);
 
+            ps = ConnexionBD.getConnection().prepareStatement(SQL_INSET);
+            
             ps.setString(1, admin.getNom());
             ps.setString(2, admin.getPrenom());
-            ps.setInt(3, admin.getCompte().getId());
+            ps.setInt(3, compte.getId());
 
             nbLigne = ps.executeUpdate();
 
@@ -129,7 +178,6 @@ public class AdminDaoImpl implements AdminDao {
             Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
 
-        // System.out.println("nb ligne " + nbLigne);
         if (nbLigne > 0) {
             retour = true;
         }
@@ -138,15 +186,19 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public boolean delete(int idAdmin) {
+
+    public boolean delete(int id) {
+                //pareil que publicité
+
         boolean retour = false;
         int nbLigne = 0;
         PreparedStatement ps;
         try {
             ps = ConnexionBD.getConnection().prepareStatement(SQL_DELETE);
-            ps.setInt(1, idAdmin);
-            
-            
+
+            ps.setInt(1, id);
+
+
             nbLigne = ps.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -158,11 +210,14 @@ public class AdminDaoImpl implements AdminDao {
         }
         ConnexionBD.closeConnection();
         return retour;
+
     }
 
     @Override
     public boolean update(Admin admin) {
-        boolean retour = false;
+
+       boolean retour = false;
+
         int nbLigne = 0;
         PreparedStatement ps;
         try {
@@ -171,6 +226,7 @@ public class AdminDaoImpl implements AdminDao {
             ps.setString(1, admin.getNom());
             ps.setString(2, admin.getPrenom());
             ps.setInt(3, admin.getId());
+
 
             nbLigne = ps.executeUpdate();
 
@@ -187,84 +243,4 @@ public class AdminDaoImpl implements AdminDao {
         return retour;
     }
 
-    @Override
-    public List<Admin> findByNom(String nom) {
-        List<Admin> listeAdmin = null;
-        try {
-            //Initialise la requête préparée base sur la connexion 
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
-            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_FIND_BY_NOM);
-            // on initialise la propriété id du bean avec sa valeur
-            ps.setString(1, nom);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
-            ResultSet result = ps.executeQuery();
-            listeAdmin = new ArrayList<>();
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les resultats retournés
-            while (result.next()) {
-                //on enregistre les données dans un entities (bean, classe java)
-                Admin unAdmin = new Admin();
-                unAdmin.setId(result.getInt("idAdmin"));
-                unAdmin.setNom(result.getString("Nom"));
-                unAdmin.setPrenom(result.getString("Prenom"));
-                
-                int idCompte;
-                idCompte = result.getInt("Compte_IdCompte");
-                
-                CompteDaoImpl dao = new CompteDaoImpl();
-                Compte compte = dao.findById(idCompte);
-                
-                unAdmin.setCompte(compte);
-                listeAdmin.add(unAdmin);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Fermeture de toutes les ressources ouvertes
-        ConnexionBD.closeConnection();
-        return listeAdmin;
-    }
-
-    @Override
-    public List<Admin> findByPrenom(String prenom) {
-        List<Admin> listeAdmin = null;
-        try {
-            //Initialise la requête préparée base sur la connexion 
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
-            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_FIND_BY_PRENOM);
-            // on initialise la propriété id du bean avec sa valeur
-            ps.setString(1, prenom);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
-            ResultSet result = ps.executeQuery();
-            listeAdmin = new ArrayList<>();
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les resultats retournés
-            while (result.next()) {
-                //on enregistre les données dans un entities (bean, classe java)
-                Admin unAdmin = new Admin();
-                unAdmin.setId(result.getInt("idAdmin"));
-                unAdmin.setNom(result.getString("Nom"));
-                unAdmin.setPrenom(result.getString("Prenom"));
-                
-                int idCompte;
-                idCompte = result.getInt("Compte_IdCompte");
-                
-                CompteDaoImpl dao = new CompteDaoImpl();
-                Compte compte = dao.findById(idCompte);
-                
-                unAdmin.setCompte(compte);
-                listeAdmin.add(unAdmin);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Fermeture de toutes les ressources ouvertes
-        ConnexionBD.closeConnection();
-        return listeAdmin;
-    }
-    
 }

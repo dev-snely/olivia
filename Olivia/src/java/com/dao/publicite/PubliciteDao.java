@@ -5,10 +5,23 @@
  */
 package com.dao.publicite;
 
+import com.model.entities.Entreprise;
+import com.model.entities.Publicite;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class PubliciteDao {
-    
+public interface PubliciteDao {
+
+    List<Publicite> findAll();
+
+    Publicite findById(int id);
+
+    boolean create(Publicite etu, Entreprise ent);
+
+    boolean delete(int id);
+
+    boolean update(Publicite etu);
 }

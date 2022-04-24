@@ -5,10 +5,22 @@
  */
 package com.dao.entreprise;
 
+import com.model.entities.Entreprise;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class EntrepriseDao {
+public interface EntrepriseDao {
     
+    List<Entreprise> findAll();
+
+    Entreprise findById(int id);
+
+    boolean create(Entreprise entre);
+
+    boolean delete(int id);
+
+    boolean update(Entreprise entre);
 }

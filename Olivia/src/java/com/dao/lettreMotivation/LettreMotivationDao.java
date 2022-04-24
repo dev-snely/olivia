@@ -5,10 +5,22 @@
  */
 package com.dao.lettreMotivation;
 
+import com.model.entities.LettreMotivation;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class LettreMotivationDao {
-    
+public interface LettreMotivationDao {
+    List<LettreMotivation> findAll();
+
+    LettreMotivation findById(int id);
+
+   
+    boolean create(LettreMotivation lettre);
+
+    boolean delete(int id);
+
+    boolean update(LettreMotivation lettre);
 }

@@ -9,27 +9,25 @@ import com.model.entities.Compte;
 import java.util.List;
 
 /**
- *
  * @author gabri
  */
 public interface CompteDao {
 
-    List<Compte> findAll();
+	List<Compte> findAll();
 
-    Compte findById(int id);
+	Compte findById(int id);
 
-    boolean create(Compte compte);
+	Compte findByCourriel(String email);
 
-    boolean delete(int id);
+	List<Compte> findByPassword(String password);
 
-    boolean update(Compte compte);
+	List<Compte> findByTypeCompte(String type);
 
-    Compte findByCourriel(String email);
+	boolean create(Compte admin);
 
-    List<Compte> findByPassword(String password);
+	boolean delete(int id);
 
-    List<Compte> findByTypeCompte(String type);
+	boolean update(Compte compte);
 
-    Compte isExiste(String email, String motDePasse);
-
+	Compte isExiste(String email, String motDePasse);
 }

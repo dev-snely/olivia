@@ -5,10 +5,25 @@
  */
 package com.dao.offre;
 
+import com.model.entities.Entreprise;
+import com.model.entities.Offre;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class OffreDao {
-    
+public interface OffreDao {
+
+    List<Offre> findAll();
+
+    Offre findById(int id);
+
+
+
+    boolean create(Offre ocup,Entreprise ent);
+
+    boolean delete(int id);
+
+    boolean update(Offre ocup);
 }

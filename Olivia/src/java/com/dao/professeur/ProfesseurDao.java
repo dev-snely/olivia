@@ -5,10 +5,28 @@
  */
 package com.dao.professeur;
 
+import com.model.entities.Professeur;
+import java.util.List;
+
 /**
  *
  * @author gabri
  */
-public class ProfesseurDao {
-    
+public interface ProfesseurDao {
+
+    List<Professeur> findAll();
+
+    Professeur findById(int id);
+
+    List<Professeur> findByNom(String nom);
+
+    List<Professeur> findByPrenom(String prenom);
+
+    List<Professeur> findByNumeroDA(int DA);
+
+    boolean create(Professeur etu);
+
+    boolean delete(int id);
+
+    boolean update(Professeur etu);
 }
