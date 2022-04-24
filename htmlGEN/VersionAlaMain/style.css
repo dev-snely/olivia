@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap%27');
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 .alignerElementsHaut {
 
@@ -8,8 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-
+    font-family: inherit;
+    font-weight: inherit;
 
 }
 
@@ -18,8 +23,8 @@
 
 
     color: white;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
+
+
     display: flex;
     align-items: center;
     font-size: 27px;
@@ -54,7 +59,7 @@
 
 .InscriptionButon {
     padding: 5px;
-    font-size: 25px;
+    font-size: 21px;
     border: 0.15em solid #FFFFFF;
     color: #FFFFFF;
     background: none;
@@ -64,15 +69,6 @@
 
 }
 
-.InscriptionButon:hover {
-    background-color: #FFFFFF;
-    color: #000000;
-
-}
-
-.InscriptionButon:active {
-    border-color: black;
-}
 
 .tailleLogo {
     height: 64px;
@@ -87,17 +83,9 @@
 }
 
 
-#espaceElem {
-    padding-left: 20px;
-    padding-right: 20px;
-}
 
-#milieu {
-    display: inline-block;
-    text-align: center;
-    margin: 0 auto;
 
-}
+
 
 .TextPrincipalAccueil {
     float: left;
@@ -188,55 +176,75 @@ header {
     background-color: #1f454d;
     width: auto;
     height: auto;
-    position: static;
+
+
 }
 
 .nomCompte {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 footer {
     background-color: #1f454d;
-    top: 0;
-    margin-top: auto;
     text-align: center;
-    position: static;
-
+    max-height: 10%;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    width: 100vw;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 15px;
+    padding: 30px;
+    color: black;
+    z-index: 1000;
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
 }
 
 
 .sidenav {
+
+   /* height: calc(100vh - 15vh); */
+   height: 100vh; 
+    width: 15%;
     float: left;
-    height: 100%;
-
-    top: 50%;
-    right: 85%;
-    overflow: hidden;
-    width: 20%;
     background-color: #3C8D93;
-    margin-bottom: 5px;
+    display: inline-block;
+    
 }
 
-.navcote {
-    color: black;
-    padding: 20%;
-    font-size: 20px;
-    margin: 20px 0;
+.navcoteText {
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: left;
+    justify-content: left;
+}
 
+li {
+    list-style-type: none;
+    margin-bottom: 25px;
+    
 }
 
 
+ul{
+    padding: 20px;
+   
+}
+.contenuPrincipal{
+    display: inline-block;
+    padding: 50px;
+    
 
-li a {
-    margin-bottom: 20px;
-    margin-left: 80px;
-
-
+    
 
 }
