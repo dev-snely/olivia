@@ -6,14 +6,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/stylePageConnexion.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <title>Connexion</title>
     </head>
+
     <body class="page">
         <header class="page-header">
 
@@ -22,23 +25,24 @@
                 <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
             </div>
 
-            <a href="pageInscriptionEtudiant.html"><button class="btn-inscription">Inscription</button></a>
+            <a href="pageInscriptionEtudiant.html" class="btn-inscription">Inscription</a>
 
         </header>
 
         <main class="page-main">
 
-            <form class="formulaire-connexion" id="formulaire-connexion" action="connexion" method="POST">
+            <form class="formulaire-connexion" id="formulaire-connexion" action="connexion" method="post">
 
                 <div class="formulaire-connexion-titre">Tu es de retour!</div>
 
                 <div class="controle-formulaire">
-                    <label for="numDA">Numero DA:</label><br>
+                    <label for="courriel">Courriel:</label><br>
                     <div class="entree">
-                        <i class="fas fa-hashtag"></i>
-                        <input type="text" id="numDA" name="numDA" placeholder="Entre ton numero DA">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="courriel" name="courriel" placeholder="Entre ton adresse courriel">
                     </div>
                     <small>Message Erreur</small>
+                    <br>
                 </div>
 
                 <div class="controle-formulaire">
@@ -53,12 +57,15 @@
                     </div>
                     <small>Message Erreur</small>
                 </div>
-
-                <button class="btn-connexion" type="submit">Se connecter</button>
+                <div class="checkbox-container pull-left">
+                    <input id="cb" type="checkbox" name="sauvegarde" value="yes">
+                    <label for="cb">Se souvenir</label>
+                </div>
+                <button class="btn-connexion" type="submit">
+                    Se connecter</button>
 
             </form>
-            
-            
+
         </main>
         <footer class="page-footer">
             <div class="footer-contenu">
@@ -86,7 +93,9 @@
             }
         </script>
         <script src="js/validationConnexion.js">
-        </script>
+        </script>  
+
 
     </body>
+
 </html>

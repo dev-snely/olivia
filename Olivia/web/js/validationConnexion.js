@@ -4,17 +4,28 @@ const FORM = document.getElementById("formulaire-connexion");
 const MDP = document.getElementById("mdp");
 const COURRIEL = document.getElementById("courriel");
 
+
+
 FORM.addEventListener("submit", (e) => {
+
     e.preventDefault();
 
     verificationEntrees();
+
+    if (verificationEntrees() === true) {
+        FORM.submit();
+    }
+
 });
 
 function verificationEntrees() {
+
+    let isValid = false;
+
     // prendre les valeurs des entrees
     const valeurMdp = MDP.value.trim();
     const valeurCourriel = COURRIEL.value.trim();
-    
+
     if (valeurCourriel === '') {
         setErrorFor(COURRIEL, "Cet adresse courriel est vide.");
     } else if (!isCourriel(valeurCourriel)) {
@@ -29,6 +40,14 @@ function verificationEntrees() {
         setSuccessFor(MDP);
     }
 
+    if (!(valeurCourriel === '') &&
+            !(!isCourriel(valeurCourriel)) &&
+            !(valeurMdp === '')) {
+
+        isValid = true;
+
+    }
+    return isValid;
 }
 
 function setErrorFor(input, message) {

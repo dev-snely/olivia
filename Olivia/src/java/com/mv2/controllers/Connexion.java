@@ -48,12 +48,13 @@ public class Connexion extends HttpServlet {
         AdminDaoImpl daoAdmin = new AdminDaoImpl();
 
         listeCompteAdmin = daoAdmin.findAll();
+
+        System.out.print(listeCompteAdmin);
         if (listeCompteAdmin != null) {
             for (Admin admin : listeCompteAdmin) {
                 if (admin != null) {
                     if (courriel.equals(admin.getCompte().getCourriel())
                             && mdp.equals(admin.getCompte().getPassword())) {
-
                         connexion = true;
                         HttpSession session = request.getSession(true);
                         session.setAttribute("nom", admin.getNom());
@@ -69,10 +70,21 @@ public class Connexion extends HttpServlet {
                                 response.addCookie(mdpCookie);
                             }
                         }
-                        request.getRequestDispatcher("").forward(request, response);
+                        request.getRequestDispatcher("homePage.jsp").forward(request, response);
                     }
                 }
             }
+        }
+
+        if (!connexion) {
+            out.println("<center>"
+                    + "<p style='color:Tomato;padding-top:10px'>"
+                    + " ---------------------->>>            Oops! Le compte entrée n'existe pas.         <<<----------------------"
+                    + "</p> "
+                    + "</center>"
+            );
+
+            request.getRequestDispatcher("pageConnexion.jsp").include(request, response);
         }
 
     }
