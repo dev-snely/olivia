@@ -6,6 +6,7 @@
 package com.dao.cv;
 
 import com.model.entities.CV;
+import com.model.entities.Etudiant;
 import java.util.List;
 
 /**
@@ -18,10 +19,10 @@ public interface CvDao {
 
     CV findById(int id);
 
-    boolean create(CV admin);
+    boolean create(CV cv,Etudiant etu);
 
     boolean delete(int id);
 
-    boolean update(CV admin);
+    boolean update(CV cv);
   
 }

@@ -60,7 +60,7 @@ public class AdminDaoImpl implements AdminDao {
                 listeAdmin.add(admin);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         ConnexionBD.closeConnection();
         return listeAdmin;
@@ -88,7 +88,7 @@ public class AdminDaoImpl implements AdminDao {
            }     
 
         } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         ConnexionBD.closeConnection();
         return admin;
@@ -119,7 +119,7 @@ public class AdminDaoImpl implements AdminDao {
                 listeAdmin.add(admin);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         ConnexionBD.closeConnection();
         return listeAdmin;
@@ -150,7 +150,7 @@ public class AdminDaoImpl implements AdminDao {
                 listeAdmin.add(admin);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         ConnexionBD.closeConnection();
         return listeAdmin;
@@ -175,7 +175,7 @@ public class AdminDaoImpl implements AdminDao {
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
 
         if (nbLigne > 0) {
@@ -232,7 +232,7 @@ public class AdminDaoImpl implements AdminDao {
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            Logger.getLogger(CompteDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, e);
         }
 
         //System.out.println("nb ligne " + nbLigne);

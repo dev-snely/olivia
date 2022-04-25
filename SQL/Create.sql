@@ -43,7 +43,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `InStage`.`LettreMotivation` ;
 
 CREATE TABLE IF NOT EXISTS `InStage`.`LettreMotivation` (
-  `IdLettreMotivation` INT NOT NULL,
+  `IdLettreMotivation` INT NOT NULL AUTO_INCREMENT,
   `Contenu` TEXT NOT NULL,
   `Titre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`IdLettreMotivation`))
@@ -181,6 +181,7 @@ DROP TABLE IF EXISTS `InStage`.`Entreprise` ;
 
 CREATE TABLE IF NOT EXISTS `InStage`.`Entreprise` (
   `IdEntreprise` INT NOT NULL AUTO_INCREMENT,
+  `Nom` VARCHAR(45) NOT NULL,
   `Description` TEXT NULL,
   `PersonneReference` VARCHAR(45) NULL,
   `Compte_IdCompte` INT NOT NULL,
@@ -188,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `InStage`.`Entreprise` (
   UNIQUE INDEX `IdEntreprise_UNIQUE` (`IdEntreprise` ASC) VISIBLE,
   INDEX `fk_Entreprise_Compte1_idx` (`Compte_IdCompte` ASC) VISIBLE,
   UNIQUE INDEX `Compte_IdCompte_UNIQUE` (`Compte_IdCompte` ASC) VISIBLE,
+  UNIQUE INDEX `Nom_UNIQUE` (`Nom` ASC) VISIBLE,
   CONSTRAINT `fk_Entreprise_Compte1`
     FOREIGN KEY (`Compte_IdCompte`)
     REFERENCES `InStage`.`Compte` (`IdCompte`)

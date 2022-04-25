@@ -77,10 +77,12 @@ VALUES
 INSERT INTO `instage`.`entreprise`
 (`IdEntreprise`,
 `Description`,
+`Nom`,
 `PersonneReference`,
 `Compte_IdCompte`)
 VALUES
 (1,
+"entreprise Minéraux",
 "Rio tinto",
 "Jack Sparrow",
  3);
