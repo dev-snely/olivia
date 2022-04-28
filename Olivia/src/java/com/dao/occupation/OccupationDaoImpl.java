@@ -6,6 +6,8 @@
 package com.dao.occupation;
 
 import com.model.entities.Occupation;
+import com.services.singleton.ConnexionBD;
+import java.sql.PreparedStatement;
 import java.util.Date;
 import java.util.List;
 
@@ -14,10 +16,11 @@ import java.util.List;
  * @author gabri
  */
 public class OccupationDaoImpl implements OccupationDao{
-
+ private static final String SQL_INSET = "insert into occupation(DateDebut,DateFinl,Disponible) value(?,?,?)";
     @Override
     public List<Occupation> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
@@ -37,7 +40,8 @@ public class OccupationDaoImpl implements OccupationDao{
 
     @Override
     public boolean create(Occupation ocup) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override

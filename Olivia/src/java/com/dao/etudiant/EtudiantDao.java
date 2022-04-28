@@ -5,7 +5,10 @@
  */
 package com.dao.etudiant;
 
+import com.model.entities.CV;
 import com.model.entities.Etudiant;
+import com.model.entities.LettreMotivation;
+import com.model.entities.Occupation;
 import java.util.List;
 
 /**
@@ -25,4 +28,8 @@ public interface EtudiantDao {
     boolean delete(int id);
 
     boolean update(Etudiant etu);
+     boolean updateCv(Etudiant etu,CV cv);
+boolean updateLettre(Etudiant etu,LettreMotivation lettre);
+boolean updateOccupation(Etudiant etu,Occupation occup);
+
 }

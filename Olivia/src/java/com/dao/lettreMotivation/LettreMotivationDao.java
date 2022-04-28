@@ -5,6 +5,7 @@
  */
 package com.dao.lettreMotivation;
 
+import com.model.entities.Etudiant;
 import com.model.entities.LettreMotivation;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface LettreMotivationDao {
     LettreMotivation findById(int id);
 
    
-    boolean create(LettreMotivation lettre);
+    boolean create(LettreMotivation lettre,Etudiant etu);
 
     boolean delete(int id);
 

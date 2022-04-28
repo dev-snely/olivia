@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 public class Entreprise {
     private int Id;
+    private String nom;
     private String description;
     private String personneReference;
     private ArrayList<Offre> offres;
@@ -27,6 +28,20 @@ public class Entreprise {
         this.description = description;
         this.personneReference = personneReference;
         this.compte = compte;
+    }
+    public Entreprise(String nom,String description, String personneReference, Compte compte) {
+        this.nom = nom;
+        this.description = description;
+        this.personneReference = personneReference;
+        this.compte = compte;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getId() {
@@ -80,12 +95,13 @@ public class Entreprise {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + this.Id;
-        hash = 67 * hash + Objects.hashCode(this.description);
-        hash = 67 * hash + Objects.hashCode(this.personneReference);
-        hash = 67 * hash + Objects.hashCode(this.offres);
-        hash = 67 * hash + Objects.hashCode(this.publicite);
-        hash = 67 * hash + Objects.hashCode(this.compte);
+        hash = 83 * hash + this.Id;
+        hash = 83 * hash + Objects.hashCode(this.nom);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + Objects.hashCode(this.personneReference);
+        hash = 83 * hash + Objects.hashCode(this.offres);
+        hash = 83 * hash + Objects.hashCode(this.publicite);
+        hash = 83 * hash + Objects.hashCode(this.compte);
         return hash;
     }
 
@@ -102,6 +118,9 @@ public class Entreprise {
         }
         final Entreprise other = (Entreprise) obj;
         if (this.Id != other.Id) {
+            return false;
+        }
+        if (!Objects.equals(this.nom, other.nom)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
@@ -124,11 +143,10 @@ public class Entreprise {
 
     @Override
     public String toString() {
-        return "Entreprise{" + "Id=" + Id + ", description=" + description + ", personneReference=" + personneReference + ", offres=" + offres + ", publicite=" + publicite + ", compte=" + compte + '}';
+        return "Entreprise{" + "Id=" + Id + ", nom=" + nom + ", description=" + description + ", personneReference=" + personneReference + ", offres=" + offres + ", publicite=" + publicite + ", compte=" + compte + '}';
     }
 
-
-
+  
 
     
 }
