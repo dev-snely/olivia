@@ -11,10 +11,15 @@ const COURRIEL = document.getElementById("courriel");
 FORM.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    verificationEntrees();
+    if (verificationEntrees() === true) {
+        FORM.submit();
+    }
 });
 
 function verificationEntrees() {
+    
+    let isValid = false;
+        
     // prendre les valeurs des entrees
     const valeurNom = NOM.value.trim();
     const valeurPrenom = PRENOM.value.trim();
@@ -63,8 +68,8 @@ function verificationEntrees() {
         setErrorFor(NUMDA, "La numéro DA ne peut pas être vide.");
     } else if (!checkForNums(valeurNumDA)) {
         setErrorFor(NUMDA, "La numéro DA ne contient que des chiffres.");
-    } else if (valeurNumDA.length != 7){
-        setErrorFor(NUMDA,"Le numéro DA doit contenir 7 chiffres.")
+    } else if (valeurNumDA.length !== 7){
+        setErrorFor(NUMDA,"Le numéro DA doit contenir 7 chiffres.");
     } else {
         setSuccessFor(NUMDA);
     }
@@ -76,6 +81,26 @@ function verificationEntrees() {
     } else {
         setSuccessFor(COURRIEL);
     }
+    
+    if (!(valeurNom === '') &&
+            !(valeurPrenom ==='') &&
+            !(valeurMdp === '') &&
+            !(valeurMdp.length < 6) &&
+            !(valeurMdp.search(/[a-z]/) < 0) &&
+            !(valeurMdp.search(/[A-Z]/) < 0) &&
+            !(valeurMdp.search(/[0-9]/) < 0) && 
+            !(valeurCourriel === '') &&
+            !(!isCourriel(valeurCourriel)) &&
+            !(valeurNumDA === '') &&
+            !(!checkForNums(valeurNumDA)) &&
+            !(valeurNumDA.length !== 7) &&
+            !(valeurMdp2 === '') &&
+            !(valeurMdp2 !== valeurMdp)) {
+
+        isValid = true;
+    } 
+    
+    return isValid;
 }
 
 function setErrorFor(input, message) {

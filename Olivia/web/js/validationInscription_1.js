@@ -8,11 +8,16 @@ const COURRIEL = document.getElementById("courriel");
 
 FORM.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    verificationEntrees();
+    
+    if (verificationEntrees() === true) {
+        FORM.submit();
+    }
 });
 
 function verificationEntrees() {
+
+    let isValid = false;
+
     // prendre les valeurs des entrees
     const valeurNom = NOM.value.trim();
     const valeurMdp = MDP.value.trim();
@@ -56,6 +61,22 @@ function verificationEntrees() {
     } else {
         setSuccessFor(COURRIEL);
     }
+
+
+    if (!(valeurNom === '') &&
+            !(valeurMdp === '') &&
+            !(valeurMdp.length < 6) &&
+            !(valeurMdp.search(/[a-z]/) < 0) &&
+            !(valeurMdp.search(/[A-Z]/) < 0) &&
+            !(valeurMdp.search(/[0-9]/) < 0) && 
+            !(valeurCourriel === '') &&
+            !(!isCourriel(valeurCourriel)) &&
+            !(valeurMdp2 === '') &&
+            !(valeurMdp2 !== valeurMdp)) {
+
+        isValid = true;
+    }
+    return isValid;
 }
 
 function setErrorFor(input, message) {
