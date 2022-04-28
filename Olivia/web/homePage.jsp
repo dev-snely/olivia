@@ -13,8 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <header class="alignerElementsHaut">
@@ -38,13 +37,13 @@
 
         <nav class="sidenav">
             <ul>
-                <li><a class="navcoteText" href="#">Accueil</a></li>
-                <li><a class="navcoteText" href="#">Tableau de bord</a></li>
-                <li><a class="navcoteText" href="#">Recherche</a></li>
-                <li><a class="navcoteText" href="#">Boite d'offres</a></li>
-                <li><a class="navcoteText" href="#">Curriculum Vitae</a></li>
-                <li><a class="navcoteText" href="#">Lettre motivation</a></li>
-                <li><a class="navcoteText" href="#">Stages postulés</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>Accueil</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-house-chimney-user"></i>Tableau de bord</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-magnifying-glass"></i>Recherche</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-box"></i>Boite d'offres</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Curriculum Vitae</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
+                <li><a class="navcoteText" href="#"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
             </ul>
         </nav>
 
