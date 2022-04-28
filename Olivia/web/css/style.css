@@ -218,7 +218,7 @@ footer {
 }
 
 body {
-    
+
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
 }
@@ -226,38 +226,74 @@ body {
 
 .sidenav {
 
-   /* height: calc(100vh - 15vh); */
-   height: 100vh; 
+    /* height: calc(100vh - 15vh); */
+    height: 100vh; 
     width: 15%;
     float: left;
     background-color: #3C8D93;
     display: inline-block;
-    
 }
 
+.sidenav ul {
+    display: list-item;
+
+}
+
+.sidenav ul li {
+    width: 100%;
+    padding: 20px 15px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.sidenav ul li:hover {
+    background-color: #ffa500;
+    transition: 0.5s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 .navcoteText {
     color: #FFFFFF;
-    font-size: 14px;
-    text-align: left;
-    justify-content: left;
-}
-
-li {
-    list-style-type: none;
-    margin-bottom: 25px;
-    
+    text-decoration:none; 
 }
 
 
-ul{
-    padding: 20px;
-   
-}
 .contenuPrincipal{
     display: inline-block;
     padding: 50px;
-    
-
-    
-
 }
+
+.tbd-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 800px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.20);
+}
+
+.tbd-table thead tr {
+    background-color: #3C8D93;
+    color:#ffffff;
+    text-align: left;
+    font-weight: bold;    
+}
+
+.tbd-table th,
+.tbd-table td{
+    padding: 12px 15px;
+}
+
+.tbd-table tbody tr{
+    border-bottom: 1px solid #dddddd; 
+}
+
+.tbd-table tbody tr:nth-of-type(even){
+    background-color: #f4f4f4
+}
+
+.tbd-table tbody tr:last-of-type{
+    border-bottom: 2px solid #3C8D93;
+}
+
