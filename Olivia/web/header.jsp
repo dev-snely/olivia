@@ -18,7 +18,7 @@
             Bonjour <%=session.getAttribute("prenom")%> <%=session.getAttribute("nom")%>  
 
         </a>
-        <a href="#"><button class="InscriptionButon">Se déconnecter</button> </a>
+        <a href="deconnexion"><button class="InscriptionButon">Se déconnecter</button> </a>
     </div>
 
 </header>

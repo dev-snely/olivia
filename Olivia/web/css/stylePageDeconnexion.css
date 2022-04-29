@@ -1,0 +1,124 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-Apr-2022, 6:26:35 PM
+    Author     : LysAd
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+----------------------------------------------------------
+----- INFOS SUR HEADER DE L'ÉCRAN D'INSCRIPTION ----------
+----------------------------------------------------------
+*/
+
+.page {
+    height: 100vh;
+    background-color: #1F454D;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+}
+
+.logo{
+    width: 55px;
+    height: 55px;
+}
+
+.conteneur-du-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.connexion-button{
+    padding: 10px;
+    font-size: 20px;
+    border: 0.15em solid #1F454D;
+    color: #1F454D;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    background-color:transparent;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    border-radius: 30px;
+}
+
+.connexion-button:hover{
+    background-color: #1F454D;
+    color: #FFFFFF;
+}
+
+.connexion-button:active{
+    border-color: black;
+}
+
+.titre-du-site{
+    font-family: inherit;
+    font-weight: inherit;
+    color: #ffffff; 
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.page-main{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.formulaire-deconnexion{
+    margin-top: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding:50px 35px 50px 35px;
+    border-radius: 45px;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 15px;
+}
+
+.conteneur-message-deconnexion-titre{
+    color: #1F454D;
+    font-size: 20px;
+}
+
+.centrage-choix-btn{
+    display:felx;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-contenu {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: 100vw;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 20px;
+    padding: 30px;
+    color: #c4c4c4;
+}
