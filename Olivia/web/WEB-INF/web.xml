@@ -12,8 +12,13 @@
         <servlet-class>com.mv2.controllers.Connexion</servlet-class>
     </servlet>
     <servlet>
+
         <servlet-name>Deconnexion</servlet-name>
         <servlet-class>com.mv2.controllers.Deconnexion</servlet-class>
+
+        <servlet-name>Inscription</servlet-name>
+        <servlet-class>com.mv2.controllers.Inscription</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -24,8 +29,13 @@
         <url-pattern>/connexion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
+=======
+        <servlet-name>Inscription</servlet-name>
+        <url-pattern>/inscription</url-pattern>
+>>>>>>> MahmoudControllerPourNePasFuckup
     </servlet-mapping>
     <session-config>
         <session-timeout>

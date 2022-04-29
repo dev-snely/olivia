@@ -50,6 +50,14 @@
 
     </main>
 
+    
+    <script>
+        var ifsuceed = <%=session.getAttribute("succes")%> ;
+        if(ifsuceed == true){
+            alert("Inscription effectué avec success, vous pouvez vous connecter");
+            
+        }
+    </script>
 </body>
 
 </html>
