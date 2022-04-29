@@ -64,7 +64,7 @@ public class Inscription extends HttpServlet {
             daoCompte.create(compte);
             daoAdmin.create(admin);
             request.setAttribute("succes", true);
-            request.getRequestDispatcher("pageAccueil.html").forward(request, response);
+            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
               
               
                 
