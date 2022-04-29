@@ -5,6 +5,8 @@
  */
 package com.dao.postulation;
 
+import com.model.entities.Etudiant;
+import com.model.entities.Offre;
 import com.model.entities.Postulation;
 import java.util.List;
 
@@ -16,11 +18,11 @@ public interface PostulationDao {
 
     List<Postulation> findAll();
 
-    Postulation findById(int id);
+    Postulation findByIdEtudiantEtOffre(Offre offre, Etudiant etudiant);
 
-    boolean create(Postulation post);
+    boolean create(Postulation post,Offre offre, Etudiant etudiant);
 
-    boolean delete(int id);
+    boolean delete(Offre offre, Etudiant etudiant);
 
-    boolean update(Postulation post);
+    boolean update(Postulation post,Offre offre, Etudiant etudiant);
 }

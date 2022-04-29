@@ -307,7 +307,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
             ps.setString(1, etu.getNom());
             ps.setString(2, etu.getPrenom());
             ps.setInt(3, etu.getId());
-            ps.setInt(3, etu.getId());
+       
 
             nbLigne = ps.executeUpdate();
 

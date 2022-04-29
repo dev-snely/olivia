@@ -14,15 +14,20 @@ import java.util.Objects;
  */
 public class Occupation {
     private int id;
-    private Date dateDebut;
-    private Date datefin;
+    private String dateDebut;
+    private String datefin;
     private boolean disponible;
     private Offre offre;
 
     public Occupation() {
     }
+    public Occupation(String dateDebut, String datefin, boolean disponible) {
+        this.dateDebut = dateDebut;
+        this.datefin = datefin;
+        this.disponible = disponible;
+    }
 
-    public Occupation(Date dateDebut, Date datefin, Offre offre) {
+    public Occupation(String dateDebut, String datefin, Offre offre) {
         this.dateDebut = dateDebut;
         this.datefin = datefin;
         this.offre = offre;
@@ -32,11 +37,11 @@ public class Occupation {
         return id;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public Date getDatefin() {
+    public String getDatefin() {
         return datefin;
     }
 
@@ -52,11 +57,11 @@ public class Occupation {
         this.id = id;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public void setDatefin(Date datefin) {
+    public void setDatefin(String datefin) {
         this.datefin = datefin;
     }
 

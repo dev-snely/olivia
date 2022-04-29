@@ -5,6 +5,7 @@
  */
 package com.dao.occupation;
 
+import com.model.entities.Etudiant;
 import com.model.entities.Occupation;
 import java.util.Date;
 import java.util.List;
@@ -18,9 +19,9 @@ public interface OccupationDao {
 
     Occupation findById(int id);
 
-   Occupation findByDateDebut(Date date);
-   Occupation findByDateFin(Date date);
-    boolean create(Occupation ocup);
+   List<Occupation> findByDateDebut(String date);
+   List<Occupation> findByDateFin(String date);
+    boolean create(Occupation ocup,Etudiant etu);
 
     boolean delete(int id);
 
