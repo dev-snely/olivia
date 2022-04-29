@@ -29,7 +29,7 @@ import java.util.logging.Logger;
  * @author gabri
  */
 public class EtudiantDaoImpl implements EtudiantDao {
-
+ private static final String SQL_SELECT_PAR_ID_COMPTE = "select * from etudiant where Compte_IdCompte = ?";
     private static final String SQL_SELECT = "select * from etudiant";
     private static final String SQL_SELECT_PAR_ID = "select * from etudiant where IdEtudiant = ?";
     private static final String SQL_SELECT_PAR_NOM = "select * from etudiant where Nom = ?";
@@ -402,4 +402,39 @@ public class EtudiantDaoImpl implements EtudiantDao {
         ConnexionBD.closeConnection();
         return retour;
     }
+
+    @Override
+    public Etudiant findByIdCompte(int id) {
+         Etudiant etu = new Etudiant();
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_COMPTE);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                //// la méthode next() pour se déplacer sur l'enregistrement suivant
+                //on parcours ligne par ligne les résultas retournés
+                //on enregistre les données dans un entities (bean, classe java)
+                etu.setId(result.getInt("IdEtudiant"));
+                etu.setNom(result.getString("Nom"));
+                etu.setPrenom(result.getString("Prenom"));
+                etu.setNumeroDa(result.getInt("NumeroDA"));
+                if (daocv.findById(result.getInt("CV_IdCV")) != null) {
+                    etu.setCv(daocv.findById(result.getInt("CV_IdCV")));
+                }
+                if (daoLettre.findById(result.getInt("LettreMotivation_IdLettreMotivation")) != null) {
+                    etu.setLettre(daoLettre.findById(result.getInt("LettreMotivation_IdLettreMotivation")));
+                }
+
+                etu.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EtudiantDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return etu; }
 }

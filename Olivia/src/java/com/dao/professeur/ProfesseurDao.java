@@ -15,7 +15,7 @@ import java.util.List;
 public interface ProfesseurDao {
 
     List<Professeur> findAll();
-
+Professeur findByIdCompte(int id);
     Professeur findById(int id);
 
     List<Professeur> findByNom(String nom);

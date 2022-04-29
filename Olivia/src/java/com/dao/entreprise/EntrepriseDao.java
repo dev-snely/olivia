@@ -17,7 +17,7 @@ public interface EntrepriseDao {
     List<Entreprise> findAll();
 
     Entreprise findById(int id);
-
+Entreprise findByIdCompte(int id);
     boolean create(Entreprise entre);
 
     boolean delete(int id);

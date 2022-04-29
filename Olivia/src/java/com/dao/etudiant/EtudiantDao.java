@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface EtudiantDao {
     List<Etudiant> findAll();
-
+Etudiant findByIdCompte(int id);
     Etudiant findById(int id);
 
     List<Etudiant> findByNom(String nom);

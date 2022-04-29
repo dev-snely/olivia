@@ -25,7 +25,7 @@ public class EntrepriseDaoImpl implements EntrepriseDao{
     private static final String SQL_SELECT = "select * from entreprise";
     private static final String SQL_SELECT_PAR_ID = "select * from entreprise where IdEntreprise = ?";
     private static final String SQL_SELECT_PAR_PERSONNEREF = "select * from entreprise where PersonneReference = ?";
-    
+     private static final String SQL_SELECT_PAR_ID_COMPTE = "select * from entreprise where Compte_IdCompte = ?";
     private static final String SQL_INSET = "insert into entreprise(Description,PersonneReference,Nom,Compte_IdCompte) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update entreprise set Description =?,PersonneReference = ?,Nom = ? where IdEntreprise = ?";
     private static final String SQL_DELETE = "delete from entreprise where IdEntreprise = ?";
@@ -180,5 +180,39 @@ public class EntrepriseDaoImpl implements EntrepriseDao{
         }
         ConnexionBD.closeConnection();
         return retour;  }
+
+    @Override
+    public Entreprise findByIdCompte(int id) {
+          Entreprise ent = null;
+        try {
+            //Initialise la requête préparée base sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_COMPTE);
+           // on initialise la propriété id du bean avec sa valeur
+            ps.setInt(1, id);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ResultSet result = ps.executeQuery();
+
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+           
+            //on parcours ligne par ligne les resultats retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                ent = new Entreprise();
+                ent.setId(result.getInt("IdEntreprise"));
+                ent.setNom(result.getString("Nom"));
+                ent.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+                ent.setDescription(result.getString("Description"));
+                ent.setPersonneReference(result.getString("PersonneReference"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EntrepriseDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Fermeture de toutes les ressources ouvertes
+        ConnexionBD.closeConnection();
+        return ent;   }
     
 }

@@ -25,6 +25,7 @@ public class AdminDaoImpl implements AdminDao {
 
     private static final String SQL_SELECT = "select * from admin";
     private static final String SQL_SELECT_PAR_ID = "select * from admin where IdAdmin = ?";
+    private static final String SQL_SELECT_PAR_ID_COMPTE = "select * from admin where Compte_IdCompte = ?";
     private static final String SQL_SELECT_PAR_NOM = "select * from admin where Nom = ?";
     private static final String SQL_SELECT_PAR_PRENOM = "select * from admin where Prenom = ?";
     private static final String SQL_INSET = "insert into admin(Nom,Prenom,Compte_IdCompte) value(?,?,?)";
@@ -242,5 +243,32 @@ public class AdminDaoImpl implements AdminDao {
         ConnexionBD.closeConnection();
         return retour;
     }
+
+    @Override
+    public Admin findByIdCompte(int id) {
+          Admin admin = new Admin();
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_COMPTE);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+           while (result.next()) {
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les résultas retournés
+            //on enregistre les données dans un entities (bean, classe java)
+                admin.setId(result.getInt("IdAdmin"));
+                admin.setNom(result.getString("Nom"));
+                admin.setPrenom(result.getString("Prenom"));
+                admin.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+           }     
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return admin; }
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
 public interface AdminDao {
 
      List<Admin> findAll();
-
+    Admin findByIdCompte(int id);
     Admin findById(int id);
 
     List<Admin> findByNom(String nom);

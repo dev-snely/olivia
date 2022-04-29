@@ -6,7 +6,17 @@
 package com.mv2.controllers;
 
 import com.dao.admin.AdminDaoImpl;
+import com.dao.compte.CompteDaoImpl;
+import com.dao.entreprise.EntrepriseDaoImpl;
+import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.offre.OffreDaoImpl;
+import com.dao.professeur.ProfesseurDaoImpl;
 import com.model.entities.Admin;
+import com.model.entities.Compte;
+import com.model.entities.Entreprise;
+import com.model.entities.Etudiant;
+import com.model.entities.Offre;
+import com.model.entities.Professeur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -44,36 +54,65 @@ public class Connexion extends HttpServlet {
         String sauvegarde = request.getParameter("sauvegarde");
 
         //Verification Admin 
-        List<Admin> listeCompteAdmin = null;
+        CompteDaoImpl daoCompte = new CompteDaoImpl();
+        Compte compteConnexion;
+        ProfesseurDaoImpl daoProf = new ProfesseurDaoImpl();
+        EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
         AdminDaoImpl daoAdmin = new AdminDaoImpl();
+         OffreDaoImpl daoOffre = new OffreDaoImpl();
+        EntrepriseDaoImpl daoEntre = new EntrepriseDaoImpl();
+        compteConnexion = daoCompte.isExiste(courriel, mdp);
 
-        listeCompteAdmin = daoAdmin.findAll();
+        if (compteConnexion != null) {
+            HttpSession session = request.getSession(true);
+            connexion = true;
+            switch (compteConnexion.getTypeCompte()) {
+                case "etudiant":
 
-        System.out.print(listeCompteAdmin);
-        if (listeCompteAdmin != null) {
-            for (Admin admin : listeCompteAdmin) {
-                if (admin != null) {
-                    if (courriel.equals(admin.getCompte().getCourriel())
-                            && mdp.equals(admin.getCompte().getPassword())) {
-                        connexion = true;
-                        HttpSession session = request.getSession(true);
-                        session.setAttribute("nom", admin.getNom());
-                        session.setAttribute("prenom", admin.getPrenom());
+                    Etudiant etudiant = daoEtudiant.findByIdCompte(compteConnexion.getId());
+                    session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
+                    session.setAttribute("email", courriel);
+                    session.setAttribute("nom", etudiant.getNom());
+                    session.setAttribute("prenom", etudiant.getPrenom());
+                    break;
+                case "professeur":
+                    Professeur professeur = daoProf.findByIdCompte(compteConnexion.getId());
+                    session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
+                    session.setAttribute("email", courriel);
+                    session.setAttribute("nom", professeur.getNom());
+                    session.setAttribute("prenom", professeur.getPrenom());
+                    break;
+                case "entreprise":
+                    Entreprise entreprise = daoEntre.findByIdCompte(compteConnexion.getId());
+                    session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
+                    session.setAttribute("email", courriel);
+                    session.setAttribute("nom", entreprise.getNom());
+                    session.setAttribute("description", entreprise.getDescription());
+                    session.setAttribute("personneReference", entreprise.getPersonneReference());
+                    List<Offre> lesOffres=daoOffre.findByIdEntreprise(entreprise.getId());
+                    session.setAttribute("lesOffres", lesOffres);
+                    break;
+                case "admin":
+                    Admin admin = daoAdmin.findByIdCompte(compteConnexion.getId());
+                    session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
+                    session.setAttribute("email", courriel);
+                    session.setAttribute("nom", admin.getNom());
+                    session.setAttribute("prenom", admin.getPrenom());
 
-                        if (sauvegarde != null) {
-                            if (sauvegarde.equals("yes")) {
-                                Cookie courrielCookie = new Cookie("courriel", courriel);
-                                Cookie mdpCookie = new Cookie("mdp", mdp);
-                                courrielCookie.setMaxAge(60 * 60);//1 heure (60 x 60secs)
-                                mdpCookie.setMaxAge(60 * 60);
-                                response.addCookie(courrielCookie);
-                                response.addCookie(mdpCookie);
-                            }
-                        }
-                        request.getRequestDispatcher("homePage.jsp").forward(request, response);
-                    }
+                    break;
+            }
+            if (sauvegarde != null) {
+                if (sauvegarde.equals("yes")) {
+                    Cookie courrielCookie = new Cookie("courriel", courriel);
+                    Cookie mdpCookie = new Cookie("mdp", mdp);
+                    courrielCookie.setMaxAge(60 * 60);//1 heure (60 x 60secs)
+                    mdpCookie.setMaxAge(60 * 60);
+                    response.addCookie(courrielCookie);
+                    response.addCookie(mdpCookie);
                 }
             }
+            request.getRequestDispatcher("homePage.jsp").forward(request, response);
+
         }
 
         if (!connexion) {

@@ -5,6 +5,8 @@
 --%>
 
 <nav class="sidenav">
+    <% switch ((String) session.getAttribute("typeCompte")) {
+            case "etudiant":%>
     <ul>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>Accueil</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-house-chimney-user"></i>Tableau de bord</a></li>
@@ -14,4 +16,26 @@
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
     </ul>
+    <%break;
+        case "admin":%>
+    <ul>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>admin</a></li>
+    </ul>
+    <%break;
+        case "entreprise":%>
+    <ul>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>entreprise</a></li>
+    </ul>
+    <%break;
+        case "professeur":%>
+    <ul>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>professeur</a></li>
+    </ul>
+    <%break;
+        default:%>
+    <ul>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>hacker</a></li>
+    </ul>
+    <%}%>
+
 </nav>

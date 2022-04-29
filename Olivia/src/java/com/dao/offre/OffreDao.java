@@ -18,6 +18,7 @@ public interface OffreDao {
     List<Offre> findAll();
 
     Offre findById(int id);
+    List<Offre> findByIdEntreprise(int id);
 
 
 

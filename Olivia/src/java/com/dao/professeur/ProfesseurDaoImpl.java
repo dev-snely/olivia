@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author gabri
  */
 public class ProfesseurDaoImpl implements ProfesseurDao{
-
+ private static final String SQL_SELECT_PAR_ID_COMPTE = "select * from professeur where Compte_IdCompte = ?";
     private static final String SQL_SELECT = "select * from professeur";
     private static final String SQL_SELECT_PAR_ID = "select * from professeur where IdProfesseur = ?";
     private static final String SQL_SELECT_PAR_NOM = "select * from professeur where Nom = ?";
@@ -276,5 +276,34 @@ public class ProfesseurDaoImpl implements ProfesseurDao{
         }
         ConnexionBD.closeConnection();
         return retour; }
+
+    @Override
+    public Professeur findByIdCompte(int id) {
+          Professeur prof = new Professeur();
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_COMPTE);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                //// la méthode next() pour se déplacer sur l'enregistrement suivant
+                //on parcours ligne par ligne les résultas retournés
+                //on enregistre les données dans un entities (bean, classe java)
+                prof.setId(result.getInt("IdProfesseur"));
+                prof.setNom(result.getString("Nom"));
+                prof.setPrenom(result.getString("Prenom"));
+                prof.setNumeroDa(result.getInt("NumeroDA"));
+
+                prof.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProfesseurDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return prof;}
     
 }

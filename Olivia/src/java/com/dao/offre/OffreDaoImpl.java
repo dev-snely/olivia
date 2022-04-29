@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class OffreDaoImpl implements OffreDao{
     private static final String SQL_SELECT = "select * from offre";
     private static final String SQL_SELECT_PAR_ID = "select * from offre where IdOffre = ?";
+    private static final String SQL_SELECT_PAR_ID_ENTREPRISE = "select * from offre where Entreprise_IdEntreprise = ?";
     private static final String SQL_INSET = "insert into offre(Poste,Description,Remuneration,Entreprise_IdEntreprise) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update offre set Poste =?,Description = ?,Remuneration = ? where IdOffre = ?";
     private static final String SQL_DELETE = "delete from offre where IdOffre = ?";
@@ -59,7 +60,37 @@ public class OffreDaoImpl implements OffreDao{
        ConnexionBD.closeConnection();
         return listeOffre;
     }
-            
+             @Override
+    public List<Offre> findByIdEntreprise(int id) {
+            List<Offre> listeOffre = null;
+       try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_ENTREPRISE);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ResultSet result = ps.executeQuery();
+            listeOffre = new ArrayList<>();
+              //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les résultas retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                Offre offres = new Offre();
+                offres.setId(result.getInt("idOffre"));
+                offres.setPoste(result.getString("Poste"));
+                offres.setDescription(result.getString("Description"));
+                offres.setRemuneration(result.getFloat("Remuneration"));
+                
+      
+
+                listeOffre.add(offres);
+            }
+       }catch (SQLException ex) {
+            Logger.getLogger(OffreDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       ConnexionBD.closeConnection();
+        return listeOffre;
+    }
             
     
 
