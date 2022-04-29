@@ -56,7 +56,8 @@
         if(ifsuceed == true){
             alert("Inscription effectué avec success, vous pouvez vous connecter");
             
-        }
+        }else 
+            alert("L'adresse courriel entré est deja utilisé");
     </script>
 </body>
 

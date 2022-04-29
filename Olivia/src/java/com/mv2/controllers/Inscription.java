@@ -19,6 +19,8 @@ import com.dao.publicite.PubliciteDaoImp;
 import com.model.entities.Admin;
 import com.model.entities.Compte;
 import com.model.entities.Entreprise;
+import com.model.entities.Etudiant;
+import com.model.entities.Professeur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -85,7 +87,7 @@ public class Inscription extends HttpServlet {
             daoAdmin.create(admin);
             request.setAttribute("succes", true);
             request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-                 
+                 //Entreprise
             }else if(typeacct.equals("Entreprise")){
                 Entreprise Entreprise = new Entreprise();
                 Compte compte = new Compte();
@@ -99,15 +101,42 @@ public class Inscription extends HttpServlet {
             request.setAttribute("succes", true);
             request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
                  
+            }//Etudiant
+            else if (typeacct.equals("Etudiant")){
+                Etudiant etudiant = new Etudiant();
+                Compte compte = new Compte();
+                compte.setCourriel(request.getParameter("courriel"));
+                compte.setPassword(request.getParameter("mdp"));
+                compte.setTypeCompte("Etu");
+                etudiant.setCompte(compte);
+                etudiant.setNom(request.getParameter("nom"));
+                etudiant.setPrenom(request.getParameter("prenom"));
+                etudiant.setNumeroDa(Integer.valueOf(request.getParameter("numDA")));
+                
+                request.setAttribute("succes", true);
+                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
+                
+                
+            }else if(typeacct.equals("Professeur")){
+                Professeur LeProf = new Professeur();
+                Compte compte = new Compte();
+                compte.setCourriel(request.getParameter("courriel"));
+                compte.setPassword(request.getParameter("mdp"));
+                compte.setTypeCompte("Etu");
+                LeProf.setCompte(compte);
+                LeProf.setNom(request.getParameter("nom"));
+                LeProf.setPrenom(request.getParameter("prenom"));
+                LeProf.setNumeroDa(Integer.valueOf(request.getParameter("numDA")));
+                
+                request.setAttribute("succes", true);
+                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
+                
             }
             
-        
-       
-       
-            
-            
-            
-        }
+        }else{
+                request.setAttribute("succes", false);
+                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
+          }
         
     }
 
