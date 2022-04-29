@@ -7,8 +7,18 @@ package com.mv2.controllers;
 
 import com.dao.compte.CompteDaoImpl;
 import com.dao.admin.AdminDaoImpl;
+import com.dao.cv.CvDaoImpl;
+import com.dao.entreprise.EntrepriseDaoImpl;
+import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.lettreMotivation.LettreMotivationDaoImpl;
+import com.dao.occupation.OccupationDaoImpl;
+import com.dao.offre.OffreDaoImpl;
+import com.dao.postulation.PostulationDaoImpl;
+import com.dao.professeur.ProfesseurDaoImpl;
+import com.dao.publicite.PubliciteDaoImp;
 import com.model.entities.Admin;
 import com.model.entities.Compte;
+import com.model.entities.Entreprise;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -46,7 +56,17 @@ public class Inscription extends HttpServlet {
         List<Compte> listeCompte= daoCompte.findAll();
         //J'ajoute le dao admin car les autre sont pas encore faite, mais la
         //demarche devrait être pareil
+        //implementations de tous les DAOs
+        EntrepriseDaoImpl entrepriseDao= new EntrepriseDaoImpl();
         AdminDaoImpl daoAdmin = new AdminDaoImpl();
+        CvDaoImpl CVdao = new   CvDaoImpl();  
+        EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
+        LettreMotivationDaoImpl lettreDao = new LettreMotivationDaoImpl();
+        OccupationDaoImpl occupationDao = new OccupationDaoImpl();
+        OffreDaoImpl offresDao = new OffreDaoImpl();
+        PostulationDaoImpl postulationDao = new PostulationDaoImpl();
+        ProfesseurDaoImpl profDao = new ProfesseurDaoImpl();
+        PubliciteDaoImp pubDao = new PubliciteDaoImp();
        //Exemple pour admin, des que les autres sont implementés, c'est la même chose avec des if
        
        //Verifier si le email existe deja, car il doit être unique
@@ -65,9 +85,20 @@ public class Inscription extends HttpServlet {
             daoAdmin.create(admin);
             request.setAttribute("succes", true);
             request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-              
-              
-                
+                 
+            }else if(typeacct.equals("Entreprise")){
+                Entreprise Entreprise = new Entreprise();
+                Compte compte = new Compte();
+             compte.setCourriel(request.getParameter("courriel"));
+                compte.setPassword(request.getParameter("mdp"));
+                compte.setTypeCompte("Entr");
+            Entreprise.setNom(request.getParameter("nom"));
+            Entreprise.setCompte(compte);
+            daoCompte.create(compte);
+            
+            request.setAttribute("succes", true);
+            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
+                 
             }
             
         
