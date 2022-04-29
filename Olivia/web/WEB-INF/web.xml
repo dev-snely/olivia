@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>pageAccueil.html</welcome-file>
+        <welcome-file>pageAccueil.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>ServletTest</servlet-name>
@@ -15,28 +15,33 @@
 
         <servlet-name>Deconnexion</servlet-name>
         <servlet-class>com.mv2.controllers.Deconnexion</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>Inscription</servlet-name>
         <servlet-class>com.mv2.controllers.Inscription</servlet-class>
 
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/connexion</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
-=======
+    </servlet-mapping>
+    
+    <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/inscription</url-pattern>
->>>>>>> MahmoudControllerPourNePasFuckup
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
