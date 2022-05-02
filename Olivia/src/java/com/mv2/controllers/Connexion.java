@@ -19,6 +19,7 @@ import com.model.entities.Offre;
 import com.model.entities.Professeur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -89,7 +90,8 @@ public class Connexion extends HttpServlet {
                     session.setAttribute("nom", entreprise.getNom());
                     session.setAttribute("description", entreprise.getDescription());
                     session.setAttribute("personneReference", entreprise.getPersonneReference());
-                    List<Offre> lesOffres=daoOffre.findByIdEntreprise(entreprise.getId());
+                    ArrayList<Offre>lesOffres =(ArrayList<Offre>)daoOffre.findByIdEntreprise(entreprise.getId());
+                  
                     session.setAttribute("lesOffres", lesOffres);
                     break;
                 case "admin":

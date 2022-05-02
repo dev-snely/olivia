@@ -6,6 +6,7 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,8 +23,8 @@
         <jsp:include page="sidenav.jsp"/>
         <main class="contenuPrincipal">
 
-            <% switch((String)session.getAttribute("typeCompte")){
-             case "etudiant":%>
+            <% switch ((String) session.getAttribute("typeCompte")) {
+                    case "etudiant":%>
             <h1>TABLEAU DE BORD </h1><br>
             <h2>Vos informations</h2>
             <hr>
@@ -91,7 +92,7 @@
             </table>
             <%break;
                 case "entreprise":%>
-                  <h1>TABLEAU DE BORD </h1><br>
+            <h1>TABLEAU DE BORD </h1><br>
             <h2>Vos informations</h2>
             <hr>
             <table class="tbd-table">
@@ -108,11 +109,11 @@
                         <td><%=session.getAttribute("nom")%></td>
                         <td><%=session.getAttribute("description")%></td>
                         <td><%=session.getAttribute("personneReference")%></td>
-                         <td><%=session.getAttribute("email")%></td>
+                        <td><%=session.getAttribute("email")%></td>
                     </tr>
                 </tbody>
             </table>
-                     <br>
+            <br>
             <h2>Vos offres de stage</h2>
             <hr>
             <table class="tbd-table">
@@ -121,26 +122,28 @@
                         <th>Nom du poste</th>
                         <th>Description</th>
                         <th>Rémuneration</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
-                    <% List<Offre> lesOffre=(List<Offre>)session.getAttribute("lesOffres");
-                       for(int i = 0;i<lesOffre.size();i++){%>
+                    <% List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("lesOffres");
+                  
+                        for (int i = 0 ; lesOffre.size()>i;i++) {%>
                     <tr>
-                        <td><% lesOffre.get(i).getPoste() ;%></td>
-                        <td><% lesOffre.get(i).getDescription();%></td>
-                        <td><% lesOffre.get(i).getRemuneration();%>+$/Heure</td>
-                      
+                        <%System.out.println(lesOffre.get(i).getDescription());%>
+                        <td> <%=lesOffre.get(i).getPoste()%> </td>
+                        <td><%=lesOffre.get(i).getDescription()%></td>
+                        <td><%=lesOffre.get(i).getRemuneration()%>$/Heure</td>
+
                     </tr>
-                    <% }%>
+                    <%} %>
                 </tbody>
             </table>
-            <%break;
+            <% break;
                 case "professeur":%>
             <p>professeur</p>
             <%break;
-                default :%>
+                default:%>
             <p>C'est pas normal que tu te sois rendu ici hacker</p>
             <%}%>
         </main>

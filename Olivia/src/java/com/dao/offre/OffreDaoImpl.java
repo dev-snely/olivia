@@ -69,6 +69,7 @@ public class OffreDaoImpl implements OffreDao{
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_ENTREPRISE);
             //On execute la requête et on récupère les résultats dans la requête 
             // dans ResultSet
+             ps.setInt(1, id);
             ResultSet result = ps.executeQuery();
             listeOffre = new ArrayList<>();
               //// la méthode next() pour se déplacer sur l'enregistrement suivant
