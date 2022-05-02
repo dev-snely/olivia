@@ -12,36 +12,45 @@
         <servlet-class>com.mv2.controllers.Connexion</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>Deconnexion</servlet-name>
         <servlet-class>com.mv2.controllers.Deconnexion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Inscription</servlet-name>
         <servlet-class>com.mv2.controllers.Inscription</servlet-class>
-
     </servlet>
-    
+    <servlet>
+        <servlet-name>HomePage</servlet-name>
+        <servlet-class>com.mv2.controllers.HomePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Cv</servlet-name>
+        <servlet-class>com.mv2.controllers.Cv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/connexion</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/inscription</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>HomePage</servlet-name>
+        <url-pattern>/HomePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cv</servlet-name>
+        <url-pattern>/Cv</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

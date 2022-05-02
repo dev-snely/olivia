@@ -7,6 +7,7 @@ package com.mv2.controllers;
 
 import com.dao.admin.AdminDaoImpl;
 import com.dao.compte.CompteDaoImpl;
+import com.dao.cv.CvDaoImpl;
 import com.dao.entreprise.EntrepriseDaoImpl;
 import com.dao.etudiant.EtudiantDaoImpl;
 import com.dao.offre.OffreDaoImpl;
@@ -61,16 +62,20 @@ public class Connexion extends HttpServlet {
         EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
         AdminDaoImpl daoAdmin = new AdminDaoImpl();
          OffreDaoImpl daoOffre = new OffreDaoImpl();
+         
         EntrepriseDaoImpl daoEntre = new EntrepriseDaoImpl();
         compteConnexion = daoCompte.isExiste(courriel, mdp);
 
         if (compteConnexion != null) {
             HttpSession session = request.getSession(true);
             connexion = true;
+            
             switch (compteConnexion.getTypeCompte()) {
                 case "etudiant":
 
                     Etudiant etudiant = daoEtudiant.findByIdCompte(compteConnexion.getId());
+                    System.out.println(etudiant.getCv());
+                    session.setAttribute("cv",etudiant.getCv());
                     session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
                     session.setAttribute("email", courriel);
                     session.setAttribute("nom", etudiant.getNom());

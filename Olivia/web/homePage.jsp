@@ -141,7 +141,27 @@
             </table>
             <% break;
                 case "professeur":%>
-            <p>professeur</p>
+                      <h1>TABLEAU DE BORD </h1><br>
+            <h2>Vos informations</h2>
+            <hr>
+            <table class="tbd-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Courriel</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%=session.getAttribute("nom")%></td>
+                        <td><%=session.getAttribute("prenom")%></td>
+                        <td><%=session.getAttribute("email")%></td>
+                     
+                    </tr>
+                </tbody>
+            </table>
             <%break;
                 default:%>
             <p>C'est pas normal que tu te sois rendu ici hacker</p>

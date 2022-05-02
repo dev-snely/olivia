@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 public class CvDaoImpl implements CvDao{
     private static final String SQL_SELECT = "select * from cv";
     private static final String SQL_SELECT_PAR_ID = "select * from cv where IdCV = ?";
+    
     private static final String SQL_INSET = "insert into cv(Resume,ExperienceTravail,Education,Certification,Competence,Langue) value(?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "update cv set Resume =?,ExperienceTravail = ?,Education = ?,Certification = ?,Competence = ?,Langue = ? where IdCV = ?";
     private static final String SQL_DELETE = "delete from cv where IdCV = ?";
