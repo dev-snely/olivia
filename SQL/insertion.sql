@@ -8,7 +8,7 @@ VALUES
 (1,
 "Admin@gmail.com",
 "admin",
-"Admin");
+"admin");
 
 INSERT INTO `instage`.`compte`
 (`IdCompte`,
@@ -19,7 +19,7 @@ VALUES
 (2,
 "Prof@gmail.com",
 "prof",
-"Prof");
+"professeur");
 
 INSERT INTO `instage`.`compte`
 (`IdCompte`,
@@ -30,7 +30,7 @@ VALUES
 (3,
 "Entr@gmail.com",
 "entr",
-"Entr");
+"entreprise");
 
 INSERT INTO `instage`.`compte`
 (`IdCompte`,
@@ -41,7 +41,7 @@ VALUES
 (4,
 "Etu@gmail.com",
 "etu",
-"Etu");
+"etudiant");
 
 INSERT INTO `instage`.`admin`
 (`IdAdmin`,
