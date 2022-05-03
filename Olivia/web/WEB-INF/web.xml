@@ -31,6 +31,10 @@
         <servlet-name>Recherche</servlet-name>
         <servlet-class>com.mv2.controllers.Recherche</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListeOffre</servlet-name>
+        <servlet-class>com.mv2.controllers.ListeOffre</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -58,6 +62,10 @@
     <servlet-mapping>
         <servlet-name>Recherche</servlet-name>
         <url-pattern>/recherche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeOffre</servlet-name>
+        <url-pattern>/listeOffre</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

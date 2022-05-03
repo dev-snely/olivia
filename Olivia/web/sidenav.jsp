@@ -25,6 +25,7 @@
         case "entreprise":%>
     <ul>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>entreprise</a></li>
+        <li><a class="navcoteText" href="listeOffre"><i class="fa-solid fa-house"></i>Nos offres</a></li>
     </ul>
     <%break;
         case "professeur":%>
