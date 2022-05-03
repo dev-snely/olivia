@@ -48,96 +48,102 @@ public class Inscription extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+        //Valeurs permettant de valider l'inscription
+        boolean creation1 = false;
+        boolean creation2 = false;
         boolean inscription = false;
+
         //On prend les paramètres du formulaire de connexion.
-        //Ici, c'est pour savoir il sagit de quel type de formulaire(etudiant,prof,entreprise)
+        //Typeacct est pour savoir il sagit de quel type d'entité
+        //provient le formulaire(etudiant,prof,entreprise)
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String courriel = request.getParameter("courriel");
+        String mdp = request.getParameter("mdp");
+        String numDA = request.getParameter("numDA");
         String typeacct = request.getParameter("typeForm");
-        
-        //Implementation du dao
+
+        //Implementation des daos pouvant 
+        //s'inscrire : Etudiant, Professeur & Entreprise
         CompteDaoImpl daoCompte = new CompteDaoImpl();
-        List<Compte> listeCompte= daoCompte.findAll();
-        //J'ajoute le dao admin car les autre sont pas encore faite, mais la
-        //demarche devrait être pareil
-        //implementations de tous les DAOs
-        EntrepriseDaoImpl entrepriseDao= new EntrepriseDaoImpl();
         AdminDaoImpl daoAdmin = new AdminDaoImpl();
-        CvDaoImpl CVdao = new   CvDaoImpl();  
         EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
-        LettreMotivationDaoImpl lettreDao = new LettreMotivationDaoImpl();
-        OccupationDaoImpl occupationDao = new OccupationDaoImpl();
-        OffreDaoImpl offresDao = new OffreDaoImpl();
-        PostulationDaoImpl postulationDao = new PostulationDaoImpl();
         ProfesseurDaoImpl profDao = new ProfesseurDaoImpl();
-        PubliciteDaoImp pubDao = new PubliciteDaoImp();
-       //Exemple pour admin, des que les autres sont implementés, c'est la même chose avec des if
-       
-       //Verifier si le email existe deja, car il doit être unique
-        
-          if(daoCompte.findByCourriel(request.getParameter("courriel")).equals(null)){
-              if(typeacct.equals("Admin")){
-                Admin admin = new Admin();
-                Compte compte = new Compte();
-             compte.setCourriel(request.getParameter("courriel"));
-                compte.setPassword(request.getParameter("mdp"));
-                compte.setTypeCompte("Admin");
-            admin.setNom(request.getParameter("nom"));
-            admin.setPrenom("prenom");
-            admin.setCompte(compte);
-            daoCompte.create(compte);
-            daoAdmin.create(admin);
-            request.setAttribute("succes", true);
-            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-                 //Entreprise
-            }else if(typeacct.equals("Entreprise")){
-                Entreprise Entreprise = new Entreprise();
-                Compte compte = new Compte();
-             compte.setCourriel(request.getParameter("courriel"));
-                compte.setPassword(request.getParameter("mdp"));
-                compte.setTypeCompte("Entr");
-            Entreprise.setNom(request.getParameter("nom"));
-            Entreprise.setCompte(compte);
-            daoCompte.create(compte);
-            
-            request.setAttribute("succes", true);
-            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-                 
-            }//Etudiant
-            else if (typeacct.equals("Etudiant")){
-                Etudiant etudiant = new Etudiant();
-                Compte compte = new Compte();
-                compte.setCourriel(request.getParameter("courriel"));
-                compte.setPassword(request.getParameter("mdp"));
-                compte.setTypeCompte("Etu");
-                etudiant.setCompte(compte);
-                etudiant.setNom(request.getParameter("nom"));
-                etudiant.setPrenom(request.getParameter("prenom"));
-                etudiant.setNumeroDa(Integer.valueOf(request.getParameter("numDA")));
-                
-                request.setAttribute("succes", true);
-                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-                
-                
-            }else if(typeacct.equals("Professeur")){
-                Professeur LeProf = new Professeur();
-                Compte compte = new Compte();
-                compte.setCourriel(request.getParameter("courriel"));
-                compte.setPassword(request.getParameter("mdp"));
-                compte.setTypeCompte("Etu");
-                LeProf.setCompte(compte);
-                LeProf.setNom(request.getParameter("nom"));
-                LeProf.setPrenom(request.getParameter("prenom"));
-                LeProf.setNumeroDa(Integer.valueOf(request.getParameter("numDA")));
-                
-                request.setAttribute("succes", true);
-                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-                
+        EntrepriseDaoImpl entrepriseDao = new EntrepriseDaoImpl();
+
+        List<Compte> listeCompte = daoCompte.findAll();
+        //Objet Compte à créer dans la BDD
+        Compte compteACreer = new Compte(courriel, mdp, typeacct);
+
+        //Verifier si le compte existe deja dans les comptes de la BD, car il doit être unique
+        if (!listeCompte.contains(compteACreer)) {
+            switch (typeacct) {
+                case "Admin": {
+                    creation1 = daoCompte.create(compteACreer);
+                    Admin unAdmin = new Admin();
+                    unAdmin.setCompte(daoCompte.findByCourriel(courriel));
+                    unAdmin.setNom(nom);
+                    unAdmin.setPrenom(prenom);
+                    creation2 = daoAdmin.create(unAdmin);
+                    if (creation1 && creation2) {
+                        inscription = true;
+                        request.setAttribute("succes", inscription);
+                    }
+                    break;
+                }
+                case "Entreprise": {
+                    creation1 = daoCompte.create(compteACreer);
+                    Entreprise ent = new Entreprise();
+                    ent.setCompte(daoCompte.findByCourriel(courriel));
+                    ent.setNom(nom);
+                    ent.setDescription("Aucune description.");
+                    ent.setPersonneReference("Aucune personne de référence.");
+                    creation2 = entrepriseDao.create(ent);
+                    if (creation1 && creation2) {
+                        inscription = true;
+                        request.setAttribute("succes", inscription);
+                    }
+                    break;
+                }
+                case "Etudiant": {
+                    creation1 = daoCompte.create(compteACreer);
+                    Etudiant etudiant = new Etudiant();
+                    etudiant.setCompte(daoCompte.findByCourriel(courriel));
+                    etudiant.setNom(nom);
+                    etudiant.setPrenom(prenom);
+                    etudiant.setNumeroDa(Integer.valueOf(numDA));
+                    creation2 = etudiantDao.create(etudiant);
+                    if (creation1 && creation2) {
+                        inscription = true;
+                        request.setAttribute("succes", inscription);
+                    }
+                    break;
+                }
+                case "Professeur": {
+                    creation1 = daoCompte.create(compteACreer);
+                    Professeur leProf = new Professeur();
+                    leProf.setCompte(daoCompte.findByCourriel(courriel));
+                    leProf.setNom(nom);
+                    leProf.setPrenom(prenom);
+                    leProf.setNumeroDa(Integer.valueOf(numDA));
+                    creation2 = profDao.create(leProf);
+                    if (creation1 && creation2) {
+                        inscription = true;
+                        request.setAttribute("succes", inscription);
+                    }
+                    break;
+                }
+                default:
+                    break;
             }
+            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
             
-        }else{
-                request.setAttribute("succes", false);
-                request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
-          }
-        
+        } else if (inscription == false) {
+            request.setAttribute("succes", false);
+            request.getRequestDispatcher("pageAccueil.jsp").forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

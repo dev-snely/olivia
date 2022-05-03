@@ -70,7 +70,7 @@ public class Connexion extends HttpServlet {
             HttpSession session = request.getSession(true);
             connexion = true;
             
-            switch (compteConnexion.getTypeCompte()) {
+            switch (compteConnexion.getTypeCompte().toLowerCase()) {
                 case "etudiant":
 
                     Etudiant etudiant = daoEtudiant.findByIdCompte(compteConnexion.getId());

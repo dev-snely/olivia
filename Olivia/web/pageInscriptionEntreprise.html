@@ -15,7 +15,7 @@
 
             <div class="conteneur-du-logo">
                 <img class="logo" src="images/logo.png" alt="logo">
-                <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
+                <a class="titre-du-site" href="pageAccueil.jsp">Olivia</a>
             </div>
 
             <a href="pageConnexion.jsp"><button class="btn-connexion">Connexion</button></a>
@@ -27,30 +27,30 @@
             <img class="img-poignee-de-main" src="images/poigneeDeMain.jpg" alt="logo">
 
             <div class="formulaire-inscripiton-titre-1">Créez votre compte</div>
-                <p class="formlaire-inscription-paragraphe">Olivia augmente vos chances d’obtenir les employés qu'il vous faut!</p>
-                <br>
-                <div class="espace-btn-choix">
-                    <a href="pageInscriptionEtudiant.html" class="btn-choix ">
-                        <img src="images/etudiant-icon-frepik.png" alt="etudiant">
-                        <span class="btn-choix-titre">Étudiant</span>
-                    </a>
-                    <a href="pageInscriptionProfesseur.html" class="btn-choix">
-                        <img src="images/prof-icon-freepik.png" alt="prof"> 
-                        <span class="btn-choix-titre">Professeur</span>
-                    </a>
-                    <a href="pageInscriptionEntreprise.html" class="btn-choix btn-choix-active">
-                        <img src="images/enterprise-icon-surang.png" alt="etudiant">
-                        <span class="btn-choix-titre">Entreprise</span>
-                    </a>
-                    <!--<a href="https://www.flaticon.com/free-icons/enterprise" title="enterprise icons">Enterprise icons created by surang - Flaticon</a>
-                    <a href="https://www.flaticon.com/free-icons/student" title="student icons">Student icons created by Freepik - Flaticon</a>
-                    <a href="https://www.flaticon.com/free-icons/teacher" title="teacher icons">Teacher icons created by Freepik - Flaticon</a> -->
+            <p class="formlaire-inscription-paragraphe">Olivia augmente vos chances d’obtenir les employés qu'il vous faut!</p>
+            <br>
+            <div class="espace-btn-choix">
+                <a href="pageInscriptionEtudiant.html" class="btn-choix ">
+                    <img src="images/etudiant-icon-frepik.png" alt="etudiant">
+                    <span class="btn-choix-titre">Étudiant</span>
+                </a>
+                <a href="pageInscriptionProfesseur.html" class="btn-choix">
+                    <img src="images/prof-icon-freepik.png" alt="prof"> 
+                    <span class="btn-choix-titre">Professeur</span>
+                </a>
+                <a href="pageInscriptionEntreprise.html" class="btn-choix btn-choix-active">
+                    <img src="images/enterprise-icon-surang.png" alt="etudiant">
+                    <span class="btn-choix-titre">Entreprise</span>
+                </a>
+                <!--<a href="https://www.flaticon.com/free-icons/enterprise" title="enterprise icons">Enterprise icons created by surang - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/student" title="student icons">Student icons created by Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/teacher" title="teacher icons">Teacher icons created by Freepik - Flaticon</a> -->
 
-                </div>
-            
-            
-            <form class="formulaire-inscription" id="formulaire-inscription" action="/">
-                   <input name="typeForm" value="Entreprise" type="hidden">
+            </div>
+
+
+            <form class="formulaire-inscription" id="formulaire-inscription" action="inscription" method="post">
+                <input name="typeForm" value="Entreprise" type="hidden">
                 <div class="controle-formulaire ">
                     <label for="nom">Nom d'entreprise:</label><br>
                     <div class="entree">

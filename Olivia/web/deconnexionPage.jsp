@@ -33,7 +33,7 @@
                 </div>
                 <br>
                 <div class='centrage-choix-btn'>
-                    <a class="connexion-button" type="button" href="pageAccueil.html" >
+                    <a class="connexion-button" type="button" href="pageAccueil.jsp" >
                         Retourner dans la page d'accueil</a>
                     OU
                     <a class="connexion-button" type="button" href="pageConnexion.jsp">

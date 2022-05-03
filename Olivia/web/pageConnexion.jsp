@@ -22,7 +22,7 @@
 
             <div class="conteneur-du-logo">
                 <img class="logo" src="images/logo.png" alt="logo">
-                <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
+                <a class="titre-du-site" href="pageAccueil.jsp">Olivia</a>
             </div>
 
             <a href="pageInscriptionEtudiant.html" class="btn-inscription">Inscription</a>

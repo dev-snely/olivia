@@ -5,7 +5,7 @@
 --%>
 
 <nav class="sidenav">
-    <% switch ((String) session.getAttribute("typeCompte")) {
+    <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()) {
             case "etudiant":%>
     <ul>
         <li><a class="navcoteText" href="HomePage"><i class="fa-solid fa-house"></i>Accueil</a></li>

@@ -23,7 +23,7 @@
         <jsp:include page="sidenav.jsp"/>
         <main class="contenuPrincipal">
 
-            <% switch ((String) session.getAttribute("typeCompte")) {
+            <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()) {
                     case "etudiant":%>
             <h1>TABLEAU DE BORD </h1><br>
             <h2>Vos informations</h2>

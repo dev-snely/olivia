@@ -16,7 +16,7 @@
 
                 <div class="conteneur-du-logo">
                     <img class="logo" src="images/logo.png" alt="logo">
-                    <a class="titre-du-site" href="pageAccueil.html">Olivia</a>
+                    <a class="titre-du-site" href="pageAccueil.jsp">Olivia</a>
                 </div>
 
                 <a href="pageConnexion.jsp"><button class="btn-connexion">Connexion</button></a>
@@ -49,15 +49,15 @@
 
                 </div>
 
-                <form class="formulaire-inscription" id="formulaire-inscription"  action="inscription">
+                <form class="formulaire-inscription" id="formulaire-inscription"  action="inscription" method="post">
                     <!-- POUR GET LE TYPE DE FORMULAIRE -->
                     <input name="typeForm" value="Etudiant" type="hidden">
                     
                     <div class="controle-formulaire ">
                         <label for="nom">Nom:</label><br>
                         <div class="entree">
-                            <i clasnoms="fas fa-user"></i>
-                            <input type="text" id="nom" name="" placeholder="Entre ton nom">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="nom" name="nom" placeholder="Entre ton nom">
                         </div>
                         <small>Message Erreur</small>
                     </div>

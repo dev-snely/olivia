@@ -14,11 +14,10 @@
     <div class="buttonsConnexionInscription">
 
         <a href="#" class="nomCompte">
-            <% if(session.getAttribute("typeCompte").equals("entreprise")){%>
-            Bonjour
-            <%=session.getAttribute("nom")%>
-            <%}else{%>
-            
+            <% if (session.getAttribute("typeCompte").equals("Entreprise")) {%>
+            Bonjour <%=session.getAttribute("nom")%>
+            <%} else {%>
+
             Bonjour <%=session.getAttribute("prenom")%> <%=session.getAttribute("nom")%>  
             <%}%>
         </a>

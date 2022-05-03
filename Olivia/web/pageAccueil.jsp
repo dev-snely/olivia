@@ -1,29 +1,30 @@
+<%@page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/stylePageAcceuil.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/stylePageAcceuil.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accueil</title>
+    </head>
 
-<body class="PageAccueil">
-    <header class="alignerElementsHaut">
+    <body class="PageAccueil">
+        <header class="alignerElementsHaut">
 
-        <div class="titrePiLogo">
-            <img class="tailleLogo" src="images/logo.png" />
-            <a href="pageAccueil.html">Olivia</a>
-        </div>
+            <div class="titrePiLogo">
+                <img class="tailleLogo" src="images/logo.png" />
+                <a href="pageAccueil.jsp">Olivia</a>
+            </div>
 
 
 
-        <div class="buttonsConnexionInscription">
-            <a href="pageConnexion.jsp" class="ConnexionButon">Connexion</a>
-            <a href="pageInscriptionEtudiant.html" class="InscriptionButon">Inscription</a>
-        </div>
+            <div class="buttonsConnexionInscription">
+                <a href="pageConnexion.jsp" class="ConnexionButon">Connexion</a>
+                <a href="pageInscriptionEtudiant.html" class="InscriptionButon">Inscription</a>
+            </div>
 
-    </header>
+        </header>
 
 
 
@@ -50,15 +51,19 @@
 
     </main>
 
-    
-    <script>
-        var ifsuceed = <%=session.getAttribute("succes")%> ;
-        if(ifsuceed == true){
-            alert("Inscription effectué avec success, vous pouvez vous connecter");
-            
-        }else 
-            alert("L'adresse courriel entré est deja utilisé");
-    </script>
-</body>
+
+
+
+        <script>
+            var compteCreerAvecSucces = <%=request.getAttribute("succes")%>;
+            if (compteCreerAvecSucces === true) {
+                alert("Inscription effectuÃ© avec succÃ¨es! Vous pouvez maintenant vous connecter! ?");
+            } else if (compteCreerAvecSucces === false) {
+                alert("? L'inscription n'a pas fonctionnÃ©. Veuillez nous contacter via courriel pour de l'assistance.");
+            }
+            console.log(document.characterSet);
+
+        </script>
+    </body>
 
 </html>
