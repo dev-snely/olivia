@@ -27,6 +27,10 @@
         <servlet-name>Cv</servlet-name>
         <servlet-class>com.mv2.controllers.Cv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Recherche</servlet-name>
+        <servlet-class>com.mv2.controllers.Recherche</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -50,6 +54,10 @@
     <servlet-mapping>
         <servlet-name>Cv</servlet-name>
         <url-pattern>/Cv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Recherche</servlet-name>
+        <url-pattern>/recherche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
