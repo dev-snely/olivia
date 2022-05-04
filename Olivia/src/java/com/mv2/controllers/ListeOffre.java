@@ -53,7 +53,7 @@ public class ListeOffre extends HttpServlet {
         
         //Recuperation des offres de l'entreprise connecté
         List<Offre> listeOffres = daoOffre.findByIdEntreprise(entreprise.getId());
-       
+        
         session.setAttribute("listeOffres", listeOffres);   
         
         request.getRequestDispatcher("pageOffresEntreprise.jsp").forward(request, response);

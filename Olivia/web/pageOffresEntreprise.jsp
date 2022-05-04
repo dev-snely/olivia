@@ -13,14 +13,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Offres</title>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
         <jsp:include page="sidenav.jsp"/>
 
         <main class="contenuPrincipal">
-            <h1>Vos offres</h1>
+            <h1>Vos offres d'emploi</h1>
             <hr>
             <table class="tbd-table">
                 <thead>
@@ -31,19 +32,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <% if(session.getAttribute("listeOffres") != null){%>
-                    
-                        <% List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("listeOffres");
-                            for (int i = 0; lesOffre.size() > i; i++) {
-                        %>
-                        <tr>
-                            <%System.out.println(lesOffre.get(i).getDescription());%>
-                            <td> <%=lesOffre.get(i).getPoste()%> </td>
-                            <td><%=lesOffre.get(i).getDescription()%></td>
-                            <td><%=lesOffre.get(i).getRemuneration()%>$/Heure</td>
-                        </tr>
-                            <%}%>
+
+                    <%
+                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("listeOffres");
+                        if (lesOffre != null) {
+                            if (lesOffre.size() == 0) {
+                    %>
+                    <tr>
+                        <td>Aucun poste.</td>
+                        <td>Aucune description.</td>
+                        <td>N/A</td>
+                    </tr>
+                    <%} else if (lesOffre.size() > 0) {
+                        for (int i = 0; lesOffre.size() > i; i++) {
+                    %>
+                    <tr>
+                        <td> <%=lesOffre.get(i).getPoste()%> </td>
+                        <td><%=lesOffre.get(i).getDescription()%></td>
+                        <td><%=lesOffre.get(i).getRemuneration()%>$/Heure</td>
+                    </tr>
+                    <%}%>
                     <%} else {%>
                     <tr>
                         <td>Aucun poste.</td>
@@ -51,7 +59,9 @@
                         <td>N/A</td>
                     </tr>
                     <%}%>
+                    <%}%>
                 </tbody>
+            </table>    
         </main>
     </body>
 </html>
