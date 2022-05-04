@@ -9,8 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" href="css/stylePageAcceuil.css">
+        
          <link rel="stylesheet" href="css/style.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         
         <title>Postulation CV</title>
     </head>
     <body>
@@ -19,6 +21,29 @@
 
     <main class="contenuPrincipal">
         <h1>Page d'application du CV</h1>
+        <br>
+        <h2>Sur cette page, vous pouvez mettre vos renseignement de cv afin de mettre votre profil à jour.</h2>
+        <br>
+        
+        <form action="#">
+            <label   for="Resume" >Votre Résumé: </label><br>
+            <input id="input_border" type="text"  name="leresume" value=""><br>
+            <label   for="ExpTravail" >Votre Experience de travail: </label><br>
+            <input type="text" id="input_border" name="experiencetravail" value=""><br>
+            <label   for="Resume" >Votre Éducation </label><br>
+            <input type="text" id="input_border" name="education" value=""><br>
+            <label   for="Resume" >Votre Certification </label><br>
+            <input type="text" id="input_border" name="certification" value=""><br>
+            <label   for="Resume" >Votre Competences </label><br>
+            <input type="text" id="input_border" name="competences" value=""><br>
+            <label   for="Resume" >Vos langues parlés: </label><br>
+            <input type="text" id="input_border"  name="langages" value=""><br>
+            <br>
+            <input type="submit" class="search-btn-input" value="Poster le CV">
+            
+            
+        </form>
+        
 
 
     </main>
