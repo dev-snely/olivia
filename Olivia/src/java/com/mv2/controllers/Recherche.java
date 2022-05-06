@@ -10,6 +10,7 @@ import com.dao.entreprise.EntrepriseDaoImpl;
 import com.dao.offre.OffreDaoImpl;
 import com.model.entities.Compte;
 import com.model.entities.Entreprise;
+import com.model.entities.ObjetOffrEntr;
 import com.model.entities.Offre;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,7 +44,7 @@ public class Recherche extends HttpServlet {
 
         //Afficher les offres d'emploi de tout les entreprises
         //dans une liste d'offre vide.
-        List<Offre> listeToutOffre = new ArrayList();
+        List<ObjetOffrEntr> listeToutOffre = new ArrayList();
 
         //Daos nécessaires
         OffreDaoImpl daoOffre = new OffreDaoImpl();
@@ -56,15 +57,16 @@ public class Recherche extends HttpServlet {
         for (Entreprise ent : listeEntr){
             List<Offre> listeOffreEnt = daoOffre.findByIdEntreprise(ent.getId());
             for (Offre offre : listeOffreEnt){
-                listeToutOffre.add(offre);
+                listeToutOffre.add(new ObjetOffrEntr(offre,ent));
             }
         }
         
         HttpSession session = request.getSession(false);
-        session.setAttribute("listeOffres", listeToutOffre);   
+        session.setAttribute("listeOffres&Ent", listeToutOffre);   
         
         request.getRequestDispatcher("pageRecherche.jsp").forward(request, response);
     }
+    
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -106,3 +108,4 @@ public class Recherche extends HttpServlet {
     }// </editor-fold>
 
 }
+

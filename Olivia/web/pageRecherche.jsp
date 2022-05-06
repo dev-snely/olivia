@@ -4,6 +4,7 @@
     Author     : LysAd
 --%>
 
+<%@page import="com.model.entities.ObjetOffrEntr"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page import="java.util.List"%>
@@ -25,42 +26,54 @@
 
             <h1>RECHERCHE</h1><br>
             <hr>
-            <table class="tbd-table">
+            <br>
+            <div class='search-container'>
+                <input type="text" class="search-input" id="myInput" onkeyup="rechercheNomPoste()" placeholder="Filtrer par POSTE">
+            </div>
+            <br>
+            <div class='search-container'>
+                <input type="text" class="search-input" id="myInput2" onkeyup="rechercheEntreprise()" placeholder="Filtrer par ENTREPRISE">
+            </div>
+            <table class="tbd-table" id="myTable">
                 <thead>
                     <tr>
                         <th>Nom du poste</th>
                         <th>Description</th>
-                        <th>Rémuneration</th>
-                        <th>Entreprise</th>
+                        <th>Rémuneration ($/Heure)</th>
+                        <th>Entreprise </th>
+                        <th>Description Ent</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <%
-                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("listeOffres");
-                        if (lesOffre != null) {
-                            if (lesOffre.size() == 0) {
+                        List<ObjetOffrEntr> lesOffreEnt = (ArrayList<ObjetOffrEntr>) session.getAttribute("listeOffres&Ent");
+                        if (lesOffreEnt != null) {
+                            if (lesOffreEnt.size() == 0) {
                     %>
                     <tr>
                         <td>Aucun poste.</td>
                         <td>Aucune description.</td>
                         <td>N/A</td>
                         <td>N/A</td>
+                        <td>N/A</td>
                     </tr>
-                    <%} else if (lesOffre.size() > 0) {
-                        for (int i = 0; lesOffre.size() > i; i++) {
+                    <%} else if (lesOffreEnt.size() > 0) {
+                        for (int i = 0; lesOffreEnt.size() > i; i++) {
                     %>
                     <tr>
-                        <td><%=lesOffre.get(i).getPoste()%> </td>
-                        <td><%=lesOffre.get(i).getDescription()%></td>
-                        <td><%=lesOffre.get(i).getRemuneration()%>$/Heure</td>
-                        <td><%=lesOffre.get(i)%></td>
+                        <td><%=lesOffreEnt.get(i).getOffre().getPoste()%> </td>
+                        <td><%=lesOffreEnt.get(i).getOffre().getDescription()%></td>
+                        <td><%=lesOffreEnt.get(i).getOffre().getRemuneration()%></td>
+                        <td><%=lesOffreEnt.get(i).getEntreprise().getNom()%></td>
+                        <td><%=lesOffreEnt.get(i).getEntreprise().getDescription()%></td>
                     </tr>
                     <%}
                     } else {%>
                     <tr>
                         <td>Aucun poste.</td>
                         <td>Aucune description.</td>
+                        <td>N/A</td>
                         <td>N/A</td>
                         <td>N/A</td>
                     </tr>
@@ -70,6 +83,7 @@
             </table> 
 
         </main>
-
+        <script src="js/rechercheEmploi.js">
+        </script>  
     </body>
 </html>
