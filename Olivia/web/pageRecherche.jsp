@@ -27,10 +27,12 @@
             <h1>RECHERCHE</h1><br>
             <hr>
             <br>
+            Nom du poste :
             <div class='search-container'>
                 <input type="text" class="search-input" id="myInput" onkeyup="rechercheNomPoste()" placeholder="Filtrer par POSTE">
             </div>
             <br>
+            Nom de l'entreprise :
             <div class='search-container'>
                 <input type="text" class="search-input" id="myInput2" onkeyup="rechercheEntreprise()" placeholder="Filtrer par ENTREPRISE">
             </div>
