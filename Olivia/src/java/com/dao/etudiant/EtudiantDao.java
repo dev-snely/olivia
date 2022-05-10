@@ -22,7 +22,7 @@ Etudiant findByIdCompte(int id);
 
     List<Etudiant> findByNom(String nom);
     List<Etudiant> findByPrenom(String prenom);
-    List<Etudiant> findByNumeroDA(int DA);
+    Etudiant findByNumeroDA(int DA);
     boolean create(Etudiant etu);
 
     boolean delete(int id);

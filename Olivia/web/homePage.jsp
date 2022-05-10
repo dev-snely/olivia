@@ -42,7 +42,7 @@
                         <td><%=session.getAttribute("nom")%></td>
                         <td><%=session.getAttribute("prenom")%></td>
                         <td><%=session.getAttribute("email")%></td>
-                        <td>lien vers CV</td>
+                        <td> <a href="formulaireCV.jsp" >lien vers CV</a></td>
                     </tr>
                 </tbody>
             </table>

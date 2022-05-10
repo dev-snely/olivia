@@ -25,7 +25,7 @@
         <h2>Sur cette page, vous pouvez mettre vos renseignement de cv afin de mettre votre profil à jour.</h2>
         <br>
         
-        <form action="#">
+        <form action="Cv">
             <label   for="Resume" >Votre Résumé: </label><br>
             <input id="input_border" type="text"  name="leresume" value=""><br>
             <label   for="ExpTravail" >Votre Experience de travail: </label><br>
