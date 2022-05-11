@@ -35,6 +35,14 @@
         <servlet-name>ListeOffre</servlet-name>
         <servlet-class>com.mv2.controllers.ListeOffre</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NouvelOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.NouvelOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupprimerOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.SupprimerOffreEntreprise</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -66,6 +74,14 @@
     <servlet-mapping>
         <servlet-name>ListeOffre</servlet-name>
         <url-pattern>/listeOffre</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NouvelOffreEntreprise</servlet-name>
+        <url-pattern>/nouvelOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupprimerOffreEntreprise</servlet-name>
+        <url-pattern>/supprimerOffreEntreprise</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

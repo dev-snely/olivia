@@ -1,6 +1,6 @@
 <%-- 
-    Document   : pageOffresEntreprise
-    Created on : 3-May-2022, 5:50:00 PM
+    Document   : pageOffresEntrepriseEdition
+    Created on : 10-May-2022, 6:28:43 PM
     Author     : LysAd
 --%>
 
@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <title>Offres</title>
+        <title>Nouvel offre</title>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
@@ -24,8 +24,7 @@
             <div class="page-offre-ent-titre">
                 <h1>Vos offres d'emploi</h1>
                 <div class="page-offre-ent-btns">
-                    <a href="creationOffreEntreprise.jsp" class="page-offre-ent-btns-1">Ajouter</a>
-                    <a href="pageOffresEntrepriseEdition.jsp" class="page-offre-ent-btns-2">Éditer</a>
+                    <a href="pageOffresEntreprise.jsp" class="page-offre-ent-btns-1">Revenir</a>
                 </div>
             </div>
             <hr>
@@ -34,7 +33,9 @@
                     <tr>
                         <th>Nom du poste</th>
                         <th>Description</th>
-                        <th>Rémuneration ($/Heure)</th>
+                        <th>Rémuneration($/Heure)</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +56,21 @@
                     <tr>
                         <td><%=lesOffre.get(i).getPoste()%> </td>
                         <td><%=lesOffre.get(i).getDescription()%></td>
-                        <td style='text-align: center;vertical-align: middle;'><%=lesOffre.get(i).getRemuneration()%></td>
+                        <td style='text-align: center;vertical-align: middle;'>
+                            <%=lesOffre.get(i).getRemuneration()%>
+                        </td>
+                        <td style='text-align: center;vertical-align: middle;'>
+                            <a href="#" >
+                                <input type='hidden' name='edition' value=<%=lesOffre.get(i)%>>
+                                <i class="edit-icon fa-solid fa-pen"></i>
+                            </a>
+                        </td>
+                        <td style='text-align: center;vertical-align: middle;'>
+                            <a href="supprimerOffreEntreprise">
+                                <input type='hidden' name='supprimer' value=<%session.setAttribute("offreASupprimer"+i, lesOffre.get(i));%>>
+                                <i class="delete-icon fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
                     </tr>
                     <%}%>
                     <%} else {%>
@@ -69,5 +84,6 @@
                 </tbody>
             </table>    
         </main>
+
     </body>
 </html>
