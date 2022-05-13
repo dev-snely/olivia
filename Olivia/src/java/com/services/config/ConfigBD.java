@@ -11,7 +11,7 @@ package com.services.config;
  */
 public interface ConfigBD {
      
-	public final static String URL = "jdbc:mysql://127.0.0.1:8181/InStage?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+	public final static String URL = "jdbc:mysql://127.0.0.1:3306/InStage?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
         
         public final static String USER ="root";
        
