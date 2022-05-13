@@ -204,8 +204,8 @@ public class EtudiantDaoImpl implements EtudiantDao {
     }
 
     @Override
-    public List<Etudiant> findByNumeroDA(int DA) {
-        List<Etudiant> listeEtu = null;
+    public Etudiant findByNumeroDA(int DA) {
+        Etudiant listeEtu = null;
         try {
             //Initialise la requête préparée basée sur la connexion 
             // la requête SQL passé en argument pour construire l'objet preparedStatement
@@ -214,7 +214,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
             // dans ResultSet
             ps.setInt(1, DA);
             ResultSet result = ps.executeQuery();
-            listeEtu = new ArrayList<>();
+            //listeEtu = new ArrayList<>();
             //// la méthode next() pour se déplacer sur l'enregistrement suivant
             //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
@@ -234,7 +234,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
 
                 etu.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
 
-                listeEtu.add(etu);
+                listeEtu= etu;
 
             }
         } catch (SQLException ex) {
