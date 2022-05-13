@@ -40,7 +40,7 @@
                 <tbody>
 
                     <%
-                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("listeOffres");
+                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("lesOffres");
                         if (lesOffre != null) {
                             if (lesOffre.size() == 0) {
                     %>

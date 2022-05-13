@@ -24,7 +24,7 @@
             <div class="page-offre-ent-titre">
                 <h1>Vos offres d'emploi</h1>
                 <div class="page-offre-ent-btns">
-                    <a href="pageOffresEntreprise.jsp" class="page-offre-ent-btns-1">Revenir</a>
+                    <a href="pageOffresEntreprise.jsp" class="page-offre-ent-btns-1">Retour</a>
                 </div>
             </div>
             <hr>
@@ -41,7 +41,7 @@
                 <tbody>
 
                     <%
-                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("listeOffres");
+                        List<Offre> lesOffre = (ArrayList<Offre>) session.getAttribute("lesOffres");
                         if (lesOffre != null) {
                             if (lesOffre.size() == 0) {
                     %>
@@ -60,14 +60,12 @@
                             <%=lesOffre.get(i).getRemuneration()%>
                         </td>
                         <td style='text-align: center;vertical-align: middle;'>
-                            <a href="#" >
-                                <input type='hidden' name='edition' value=<%=lesOffre.get(i)%>>
+                            <a href="modifierOffreEntreprise?id=<%=lesOffre.get(i).getId()%>" >
                                 <i class="edit-icon fa-solid fa-pen"></i>
                             </a>
                         </td>
                         <td style='text-align: center;vertical-align: middle;'>
-                            <a href="supprimerOffreEntreprise">
-                                <input type='hidden' name='supprimer' value=<%session.setAttribute("offreASupprimer"+i, lesOffre.get(i));%>>
+                            <a href="supprimerOffreEntreprise?id=<%=lesOffre.get(i).getId()%>">
                                 <i class="delete-icon fa-solid fa-trash-can"></i>
                             </a>
                         </td>

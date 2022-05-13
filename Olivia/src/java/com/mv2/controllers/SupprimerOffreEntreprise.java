@@ -9,6 +9,7 @@ import com.action.OffreAction;
 import com.model.entities.Offre;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +35,10 @@ public class SupprimerOffreEntreprise extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession(false);
+        int id = parseInt(request.getParameter("id"));
+        Offre uneOffreASupprimer = OffreAction.chercherOffreParId(id);
         
-        Offre offre = (Offre)session.getAttribute("offreASupprimer");
-        
-        boolean retour = OffreAction.supprimerOffre(offre);
+        boolean retour = OffreAction.supprimerOffre(uneOffreASupprimer);
         if (retour) {
             request.getRequestDispatcher("listeOffre").forward(request, response);
         } else {

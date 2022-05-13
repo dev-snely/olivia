@@ -5,26 +5,21 @@
  */
 package com.mv2.controllers;
 
-import com.dao.compte.CompteDaoImpl;
-import com.dao.entreprise.EntrepriseDaoImpl;
-import com.dao.offre.OffreDaoImpl;
-import com.model.entities.Compte;
-import com.model.entities.Entreprise;
+import com.action.OffreAction;
 import com.model.entities.Offre;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import static java.lang.Integer.parseInt;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author LysAd
  */
-public class ListeOffre extends HttpServlet {
+public class ModifierOffreEntreprise extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,25 +33,19 @@ public class ListeOffre extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); 
+        PrintWriter out = response.getWriter();
         
-        //Daos nécessaires
-        OffreDaoImpl daoOffre = new OffreDaoImpl();
-        CompteDaoImpl daoCompte = new CompteDaoImpl();
-        EntrepriseDaoImpl daoEntr = new EntrepriseDaoImpl();
+        int id = parseInt(request.getParameter("id"));
+        Offre uneOffreAModifier = OffreAction.chercherOffreParId(id);
         
-        //Infos de l'entreprise connecté
-        HttpSession session = request.getSession(false);
-        String courriel = (String) session.getAttribute("email");
-        Compte compteEntre = daoCompte.findByCourriel(courriel);
-        Entreprise entreprise = daoEntr.findByIdCompte(compteEntre.getId());
+        request.setAttribute("idAModifier", uneOffreAModifier.getId());
+        request.setAttribute("posteActuel", uneOffreAModifier.getPoste());
+        request.setAttribute("descActuel", uneOffreAModifier.getDescription());
+        request.setAttribute("renumActuel", uneOffreAModifier.getRemuneration());
         
-        //Recuperation des offres de l'entreprise connecté
-        List<Offre> listeOffres = daoOffre.findByIdEntreprise(entreprise.getId());
+        //Redirection vers page de modification
+        request.getRequestDispatcher("pageModificationOffreEnt.jsp").forward(request, response);
         
-        session.setAttribute("lesOffres", listeOffres);   
-        
-        request.getRequestDispatcher("pageOffresEntreprise.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
