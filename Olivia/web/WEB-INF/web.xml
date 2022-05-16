@@ -31,6 +31,18 @@
         <servlet-name>Recherche</servlet-name>
         <servlet-class>com.mv2.controllers.Recherche</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ajouter</servlet-name>
+        <servlet-class>com.mv2.controllers.Ajouter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modifier</servlet-name>
+        <servlet-class>com.mv2.controllers.Modifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Supprimer</servlet-name>
+        <servlet-class>com.mv2.controllers.Supprimer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -58,6 +70,18 @@
     <servlet-mapping>
         <servlet-name>Recherche</servlet-name>
         <url-pattern>/recherche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ajouter</servlet-name>
+        <url-pattern>/Ajouter/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modifier</servlet-name>
+        <url-pattern>/Modifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Supprimer</servlet-name>
+        <url-pattern>/Supprimer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

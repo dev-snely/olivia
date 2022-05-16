@@ -19,7 +19,9 @@
     <%break;
         case "admin":%>
     <ul>
-        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>admin</a></li>
+        <li><a class="navcoteText" href="Ajouter"><i class="fa-solid fa-plus-square"></i>Ajouter</a></li>
+         <li><a class="navcoteText" href="Modifier"><i class="fa-solid fa fa-pencil"></i>Modifier</a></li>
+          <li><a class="navcoteText" href="Supprimer"><i class="fa-solid fa-minus-square"></i>Supprimer</a></li>
     </ul>
     <%break;
         case "entreprise":%>
