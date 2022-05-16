@@ -32,7 +32,7 @@
         <servlet-class>com.mv2.controllers.Recherche</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
+
         <servlet-name>Ajouter</servlet-name>
         <servlet-class>com.mv2.controllers.Ajouter</servlet-class>
     </servlet>
@@ -43,7 +43,7 @@
     <servlet>
         <servlet-name>Supprimer</servlet-name>
         <servlet-class>com.mv2.controllers.Supprimer</servlet-class>
-=======
+
         <servlet-name>ListeOffre</servlet-name>
         <servlet-class>com.mv2.controllers.ListeOffre</servlet-class>
     </servlet>
@@ -74,7 +74,7 @@
     <servlet>
         <servlet-name>EnvoyerMail</servlet-name>
         <servlet-class>com.mv2.controllers.EnvoyerMail</servlet-class>
->>>>>>> 0ed071ea7b5e69e02c0c88a0caba973372f60bde
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -105,7 +105,7 @@
         <url-pattern>/recherche</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
+
         <servlet-name>Ajouter</servlet-name>
         <url-pattern>/Ajouter/*</url-pattern>
     </servlet-mapping>
@@ -116,7 +116,7 @@
     <servlet-mapping>
         <servlet-name>Supprimer</servlet-name>
         <url-pattern>/Supprimer</url-pattern>
-=======
+
         <servlet-name>ListeOffre</servlet-name>
         <url-pattern>/listeOffre</url-pattern>
     </servlet-mapping>
@@ -147,7 +147,7 @@
     <servlet-mapping>
         <servlet-name>EnvoyerMail</servlet-name>
         <url-pattern>/envoyerMail</url-pattern>
->>>>>>> 0ed071ea7b5e69e02c0c88a0caba973372f60bde
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -51,10 +51,12 @@ public class Ajouter extends HttpServlet {
         listCategory.add("professeur");
         listCategory.add("admin");
         session.setAttribute("listCategory", listCategory);
+       
         
+        String inscription = request.getParameter("inscription"); 
         //
         session.setAttribute("inscription", "etudiant");
-        String inscription = request.getParameter("inscription"); 
+        
         session.setAttribute("inscription", inscription);
         String compte = request.getParameter("inscription"); 
         String ajouter = request.getParameter("formulaire-ajouter");
