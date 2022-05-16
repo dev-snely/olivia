@@ -5,22 +5,24 @@
  */
 package com.mv2.controllers;
 
+import com.action.EntrepriseAction;
+import com.action.OffreAction;
+import com.model.entities.Entreprise;
+import com.model.entities.Offre;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.dao.cv.CvDaoImpl;
-import com.dao.etudiant.EtudiantDaoImpl;
-import com.model.entities.CV;
-import com.model.entities.Etudiant;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author gabri
+ * @author LysAd
  */
-public class Cv extends HttpServlet {
+public class ModifierOffreEntreprisePartieDeux extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +36,25 @@ public class Cv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
-        CvDaoImpl cvDao = new CvDaoImpl();
-        Etudiant letudiant = etudiantDao.findByNumeroDA((int) request.getSession().getAttribute("numDA"));
-        CV monCV = new CV();
-        monCV.setResume(request.getParameter("leresume"));
-        monCV.setExperienceTravail(request.getParameter("experiencetravail"));
-        monCV.setEducation(request.getParameter("education"));
-        monCV.setCertification(request.getParameter("certification"));
-        monCV.setCompetence(request.getParameter("competences"));
-        monCV.setLangue(request.getParameter("langages"));
-        cvDao.create(monCV, letudiant);
+
+        //recuperation des nouvelle valeurs de l'offre en modification
+        int id = Integer.parseInt(request.getParameter("idAModifier"));
+        String poste = request.getParameter("poste");
+        String description = request.getParameter("description");
+        float renumeration = Float.parseFloat(request.getParameter("renumeration"));
+
+        //Modification de l'offre
+        Offre offreModifiee = new Offre(poste, description, renumeration);
+        offreModifiee.setId(id);
         
-        request.getRequestDispatcher("homePage.jsp").forward(request, response);
-       
-        
-        
-        
-        
-        
-        
+        //Action de modification
+        boolean retour = OffreAction.modifierOffre(offreModifiee);
+
+        if (retour) {
+            request.getRequestDispatcher("listeOffre").forward(request, response);
+        } else {
+            request.getRequestDispatcher("pageOperationEchoue.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

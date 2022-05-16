@@ -32,6 +32,7 @@
         <servlet-class>com.mv2.controllers.Recherche</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>Ajouter</servlet-name>
         <servlet-class>com.mv2.controllers.Ajouter</servlet-class>
     </servlet>
@@ -42,6 +43,38 @@
     <servlet>
         <servlet-name>Supprimer</servlet-name>
         <servlet-class>com.mv2.controllers.Supprimer</servlet-class>
+=======
+        <servlet-name>ListeOffre</servlet-name>
+        <servlet-class>com.mv2.controllers.ListeOffre</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NouvelOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.NouvelOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupprimerOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.SupprimerOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifierOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.ModifierOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifierOffreEntreprisePartieDeux</servlet-name>
+        <servlet-class>com.mv2.controllers.ModifierOffreEntreprisePartieDeux</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.AfficherOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerDemandePostulation</servlet-name>
+        <servlet-class>com.mv2.controllers.EnvoyerDemandePostulation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerMail</servlet-name>
+        <servlet-class>com.mv2.controllers.EnvoyerMail</servlet-class>
+>>>>>>> 0ed071ea7b5e69e02c0c88a0caba973372f60bde
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -72,6 +105,7 @@
         <url-pattern>/recherche</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>Ajouter</servlet-name>
         <url-pattern>/Ajouter/*</url-pattern>
     </servlet-mapping>
@@ -82,6 +116,38 @@
     <servlet-mapping>
         <servlet-name>Supprimer</servlet-name>
         <url-pattern>/Supprimer</url-pattern>
+=======
+        <servlet-name>ListeOffre</servlet-name>
+        <url-pattern>/listeOffre</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NouvelOffreEntreprise</servlet-name>
+        <url-pattern>/nouvelOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupprimerOffreEntreprise</servlet-name>
+        <url-pattern>/supprimerOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifierOffreEntreprise</servlet-name>
+        <url-pattern>/modifierOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifierOffreEntreprisePartieDeux</servlet-name>
+        <url-pattern>/modifierOffreEntreprisePartieDeux</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherOffreEntreprise</servlet-name>
+        <url-pattern>/afficherOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerDemandePostulation</servlet-name>
+        <url-pattern>/envoyerDemandePostulation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerMail</servlet-name>
+        <url-pattern>/envoyerMail</url-pattern>
+>>>>>>> 0ed071ea7b5e69e02c0c88a0caba973372f60bde
     </servlet-mapping>
     <session-config>
         <session-timeout>

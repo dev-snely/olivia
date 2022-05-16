@@ -61,8 +61,7 @@
                     <input id="cb" type="checkbox" name="sauvegarde" value="yes">
                     <label for="cb">Se souvenir</label>
                 </div>
-                <button class="btn-connexion" type="submit">
-                    Se connecter</button>
+                <button class="btn-connexion" type="submit">Se connecter</button>
 
             </form>
 
