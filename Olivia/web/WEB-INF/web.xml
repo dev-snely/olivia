@@ -51,6 +51,18 @@
         <servlet-name>ModifierOffreEntreprisePartieDeux</servlet-name>
         <servlet-class>com.mv2.controllers.ModifierOffreEntreprisePartieDeux</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AfficherOffreEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.AfficherOffreEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerDemandePostulation</servlet-name>
+        <servlet-class>com.mv2.controllers.EnvoyerDemandePostulation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerMail</servlet-name>
+        <servlet-class>com.mv2.controllers.EnvoyerMail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -98,6 +110,18 @@
     <servlet-mapping>
         <servlet-name>ModifierOffreEntreprisePartieDeux</servlet-name>
         <url-pattern>/modifierOffreEntreprisePartieDeux</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherOffreEntreprise</servlet-name>
+        <url-pattern>/afficherOffreEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerDemandePostulation</servlet-name>
+        <url-pattern>/envoyerDemandePostulation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerMail</servlet-name>
+        <url-pattern>/envoyerMail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

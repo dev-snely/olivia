@@ -15,16 +15,22 @@ import com.model.entities.Entreprise;
  * @author LysAd
  */
 public class EntrepriseAction {
-    public static Entreprise findEntrepriseParCourriel(String courriel){
-    
-    //On a besoin de l'id du compte de l'ent
-    Compte compteEnt = CompteAction.findByCourriel(courriel);
-    int idCompteEnt = compteEnt.getId();
-    
-    //On trouve l'entreprise avec le dao
-    EntrepriseDao dao = new EntrepriseDaoImpl();
-    Entreprise ent = dao.findByIdCompte(idCompteEnt);
-    
-    return ent;
+
+    public static Entreprise findEntrepriseParCourriel(String courriel) {
+
+        //On a besoin de l'id du compte de l'ent
+        Compte compteEnt = CompteAction.findByCourriel(courriel);
+        int idCompteEnt = compteEnt.getId();
+
+        //On trouve l'entreprise avec le dao
+        EntrepriseDao dao = new EntrepriseDaoImpl();
+        Entreprise ent = dao.findByIdCompte(idCompteEnt);
+        return ent;
+    }
+
+    public static Entreprise findEntrepriseParId(int id) {
+        EntrepriseDao dao = new EntrepriseDaoImpl();
+        Entreprise ent = dao.findById(id);
+        return ent;
     }
 }

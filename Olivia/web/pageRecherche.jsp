@@ -44,6 +44,7 @@
                         <th>Rémuneration ($/Heure)</th>
                         <th>Entreprise </th>
                         <th>Description Ent</th>
+                        <th>Ouvrir l'offre<th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,7 @@
                         <td>N/A</td>
                         <td>N/A</td>
                         <td>N/A</td>
+                        <td>N/A</td>
                     </tr>
                     <%} else if (lesOffreEnt.size() > 0) {
                         for (int i = 0; lesOffreEnt.size() > i; i++) {
@@ -69,12 +71,16 @@
                         <td><%=lesOffreEnt.get(i).getOffre().getRemuneration()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getNom()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getDescription()%></td>
+                        <td><a style="color:#1F454D" href="afficherOffreEntreprise?idOffre=<%=lesOffreEnt.get(i).getOffre().getId()%>&idEnt=<%=lesOffreEnt.get(i).getEntreprise().getId()%>"> Détails 
+                            </a>
+                        </td>
                     </tr>
                     <%}
                     } else {%>
                     <tr>
                         <td>Aucun poste.</td>
                         <td>Aucune description.</td>
+                        <td>N/A</td>
                         <td>N/A</td>
                         <td>N/A</td>
                         <td>N/A</td>
