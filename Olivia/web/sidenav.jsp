@@ -33,6 +33,7 @@
         case "professeur":%>
     <ul>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>professeur</a></li>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>liste Entreprises</a></li>
     </ul>
     <%break;
         default:%>

@@ -147,7 +147,6 @@
     <servlet-mapping>
         <servlet-name>EnvoyerMail</servlet-name>
         <url-pattern>/envoyerMail</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>
