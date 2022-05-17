@@ -44,7 +44,7 @@
                         <th>Rémuneration ($/Heure)</th>
                         <th>Entreprise </th>
                         <th>Description Ent</th>
-                        <th>Ouvrir l'offre<th>
+                        <th>Ouvrir l'offre</th>
                     </tr>
                 </thead>
                 <tbody>
