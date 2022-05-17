@@ -32,6 +32,18 @@
         <servlet-class>com.mv2.controllers.Recherche</servlet-class>
     </servlet>
     <servlet>
+
+        <servlet-name>Ajouter</servlet-name>
+        <servlet-class>com.mv2.controllers.Ajouter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Modifier</servlet-name>
+        <servlet-class>com.mv2.controllers.Modifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Supprimer</servlet-name>
+        <servlet-class>com.mv2.controllers.Supprimer</servlet-class>
+
         <servlet-name>ListeOffre</servlet-name>
         <servlet-class>com.mv2.controllers.ListeOffre</servlet-class>
     </servlet>
@@ -62,6 +74,7 @@
     <servlet>
         <servlet-name>EnvoyerMail</servlet-name>
         <servlet-class>com.mv2.controllers.EnvoyerMail</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -92,6 +105,18 @@
         <url-pattern>/recherche</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
+        <servlet-name>Ajouter</servlet-name>
+        <url-pattern>/Ajouter/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modifier</servlet-name>
+        <url-pattern>/Modifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Supprimer</servlet-name>
+        <url-pattern>/Supprimer</url-pattern>
+
         <servlet-name>ListeOffre</servlet-name>
         <url-pattern>/listeOffre</url-pattern>
     </servlet-mapping>

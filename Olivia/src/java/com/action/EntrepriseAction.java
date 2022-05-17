@@ -9,6 +9,7 @@ import com.dao.entreprise.EntrepriseDao;
 import com.dao.entreprise.EntrepriseDaoImpl;
 import com.model.entities.Compte;
 import com.model.entities.Entreprise;
+import java.util.List;
 
 /**
  *
@@ -32,5 +33,11 @@ public class EntrepriseAction {
         EntrepriseDao dao = new EntrepriseDaoImpl();
         Entreprise ent = dao.findById(id);
         return ent;
+    }
+    public static List<Entreprise> findAllEntreprise(){
+        EntrepriseDao dao = new EntrepriseDaoImpl();
+        List<Entreprise> listeEntreprise = dao.findAll();
+        return listeEntreprise;
+        
     }
 }
