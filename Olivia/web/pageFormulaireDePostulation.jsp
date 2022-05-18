@@ -25,12 +25,12 @@
                 Entreprise ent = (Entreprise) request.getAttribute("entAAfficher");
             %>
             <caption><h2>ENVOYER UNE DEMANDE DE POSTULATION</h2></caption>
-            <form action="envoyerEmail" method="post" enctype="multipart/form-data">
+            <form action="envoyerMail" method="post" enctype="multipart/form-data">
                 <table style="width:120%" border="0" align="center" >
                     
                     <br>
                     <tr>
-                        <td width="20%">Destinataire: </td>
+                        <td width="20%">Adresse courriel du destinataire: </td>
                         <td><input type="text" id="input_border" name="destinataire" size="70" value="<%=ent.getCompte().getCourriel()%>"/></td>
                     </tr>
                     <tr>
@@ -38,11 +38,11 @@
                         <td><input type="text" id="input_border" name="objet" size="50" value="Demande de postulation pour le poste de <%=offre.getPoste()%>"/></td>
                     </tr>
                     <tr>
-                        <td>Demande de postulation : </td>
+                        <td>Présenter vous et montrez votre intérêt pour le poste de l'entreprise. </td>
                         <td><textarea rows="10" id="input_border" cols="39" name="contenu"></textarea> </td>
                     </tr>
                     <tr>
-                        <td>Attacher fichier </td>
+                        <td>Attacher fichier(Vous augmentez vos chances d'être contacté en fournissant votre CV) </td>
                         <td><input type="file" id="input_border" name="file" size="50" /></td>
                     </tr>
                     <br>
