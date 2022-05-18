@@ -79,6 +79,10 @@
         <servlet-name>ListeDesEntreprisesController</servlet-name>
         <servlet-class>com.mv2.controllers.ListeDesEntreprisesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listeEtudiantController</servlet-name>
+        <servlet-class>com.mv2.controllers.listeEtudiantController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -151,33 +155,31 @@
         <servlet-name>EnvoyerMail</servlet-name>
         <url-pattern>/envoyerMail</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>ListeDesEntreprisesController</servlet-name>
-        <url-pattern>/listeDesEntreprisesController</url-pattern>
+        <url-pattern>/listeDesEntreprises</url-pattern>
     </servlet-mapping>
-
-     <!-- paramètres SMTP  -->
+    <!-- paramètres SMTP  -->
     <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>
     </context-param>
- 
     <context-param>
         <param-name>port</param-name>
         <param-value>587</param-value>
     </context-param>
- 
     <context-param>
         <param-name>user</param-name>
         <param-value>olivia.postulation</param-value>
     </context-param>
- 
     <context-param>
         <param-name>pass</param-name>
         <param-value>teqxwzuhtchqvogu</param-value>
     </context-param>
-
+    <servlet-mapping>
+        <servlet-name>listeEtudiantController</servlet-name>
+        <url-pattern>/listeDesEtudiants</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

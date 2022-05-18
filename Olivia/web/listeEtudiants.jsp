@@ -1,11 +1,11 @@
 <%-- 
-    Document   : listeDesEntreprises
-    Created on : 2022-05-17, 14:41:09
+    Document   : listeEtudiants
+    Created on : 2022-05-18, 22:44:41
     Author     : Mahmo
 --%>
 
-<%@page import="com.model.entities.Entreprise"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.model.entities.Etudiant"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,37 +25,37 @@
                     <h1>TABLEAU DES ENTREPRISES </h1><br>
                     <tbody>
                     <% 
-                        List<Entreprise> lesEntreprises = (ArrayList<Entreprise>) session.getAttribute("liste");
-                        if (lesEntreprises != null){
-                            if(lesEntreprises.size() == 0){
+                        List<Etudiant> lesEtudiants = (ArrayList<Etudiant>) session.getAttribute("listeEtudiant");
+                        if (lesEtudiants != null){
+                            if(lesEtudiants.size() == 0){
                             
                         %>
                          <tr>
-                        <td>Aucun Entreprise.</td>
+                        <td>Aucun Etudiant.</td>
                         
                     </tr>
                         
                         <%
-                        } else if(lesEntreprises.size() >0){
+                        } else if(lesEtudiants.size() >0){
                             %> <table class="tbd-table">
                                 <thead>
                                     <tr>
-                                        <th>Nom Entreprise</th>
-                                         <th>Description</th>
-                                          <th>Personne Reference</th>
+                                        <th>Nom Etudiant</th>
+                                         <th>Pernom Etudiant   </th>
+                                          <th>Numero DA</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 
                                 <%
-                                for (int i = 0; lesEntreprises.size() > i; i++){
+                                for (int i = 0; lesEtudiants.size() > i; i++){
 
                                 %>
                                 
                                 <tr>   
-                    <td><%= lesEntreprises.get(i).getNom() %> </td>
-                    <td><%= lesEntreprises.get(i).getDescription() %> </td>
-                    <td><%= lesEntreprises.get(i).getPersonneReference() %> </td>
+                    <td><%= lesEtudiants.get(i).getNom() %> </td>
+                    <td><%= lesEtudiants.get(i).getPrenom()%> </td>
+                    <td><%= lesEtudiants.get(i).getNumeroDa()%> </td>
                     </tr>   
 
                         <% }} } } %>
