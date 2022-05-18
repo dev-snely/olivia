@@ -4,6 +4,9 @@
     Author     : Mahmo
 --%>
 
+<%@page import="com.model.entities.Entreprise"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +23,32 @@
             <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()){
                 case "professeur": %>
                     <h1>TABLEAU DES ENTREPRISES </h1><br>
-            
+                    <tbody>
+                    <% 
+                        List<Entreprise> lesEntreprises = (ArrayList<Entreprise>) session.getAttribute("liste");
+                        if (lesEntreprises != null){
+                            if(lesEntreprises.size() == 0){
+                            
+                        %>
+                         <tr>
+                        <td>Aucun Entreprise.</td>
+                        
+                    </tr>
+                        
+                        <%
+                        } else if(lesEntreprises.size() >0){
+                                for (int i = 0; lesEntreprises.size() > i; i++){
+
+                                %>
+                    <td><%= lesEntreprises.get(i).getNom() %> </td>
+                    <td><%= lesEntreprises.get(i).getDescription() %> </td>
+                    <td><%= lesEntreprises.get(i).getPersonneReference() %> </td>
+
+                        <% }} } } %>
+ 
+                        
+                        
+                         </tbody>
                 
             
             
