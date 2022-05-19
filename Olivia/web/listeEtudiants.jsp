@@ -43,6 +43,8 @@
                                         <th>Nom Etudiant</th>
                                          <th>Pernom Etudiant   </th>
                                           <th>Numero DA</th>
+                                          <th>Disponibilité</th>
+                                          
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,6 +58,8 @@
                     <td><%= lesEtudiants.get(i).getNom() %> </td>
                     <td><%= lesEtudiants.get(i).getPrenom()%> </td>
                     <td><%= lesEtudiants.get(i).getNumeroDa()%> </td>
+                    <td><%= lesEtudiants.get(i).getOccupation() %> </td>
+                    
                     </tr>   
 
                         <% }} } } %>
