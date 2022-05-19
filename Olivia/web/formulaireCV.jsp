@@ -15,11 +15,16 @@
          
         <title>Postulation CV</title>
     </head>
-    <body>
-     <jsp:include page="header.jsp"/>
-      <jsp:include page="sidenav.jsp"/>
+    <body class="wrapper">
 
-    <main class="contenuPrincipal">
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
+
+        <main class="contenuPrincipal wrapper-main-content">
         <h1>Page d'application du CV</h1>
         <br>
         <h2>Sur cette page, vous pouvez mettre vos renseignement de cv afin de mettre votre profil à jour.</h2>

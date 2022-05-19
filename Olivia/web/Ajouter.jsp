@@ -18,10 +18,16 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="sidenav.jsp"/>
- <main class="page-main">
+    <body class="wrapper">
+
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
+
+        <main class="contenuPrincipal wrapper-main-content">
 
             <div class="formulaire-inscripiton-titre-1">Créez votre compte</div>
             <p class="formlaire-inscription-paragraphe">Olivia augmente vos chances d’obtenir les employés qu'il vous faut!</p>
@@ -29,23 +35,23 @@
             <div class="espace-btn-choix">
                 <a href="Ajouter?inscription=etudiant" class="btn-choix ">
                     <img src="images/etudiant-icon-frepik.png" alt="etudiant" width="50" 
-                   height="50">
+                         height="50">
                     <span class="btn-choix-titre">Étudiant</span>
                 </a>
                 <a href="Ajouter?inscription=professeur" class="btn-choix">
                     <img src="images/prof-icon-freepik.png" alt="prof" width="50" 
-                   height="50"> 
+                         height="50"> 
                     <span class="btn-choix-titre">Professeur</span>
                 </a>
                 <a href="Ajouter?inscription=entreprise" class="btn-choix btn-choix-active" width="50" 
                    height="50">
                     <img src="images/enterprise-icon-surang.png" alt="entreprise" width="50" 
-                   height="50">
+                         height="50">
                     <span class="btn-choix-titre">Entreprise</span>
                 </a>
                 <a href="Ajouter?inscription=admin" class="btn-choix btn-choix-active" >
                     <img src="images/admin.png" alt="admin" width="50" 
-                   height="50">
+                         height="50">
                     <span class="btn-choix-titre">Entreprise</span>
                 </a>
                 <!--<a href="https://www.flaticon.com/free-icons/enterprise" title="enterprise icons">Enterprise icons created by surang - Flaticon</a>
@@ -101,15 +107,13 @@
                 </div>
                 <button class="btn-inscription" type="submit">S'inscrire</button>
             </form>
-<% //}else{%>
+            <% //}else{%>
 
-<% //}%>
+            <% //}%>
+
+
         </main>
-        <footer>
-            <div class="footer-contenu">
-                <p>© Olivia 2022</p>
-            </div>
-        </footer>
+
 
         <script>
             function voirTexteMDP() {
@@ -147,9 +151,9 @@
                 }
             }
         </script>
-        <script src="js/validationInscription_1.js"></script>  
- 
-        </main>
+        <script src="js/validationInscription_1.js">   
+        </script>  
+
     </body>
 </html>
 

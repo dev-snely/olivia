@@ -14,11 +14,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Modification de votre offre</title>
     </head>
-    <body>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="sidenav.jsp"/>
+    <body class="wrapper">
 
-        <main class="contenuPrincipal">
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
+
+        <main class="contenuPrincipal wrapper-main-content">
 
             <h1>MODIFICATION DE VOTRE OFFRE</h1>
             <br>

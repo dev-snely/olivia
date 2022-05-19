@@ -28,6 +28,7 @@
     <ul>
         <li><a class="navcoteText" href="HomePage"><i class="fa-solid fa-house-chimney-user"></i>Tableau de bord</a></li>
         <li><a class="navcoteText" href="listeOffre"><i class="fa-solid fa-handshake"></i></i>Vos offres</a></li>
+        <li><a class="navcoteText" href="listeOffreAvecLiensCandidatures"><i class="fa-solid fa-handshake"></i>Candidatures</a></li>
     </ul>
     <%break;
         case "professeur":%>
