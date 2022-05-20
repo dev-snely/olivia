@@ -27,6 +27,8 @@ public class PostulationDaoImpl implements PostulationDao {
 
     private static final String SQL_SELECT = "select * from postulation";
     private static final String SQL_SELECT_PAR_ID_ETU_OFFRE = "select * from postulation where Etudiant_IdEtudiant = ? AND Offre_IdOffre=?";
+    private static final String SQL_SELECT_PAR_ID_ETU = "select * from postulation where Etudiant_IdEtudiant = ?";
+    private static final String SQL_SELECT_PAR_ID_OFFRE = "select * from postulation where Offre_IdOffre=?";
     private static final String SQL_INSET = "insert into postulation(Signature,Acceptation,Etudiant_IdEtudiant,Offre_IdOffre) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update postulation set Signature =?,Acceptation = ? where  Etudiant_IdEtudiant = ? AND Offre_IdOffre=?";
     private static final String SQL_DELETE = "delete from postulation where  Etudiant_IdEtudiant = ? AND Offre_IdOffre=?";
@@ -97,6 +99,72 @@ public class PostulationDaoImpl implements PostulationDao {
         //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return post;
+    }
+    
+        
+    public List<Postulation> findByIdEtudiant(Etudiant etudiant) {
+        List<Postulation> listePost = new ArrayList<>();
+        try {
+            //Initialise la requête préparée base sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_ETU);
+            // on initialise la propriété id du bean avec sa valeur
+            ps.setInt(1, etudiant.getId());
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ResultSet result = ps.executeQuery();
+
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les resultats retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                Postulation post = new Postulation();
+                post.setAcceptation(result.getBoolean("Acceptation"));
+                post.setSignature(result.getBoolean("Signature"));
+                post.setEtudiant(etudiant);
+                post.setOffre(daoOffre.findById(result.getInt("Offre_IdOffre")));
+                listePost.add(post);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PostulationDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Fermeture de toutes les ressources ouvertes
+        ConnexionBD.closeConnection();
+        return listePost;
+    }
+    
+        
+    public List<Postulation> findByIdOffre(Offre offre) {
+        List<Postulation> listePost = new ArrayList<>();
+        try {
+            //Initialise la requête préparée base sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_ETU);
+            // on initialise la propriété id du bean avec sa valeur
+            ps.setInt(1, offre.getId());
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ResultSet result = ps.executeQuery();
+
+            //// la méthode next() pour se déplacer sur l'enregistrement suivant
+            //on parcours ligne par ligne les resultats retournés
+            while (result.next()) {
+                //on enregistre les données dans un entities (bean, classe java)
+                Postulation post = new Postulation();
+                post.setAcceptation(result.getBoolean("Acceptation"));
+                post.setSignature(result.getBoolean("Signature"));
+                post.setEtudiant(daoEtu.findById(result.getInt("Etudiant_IdEtudiant")));
+                post.setOffre(offre);
+                listePost.add(post);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PostulationDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Fermeture de toutes les ressources ouvertes
+        ConnexionBD.closeConnection();
+        return listePost;
     }
 
     @Override

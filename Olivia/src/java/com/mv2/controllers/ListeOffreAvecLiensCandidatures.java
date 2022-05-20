@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,11 +6,6 @@
 package com.mv2.controllers;
 
 import com.action.OffreAction;
-import com.dao.compte.CompteDaoImpl;
-import com.dao.entreprise.EntrepriseDaoImpl;
-import com.dao.offre.OffreDaoImpl;
-import com.model.entities.Compte;
-import com.model.entities.Entreprise;
 import com.model.entities.Offre;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author LysAd
  */
-public class ListeOffre extends HttpServlet {
+public class ListeOffreAvecLiensCandidatures extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +34,12 @@ public class ListeOffre extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); 
         
         List<Offre> listeOffres = OffreAction.chercherOffresDeLEntrepriseConnecte(request);
         HttpSession session = request.getSession(false);
-        session.setAttribute("lesOffres", listeOffres);   
+        session.setAttribute("lesOffres", listeOffres);
         
-        request.getRequestDispatcher("pageOffresEntreprise.jsp").forward(request, response);
+        request.getRequestDispatcher("pageOffresEtCandidatures.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

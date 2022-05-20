@@ -5,6 +5,12 @@
  */
 package com.mv2.controllers;
 
+import com.action.EtudiantAction;
+import com.action.OffreAction;
+import com.action.PostulationAction;
+import com.model.entities.Etudiant;
+import com.model.entities.Offre;
+import com.model.entities.Postulation;
 import com.util.EmailUtility;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +45,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 /**
+ *
+ * Classe utilisé spécifiquement pour envoyer des demandes de postulations par
+ * mail.
  *
  * @author LysAd
  */
@@ -52,8 +62,8 @@ public class EnvoyerMail extends HttpServlet {
     private String port;
     private String user;
     private String pass;
-    
-        @Override
+
+    @Override
     public void init() {
         // lit les paramètres du serveur SMTP à partir du fichier web.xml
         ServletContext context = getServletContext();
@@ -62,8 +72,8 @@ public class EnvoyerMail extends HttpServlet {
         user = context.getInitParameter("user");
         pass = context.getInitParameter("pass");
     }
-    
-        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
@@ -72,17 +82,28 @@ public class EnvoyerMail extends HttpServlet {
         String destinataire = request.getParameter("destinataire");
         String objet = request.getParameter("objet");
         String contenu = request.getParameter("contenu");
-        String resultMessage = "Votre demande de postulation a été envoyé avec succès!";
+        
+        //champs utiliser pour la creation de la postulation
+        int offreId = Integer.parseInt(request.getParameter("idOffre"));
+        String emailEtudiant = request.getParameter("emailEtudiant");
+        Postulation post;        
+        String resultMessage = "Vous avez déposé votre candidature avec succès!";
 
         try {
-            EmailUtility.sendEmail(host, port, user, pass, destinataire, objet, contenu, uploadedFiles);
+            Etudiant etudiant = EtudiantAction.findEtudiantByCourriel(emailEtudiant);
+            Offre offre = OffreAction.chercherOffreParId(offreId);
+            post = new Postulation( etudiant, offre); 
+            boolean retour = PostulationAction.creérUnePostulation(post, offre, etudiant);
+            if (retour){
+                EmailUtility.sendEmail(host, port, user, pass, destinataire, objet, contenu, uploadedFiles);
+            }
         } catch (MessagingException ex) {
             resultMessage = "Il y a une erreur : " + ex.getMessage();
             Logger.getLogger(EnvoyerMail.class.getName()).log(Level.SEVERE, null, ex);
 
         } finally {
             deleteUploadFiles(uploadedFiles);
-            if (resultMessage.equalsIgnoreCase("Votre demande de postulation a été envoyé avec succès!")){
+            if (resultMessage.equalsIgnoreCase("Vous avez déposé votre candidature avec succès!")) {
                 request.setAttribute("Success", true);
             } else {
                 request.setAttribute("Success", false);
@@ -92,7 +113,7 @@ public class EnvoyerMail extends HttpServlet {
                     request, response);
         }
     }
-    
+
     /**
      * Enregistre les fichiers téléchargés depuis le client et renvoie une liste
      * de ces fichiers qui sera joint au message e-mail.
@@ -155,6 +176,7 @@ public class EnvoyerMail extends HttpServlet {
             }
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

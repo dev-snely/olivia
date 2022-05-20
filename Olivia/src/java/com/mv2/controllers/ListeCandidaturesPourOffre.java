@@ -6,12 +6,9 @@
 package com.mv2.controllers;
 
 import com.action.OffreAction;
-import com.dao.compte.CompteDaoImpl;
-import com.dao.entreprise.EntrepriseDaoImpl;
-import com.dao.offre.OffreDaoImpl;
-import com.model.entities.Compte;
-import com.model.entities.Entreprise;
+import com.action.PostulationAction;
 import com.model.entities.Offre;
+import com.model.entities.Postulation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -25,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author LysAd
  */
-public class ListeOffre extends HttpServlet {
+public class ListeCandidaturesPourOffre extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +36,19 @@ public class ListeOffre extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); 
+        //recuperation de l'offre dont nous voulons les candidature(postulations)
+        int id = Integer.parseInt(request.getParameter("idOffre"));
+        Offre offre = OffreAction.chercherOffreParId(id);
         
-        List<Offre> listeOffres = OffreAction.chercherOffresDeLEntrepriseConnecte(request);
-        HttpSession session = request.getSession(false);
-        session.setAttribute("lesOffres", listeOffres);   
-        
-        request.getRequestDispatcher("pageOffresEntreprise.jsp").forward(request, response);
+        List<Postulation> listePost = PostulationAction.trouverToutLesPostulationsDUneOffre(offre);
+        if (listePost == null || listePost.size() <= 0){
+            request.setAttribute("lesCandidaturesVide", true);
+        } else {
+            request.setAttribute("lesCandidaturesVide", false);
+            request.setAttribute("listeCandidatures", listePost);
+            request.setAttribute("offreAuditionner", offre);
+        }
+        request.getRequestDispatcher("pageCandidatures.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,5 +89,4 @@ public class ListeOffre extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

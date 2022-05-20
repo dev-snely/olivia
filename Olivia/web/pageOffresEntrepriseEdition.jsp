@@ -29,7 +29,7 @@
             <div class="page-offre-ent-titre">
                 <h1>Vos offres d'emploi</h1>
                 <div class="page-offre-ent-btns">
-                    <a href="pageOffresEntreprise.jsp" class="page-offre-ent-btns-1">Retour</a>
+                    <a href="pageOffresEntreprise.jsp" class="page-offre-ent-btns-1"><i class="fa-solid fa-left-long"></i></a>
                 </div>
             </div>
             <hr>

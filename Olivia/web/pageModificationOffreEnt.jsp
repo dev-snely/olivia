@@ -25,7 +25,12 @@
 
         <main class="contenuPrincipal wrapper-main-content">
 
-            <h1>MODIFICATION DE VOTRE OFFRE</h1>
+            <div class="page-offre-ent-titre">
+                <h1>MODIFICATION DE VOTRE OFFRE</h1>
+                <div class="page-offre-ent-btns">
+                    <a href="pageOffresEntrepriseEdition.jsp" class="page-offre-ent-btns-1"><i class="fa-solid fa-left-long"></i></a>
+                </div>
+            </div>
             <br>
             <form action="modifierOffreEntreprisePartieDeux" method="post">
                 <label for="poste" >Nom du nouveau poste: </label><br>

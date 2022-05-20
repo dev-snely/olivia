@@ -5,9 +5,15 @@
  */
 package com.action;
 
+import com.dao.compte.CompteDaoImpl;
+import com.dao.entreprise.EntrepriseDaoImpl;
 import com.dao.offre.OffreDaoImpl;
+import com.model.entities.Compte;
 import com.model.entities.Entreprise;
 import com.model.entities.Offre;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,5 +52,24 @@ public class OffreAction {
             retour = true;
         }
         return retour;
+    }
+    
+    public static List<Offre> chercherOffresDeLEntrepriseConnecte(HttpServletRequest request){
+    
+        //Daos nécessaires
+        OffreDaoImpl daoOffre = new OffreDaoImpl();
+        CompteDaoImpl daoCompte = new CompteDaoImpl();
+        EntrepriseDaoImpl daoEntr = new EntrepriseDaoImpl();
+        
+        //Infos de l'entreprise connecté
+        HttpSession session = request.getSession(false);
+        String courriel = (String) session.getAttribute("email");
+        Compte compteEntre = daoCompte.findByCourriel(courriel);
+        Entreprise entreprise = daoEntr.findByIdCompte(compteEntre.getId());
+        
+        //Recuperation des offres de l'entreprise connecté
+        List<Offre> listeOffres = daoOffre.findByIdEntreprise(entreprise.getId());
+        
+        return listeOffres;
     }
 }

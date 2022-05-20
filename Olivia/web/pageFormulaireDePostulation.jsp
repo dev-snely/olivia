@@ -32,7 +32,8 @@
             <caption><h2>ENVOYER UNE DEMANDE DE POSTULATION</h2></caption>
             <form action="envoyerMail" method="post" enctype="multipart/form-data">
                 <table style="width:80%" border="0" align="center" >
-                    
+                    <input type='hidden' name='idOffre' value=<%=offre.getId()%>>
+                    <input type='hidden' name='emailEtudiant' value=<%=session.getAttribute("email")%>>
                     <br>
                     <tr>
                         <td width="20%">Adresse courriel du destinataire: </td>
@@ -54,6 +55,7 @@
                     <tr>
                         <td colspan="2" align="center"><input class="search-btn-input" type="submit" value="Envoyer"/></td>
                     </tr>
+                    
                 </table>
             </form>
         </main>

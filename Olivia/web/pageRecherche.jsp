@@ -75,7 +75,7 @@
                         <td><%=lesOffreEnt.get(i).getOffre().getRemuneration()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getNom()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getDescription()%></td>
-                        <td><a style="color:#1F454D" href="afficherOffreEntreprise?idOffre=<%=lesOffreEnt.get(i).getOffre().getId()%>&idEnt=<%=lesOffreEnt.get(i).getEntreprise().getId()%>"> Détails 
+                        <td><a style="color:#1F454D" href="afficherOffreEntreprise?idOffre=<%=lesOffreEnt.get(i).getOffre().getId()%>&idEnt=<%=lesOffreEnt.get(i).getEntreprise().getId()%>"> <i class="fa-solid fa-up-right-from-square"></i> 
                             </a>
                         </td>
                     </tr>
