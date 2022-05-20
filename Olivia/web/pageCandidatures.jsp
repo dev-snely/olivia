@@ -45,13 +45,13 @@
                                 List<Postulation> listePost = (List<Postulation>) request.getAttribute("listeCandidatures");
 
                             %>
-                            <div>
-                                <ul>
+
+                                <ul class='text-normal'> 
                                     <li>Nom du poste : <%=offre.getPoste()%></li>
-                                    <li>Description du poste:<%=offre.getDescription()%></li>
+                                    <li>Description du poste:<br><%=offre.getDescription()%></li>
                                     <li>Renumeration du poste:<%=offre.getRemuneration()%>(S/heure)</li>
                                 </ul>
-                            </div>        
+                                  
                             <br>
                     <h2>Les candidats</h2>
                     <hr>

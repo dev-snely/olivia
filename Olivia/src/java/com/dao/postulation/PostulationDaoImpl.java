@@ -140,7 +140,7 @@ public class PostulationDaoImpl implements PostulationDao {
         try {
             //Initialise la requête préparée base sur la connexion 
             // la requête SQL passé en argument pour construire l'objet preparedStatement
-            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_ETU);
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_ID_OFFRE);
             // on initialise la propriété id du bean avec sa valeur
             ps.setInt(1, offre.getId());
             //On execute la requête et on récupère les résultats dans la requête 
