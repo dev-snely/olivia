@@ -14,13 +14,23 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Modification de votre offre</title>
     </head>
-    <body>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="sidenav.jsp"/>
+    <body class="wrapper">
 
-        <main class="contenuPrincipal">
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
 
-            <h1>MODIFICATION DE VOTRE OFFRE</h1>
+        <main class="contenuPrincipal wrapper-main-content">
+
+            <div class="page-offre-ent-titre">
+                <h1>MODIFICATION DE VOTRE OFFRE</h1>
+                <div class="page-offre-ent-btns">
+                    <a href="pageOffresEntrepriseEdition.jsp" class="page-offre-ent-btns-1"><i class="fa-solid fa-left-long"></i></a>
+                </div>
+            </div>
             <br>
             <form action="modifierOffreEntreprisePartieDeux" method="post">
                 <label for="poste" >Nom du nouveau poste: </label><br>

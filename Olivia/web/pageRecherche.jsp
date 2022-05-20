@@ -17,12 +17,16 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
+    <body class="wrapper">
 
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="sidenav.jsp"/>
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
 
-        <main class="contenuPrincipal">
+        <main class="contenuPrincipal wrapper-main-content">
 
             <h1>RECHERCHE</h1><br>
             <hr>
@@ -71,7 +75,7 @@
                         <td><%=lesOffreEnt.get(i).getOffre().getRemuneration()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getNom()%></td>
                         <td><%=lesOffreEnt.get(i).getEntreprise().getDescription()%></td>
-                        <td><a style="color:#1F454D" href="afficherOffreEntreprise?idOffre=<%=lesOffreEnt.get(i).getOffre().getId()%>&idEnt=<%=lesOffreEnt.get(i).getEntreprise().getId()%>"> Détails 
+                        <td><a style="color:#1F454D" href="afficherOffreEntreprise?idOffre=<%=lesOffreEnt.get(i).getOffre().getId()%>&idEnt=<%=lesOffreEnt.get(i).getEntreprise().getId()%>"> <i class="fa-solid fa-up-right-from-square"></i> 
                             </a>
                         </td>
                     </tr>

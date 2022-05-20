@@ -15,19 +15,25 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="sidenav.jsp"/>
+    <body class="wrapper">
 
-        <main class="contenuPrincipal">
+        <div class="wrapper-header">
+            <jsp:include page="header.jsp"/>
+        </div>
+        <div class="wrapper-side">
+            <jsp:include page="sidenav.jsp"/>
+        </div>
+
+        <main class="contenuPrincipal wrapper-main-content">
             <%
                 Offre offre = (Offre) request.getAttribute("offreAAfficher");
                 Entreprise ent = (Entreprise) request.getAttribute("entAAfficher");
             %>
             <caption><h2>ENVOYER UNE DEMANDE DE POSTULATION</h2></caption>
             <form action="envoyerMail" method="post" enctype="multipart/form-data">
-                <table style="width:120%" border="0" align="center" >
-                    
+                <table style="width:80%" border="0" align="center" >
+                    <input type='hidden' name='idOffre' value=<%=offre.getId()%>>
+                    <input type='hidden' name='emailEtudiant' value=<%=session.getAttribute("email")%>>
                     <br>
                     <tr>
                         <td width="20%">Adresse courriel du destinataire: </td>
@@ -49,6 +55,7 @@
                     <tr>
                         <td colspan="2" align="center"><input class="search-btn-input" type="submit" value="Envoyer"/></td>
                     </tr>
+                    
                 </table>
             </form>
         </main>

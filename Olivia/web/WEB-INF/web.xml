@@ -87,6 +87,14 @@
         <servlet-name>deleteEtudiant</servlet-name>
         <servlet-class>com.mv2.controllers.deleteEtudiant</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListeOffreAvecLiensCandidatures</servlet-name>
+        <servlet-class>com.mv2.controllers.ListeOffreAvecLiensCandidatures</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeCandidaturesPourOffre</servlet-name>
+        <servlet-class>com.mv2.controllers.ListeCandidaturesPourOffre</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -187,6 +195,14 @@
     <servlet-mapping>
         <servlet-name>deleteEtudiant</servlet-name>
         <url-pattern>/deleteEtudiant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>    
+        <servlet-name>ListeOffreAvecLiensCandidatures</servlet-name>
+        <url-pattern>/listeOffreAvecLiensCandidatures</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeCandidaturesPourOffre</servlet-name>
+        <url-pattern>/listeCandidaturesPourOffre</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
