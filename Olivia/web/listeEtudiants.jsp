@@ -22,7 +22,7 @@
         <main class="contenuPrincipal">
             <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()){
                 case "professeur": %>
-                    <h1>TABLEAU DES ENTREPRISES </h1><br>
+                    <h1>TABLEAU DES Etudiants </h1><br>
                     <tbody>
                     <% 
                         List<Etudiant> lesEtudiants = (ArrayList<Etudiant>) session.getAttribute("listeEtudiant");
@@ -44,6 +44,8 @@
                                          <th>Pernom Etudiant   </th>
                                           <th>Numero DA</th>
                                           <th>Disponibilité</th>
+                                          <th>Modifier</th>
+                                          <th>Supprimer</th>
                                           
                                     </tr>
                                 </thead>
@@ -59,6 +61,16 @@
                     <td><%= lesEtudiants.get(i).getPrenom()%> </td>
                     <td><%= lesEtudiants.get(i).getNumeroDa()%> </td>
                     <td><%= lesEtudiants.get(i).getOccupation() %> </td>
+                    <td style='text-align: center;vertical-align: middle;'>
+                            <a href="modifierOffreEntreprise?id=<%=lesEtudiants.get(i).getId()   %>" >
+                                <i class="edit-icon fa-solid fa-pen"></i>
+                            </a>
+                        </td>
+                        <td style='text-align: center;vertical-align: middle;'>
+                            <a href="deleteEtudiant?id=<%=lesEtudiants.get(i).getId()%>">
+                                <i class="delete-icon fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
                     
                     </tr>   
 
