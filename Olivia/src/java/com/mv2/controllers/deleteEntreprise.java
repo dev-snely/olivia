@@ -4,10 +4,9 @@
  */
 package com.mv2.controllers;
 
-import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.entreprise.EntrepriseDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Integer.parseInt;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mahmo
  */
-public class deleteEtudiant extends HttpServlet {
+public class deleteEntreprise extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,19 +30,18 @@ public class deleteEtudiant extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter() ;
+             PrintWriter out = response.getWriter() ;
             /* TODO output your page here. You may use following sample code. */
-            
-            EtudiantDaoImpl etudDao = new EtudiantDaoImpl();
+            EntrepriseDaoImpl entrDAO = new EntrepriseDaoImpl(); 
             int id = Integer.valueOf(request.getParameter("id"));
-            boolean retour = etudDao.delete(id);
+            boolean retour = entrDAO.delete(id);
             if (retour == true ){
-                request.getRequestDispatcher("listeDesEtudiants").forward(request, response);
+                request.getRequestDispatcher("listeDesEntreprises").forward(request, response);
             }
             else
                 request.getRequestDispatcher("HomePage").forward(request, response);
-            
-          
+           
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

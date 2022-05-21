@@ -49,6 +49,7 @@
                                         <th>Nom Entreprise</th>
                                          <th>Description</th>
                                           <th>Personne Reference</th>
+                                          <th> Supprimer </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,6 +63,11 @@
                     <td><%= lesEntreprises.get(i).getNom() %> </td>
                     <td><%= lesEntreprises.get(i).getDescription() %> </td>
                     <td><%= lesEntreprises.get(i).getPersonneReference() %> </td>
+                    <td style='text-align: center;vertical-align: middle;'>
+                            <a href="deleteEntreprise?id=<%=lesEntreprises.get(i).getId()%>">
+                                <i class="delete-icon fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
                     </tr>   
 
                         <% }} } } %>

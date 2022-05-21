@@ -95,6 +95,18 @@
         <servlet-name>ListeCandidaturesPourOffre</servlet-name>
         <servlet-class>com.mv2.controllers.ListeCandidaturesPourOffre</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteEntreprise</servlet-name>
+        <servlet-class>com.mv2.controllers.deleteEntreprise</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeDesPubs</servlet-name>
+        <servlet-class>com.mv2.controllers.ListeDesPubs</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePublicite</servlet-name>
+        <servlet-class>com.mv2.controllers.DeletePublicite</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -196,13 +208,25 @@
         <servlet-name>deleteEtudiant</servlet-name>
         <url-pattern>/deleteEtudiant</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>    
+    <servlet-mapping>
         <servlet-name>ListeOffreAvecLiensCandidatures</servlet-name>
         <url-pattern>/listeOffreAvecLiensCandidatures</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListeCandidaturesPourOffre</servlet-name>
         <url-pattern>/listeCandidaturesPourOffre</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteEntreprise</servlet-name>
+        <url-pattern>/deleteEntreprise</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeDesPubs</servlet-name>
+        <url-pattern>/listeDesPubs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePublicite</servlet-name>
+        <url-pattern>/deletePublicite</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

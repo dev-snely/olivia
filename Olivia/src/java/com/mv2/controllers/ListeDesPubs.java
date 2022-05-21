@@ -4,20 +4,22 @@
  */
 package com.mv2.controllers;
 
-import com.dao.etudiant.EtudiantDaoImpl;
+import com.action.PublicitéAction;
+import com.model.entities.Publicite;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.Integer.parseInt;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Mahmo
  */
-public class deleteEtudiant extends HttpServlet {
+public class ListeDesPubs extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +35,11 @@ public class deleteEtudiant extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          PrintWriter out = response.getWriter() ;
             /* TODO output your page here. You may use following sample code. */
-            
-            EtudiantDaoImpl etudDao = new EtudiantDaoImpl();
-            int id = Integer.valueOf(request.getParameter("id"));
-            boolean retour = etudDao.delete(id);
-            if (retour == true ){
-                request.getRequestDispatcher("listeDesEtudiants").forward(request, response);
-            }
-            else
-                request.getRequestDispatcher("HomePage").forward(request, response);
-            
+             HttpSession session = request.getSession(true);
+             PublicitéAction actionPub = new PublicitéAction();
+             List<Publicite> listePub = actionPub.listeDesPubs();
+             session.setAttribute("listePubs", listePub);
+             request.getRequestDispatcher("listeDesPubs.jsp").forward(request, response);
           
     }
 
