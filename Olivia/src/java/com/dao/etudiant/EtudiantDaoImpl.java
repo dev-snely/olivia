@@ -36,7 +36,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
     private static final String SQL_SELECT_PAR_PRENOM = "select * from etudiant where Prenom = ?";
     private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";
     private static final String SQL_INSET = "insert into etudiant(Nom,Prenom,NumeroDA,Compte_IdCompte) value(?,?,?,?)";
-    private static final String SQL_UPDATE = "update etudiant set Nom =?,Prenom = ? where IdEtudiant = ?";
+    private static final String SQL_UPDATE = "update etudiant set Nom =?,Prenom = ?,NumeroDA=? where IdEtudiant = ?";
     private static final String SQL_UPDATE_CV = "update etudiant set CV_IdCV =? where IdEtudiant = ?";
     private static final String SQL_UPDATE_LETTRE = "update etudiant set LettreMotivation_IdLettreMotivation =? where IdEtudiant = ?";
     private static final String SQL_UPDATE_OCCUPATION = "update etudiant set Occupation_IdOccupation =? where IdEtudiant = ?";
@@ -306,7 +306,8 @@ public class EtudiantDaoImpl implements EtudiantDao {
 
             ps.setString(1, etu.getNom());
             ps.setString(2, etu.getPrenom());
-            ps.setInt(3, etu.getId());
+            ps.setInt(3, etu.getNumeroDa());
+            ps.setInt(4, etu.getId());
        
 
             nbLigne = ps.executeUpdate();

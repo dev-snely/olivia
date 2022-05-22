@@ -28,7 +28,7 @@
         <main class="contenuPrincipal wrapper-main-content">
             <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()){
                 case "professeur": %>
-                    <h1>TABLEAU DES Etudiants </h1><br>
+                    <h1>TABLEAU DES ÉTUDIANTS </h1><br>
                     <tbody>
                     <% 
                         List<Etudiant> lesEtudiants = (ArrayList<Etudiant>) session.getAttribute("listeEtudiant");

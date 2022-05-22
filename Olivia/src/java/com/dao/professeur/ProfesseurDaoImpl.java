@@ -29,7 +29,7 @@ public class ProfesseurDaoImpl implements ProfesseurDao{
     private static final String SQL_SELECT_PAR_PRENOM = "select * from professeur where Prenom = ?";
     private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";
     private static final String SQL_INSET = "insert into professeur(Nom,Prenom,NumeroDA,Compte_IdCompte) value(?,?,?,?)";
-    private static final String SQL_UPDATE = "update professeur set Nom =?,Prenom = ? where IdProfesseur = ?";
+    private static final String SQL_UPDATE = "update professeur set Nom =?,Prenom = ?,NumeroDA=? where IdProfesseur = ?";
     private static final String SQL_DELETE = "delete from professeur where IdProfesseur = ?";
     CompteDaoImpl daoCompte = new CompteDaoImpl();
     @Override
@@ -260,7 +260,8 @@ public class ProfesseurDaoImpl implements ProfesseurDao{
 
             ps.setString(1, etu.getNom());
             ps.setString(2, etu.getPrenom());
-            ps.setInt(3, etu.getId());
+              ps.setInt(3, etu.getNumeroDa());
+            ps.setInt(4, etu.getId());
            
 
             nbLigne = ps.executeUpdate();

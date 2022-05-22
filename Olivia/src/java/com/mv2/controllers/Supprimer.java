@@ -5,6 +5,8 @@
  */
 package com.mv2.controllers;
 
+import com.dao.compte.CompteDaoImpl;
+import com.model.entities.Compte;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -31,15 +33,35 @@ public class Supprimer extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("Supprimer.jsp").forward(request, response);
+              response.setContentType("text/html;charset=UTF-8");
+
         ArrayList<String> listCategory = new ArrayList<String>();
+        String typeCompte = request.getParameter("typeCompte");
         HttpSession session = request.getSession(true);
+
+        if (request.getParameter("typeCompte") == null) {
+            session.setAttribute("retour", true);
+        } else {
+            session.setAttribute("retour", false);
+        }
+
         listCategory.add("etudiant");
         listCategory.add("entreprise");
         listCategory.add("professeur");
         listCategory.add("admin");
         session.setAttribute("listCategory", listCategory);
+
+        CompteDaoImpl dao = new CompteDaoImpl();
+        ArrayList<Compte> Compte = (ArrayList) dao.findByTypeCompte(typeCompte);
+        session.setAttribute("compte", Compte);
+       
+
+        String CompteSupprimer = request.getParameter("supprimer");
+        if(CompteSupprimer!=null){
+        dao.delete(Integer.parseInt(CompteSupprimer));      
+        }
+      
+        request.getRequestDispatcher("Supprimer.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
