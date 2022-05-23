@@ -4,20 +4,22 @@
  */
 package com.mv2.controllers;
 
-import com.action.EntrepriseAction;
-import com.dao.entreprise.EntrepriseDaoImpl;
+import com.dao.etudiant.EtudiantDaoImpl;
+import com.model.entities.CV;
+import com.model.entities.Etudiant;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Mahmo
  */
-public class deleteEntreprise extends HttpServlet {
+public class AfficherCV extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,17 +33,14 @@ public class deleteEntreprise extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-             PrintWriter out = response.getWriter() ;
+         PrintWriter out = response.getWriter();
+         HttpSession session = request.getSession(true);
             /* TODO output your page here. You may use following sample code. */
-            
-            int id = Integer.valueOf(request.getParameter("id"));
-            boolean retour = EntrepriseAction.supprimerEntr(id);
-            if (retour == true ){
-                request.getRequestDispatcher("listeDesEntreprises").forward(request, response);
-            }
-            else
-                request.getRequestDispatcher("HomePage").forward(request, response);
-           
+            EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
+            Etudiant letudiant = etudiantDao.findByNumeroDA((int) request.getSession().getAttribute("numDA"));
+            CV lecv = letudiant.getCv();
+            session.setAttribute("leCV", lecv);
+            request.getRequestDispatcher("pageCV.jsp").forward(request, response);
         
     }
 

@@ -37,6 +37,7 @@
         <li><a class="navcoteText" href="listeDesEntreprises"><i class="fa-solid fa-house"></i>liste Entreprises</a></li>
         <li><a class="navcoteText" href="listeDesEtudiants"><i class="fa-solid fa-house"></i>liste Etudiants</a></li>
         <li><a class="navcoteText" href="listeDesPubs"><i class="fa-solid fa-house"></i>liste Publicités</a></li>
+        <li><a class="navcoteText" href="listeDesOccup"><i class="fa-solid fa-house"></i>liste des occupations</a></li>
     </ul>
     <%break;
         default:%>

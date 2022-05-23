@@ -5,6 +5,7 @@
  */
 package com.action;
 
+import com.dao.compte.CompteDaoImpl;
 import com.dao.entreprise.EntrepriseDao;
 import com.dao.entreprise.EntrepriseDaoImpl;
 import com.model.entities.Compte;
@@ -39,5 +40,28 @@ public class EntrepriseAction {
         List<Entreprise> listeEntreprise = dao.findAll();
         return listeEntreprise;
         
+    }
+    
+    
+    public static boolean supprimerEntr(int id){
+    
+        boolean retour = false;
+        //Initialisation des DAOs
+         CompteDaoImpl compteDao = new CompteDaoImpl();
+        EntrepriseDao daoEntr = new EntrepriseDaoImpl();
+       
+        //Delete de l'entreprise
+        
+         //Delete du compte
+        Compte compte =  CompteAction.findByEntreprise(daoEntr.findById(id));
+        //Verifier si tout a fonctionné
+        boolean retourCompte = compteDao.delete(compte.getId());
+         boolean retourEntr  = daoEntr.delete(id);
+        if (retourEntr && retourCompte){
+            retour = true;
+        }
+        return retour;
+                 
+         
     }
 }
