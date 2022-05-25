@@ -27,7 +27,7 @@ public class ProfesseurDaoImpl implements ProfesseurDao{
     private static final String SQL_SELECT_PAR_ID = "select * from professeur where IdProfesseur = ?";
     private static final String SQL_SELECT_PAR_NOM = "select * from professeur where Nom = ?";
     private static final String SQL_SELECT_PAR_PRENOM = "select * from professeur where Prenom = ?";
-    private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";
+    private static final String SQL_SELECT_PAR_NUMERODA = "select * from professeur where NumeroDA = ?";
     private static final String SQL_INSET = "insert into professeur(Nom,Prenom,NumeroDA,Compte_IdCompte) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update professeur set Nom =?,Prenom = ?,NumeroDA=? where IdProfesseur = ?";
     private static final String SQL_DELETE = "delete from professeur where IdProfesseur = ?";
@@ -166,38 +166,32 @@ public class ProfesseurDaoImpl implements ProfesseurDao{
         return listeProf;}
 
     @Override
-    public List<Professeur> findByNumeroDA(int DA) {
-                         List<Professeur> listeProf = null;
+    public Professeur findByNumeroDA(int DA) {
+                         Professeur prof = new Professeur();
         try {
             //Initialise la requête préparée basée sur la connexion 
             // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_NUMERODA);
             //On execute la requête et on récupère les résultats dans la requête 
             // dans ResultSet
-            ps.setInt(1, DA);
+           ps.setInt(1, DA);
             ResultSet result = ps.executeQuery();
-            listeProf = new ArrayList<>();
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
+                //// la méthode next() pour se déplacer sur l'enregistrement suivant
+                //on parcours ligne par ligne les résultas retournés
                 //on enregistre les données dans un entities (bean, classe java)
-
-                Professeur prof=new Professeur();
                 prof.setId(result.getInt("IdProfesseur"));
                 prof.setNom(result.getString("Nom"));
                 prof.setPrenom(result.getString("Prenom"));
                 prof.setNumeroDa(result.getInt("NumeroDA"));
 
                 prof.setCompte(daoCompte.findById(result.getInt("Compte_IdCompte")));
-
-                listeProf.add(prof);
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProfesseurDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         ConnexionBD.closeConnection();
-        return listeProf;  }
+        return prof;  }
 
     @Override
     public boolean create(Professeur etu) {

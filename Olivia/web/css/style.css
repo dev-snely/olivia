@@ -272,7 +272,7 @@ footer {
     padding: 50px;
     align-items: center;
     justify-content: center;
-    position: absolute;
+   position: absolute;
     bottom: 0;
     height: 10vh;
     width: 100vw;
@@ -283,11 +283,25 @@ footer {
     color: black;
     z-index: 1000;
 }
-
+.footer-contenu {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100vw;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 20px;
+    padding: 30px;
+    color: #c4c4c4;
+}
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     background-color: #edfee2;
+   
 }
 
 

@@ -45,8 +45,7 @@
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Courriel</th>
-                        <th>Lien vers creation Curriculum Vitae</th>
-                        <th>Lien vers votre Curriculum Vitae</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -54,8 +53,7 @@
                         <td><%=session.getAttribute("nom")%></td>
                         <td><%=session.getAttribute("prenom")%></td>
                         <td><%=session.getAttribute("email")%></td>
-                        <td> <a href="formulaireCV.jsp" >lien Creation  CV</a></td>
-                        <td> <a href="afficherCV" >lien vers CV</a></td>
+                        
                         
                     </tr>
                 </tbody>

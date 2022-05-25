@@ -22,7 +22,7 @@ Professeur findByIdCompte(int id);
 
     List<Professeur> findByPrenom(String prenom);
 
-    List<Professeur> findByNumeroDA(int DA);
+   Professeur findByNumeroDA(int DA);
 
     boolean create(Professeur etu);
 
