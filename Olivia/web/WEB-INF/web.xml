@@ -115,6 +115,10 @@
         <servlet-name>FairePub</servlet-name>
         <servlet-class>com.mv2.controllers.FairePub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listeDesOccup</servlet-name>
+        <servlet-class>com.mv2.controllers.listeDesOccup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -243,6 +247,10 @@
     <servlet-mapping>
         <servlet-name>FairePub</servlet-name>
         <url-pattern>/FairePub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listeDesOccup</servlet-name>
+        <url-pattern>/listeDesOccup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

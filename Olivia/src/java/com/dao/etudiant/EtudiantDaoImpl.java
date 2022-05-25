@@ -32,6 +32,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
  private static final String SQL_SELECT_PAR_ID_COMPTE = "select * from etudiant where Compte_IdCompte = ?";
     private static final String SQL_SELECT = "select * from etudiant";
     private static final String SQL_SELECT_PAR_ID = "select * from etudiant where IdEtudiant = ?";
+    private static final String SQL_SELECT_PAR_IDOCCUP = "select Occupation_IdOccupation from etudiant where IdEtudiant = ?";
     private static final String SQL_SELECT_PAR_NOM = "select * from etudiant where Nom = ?";
     private static final String SQL_SELECT_PAR_PRENOM = "select * from etudiant where Prenom = ?";
     private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";
@@ -45,7 +46,31 @@ public class EtudiantDaoImpl implements EtudiantDao {
     CvDaoImpl daocv = new CvDaoImpl();
     LettreMotivationDaoImpl daoLettre = new LettreMotivationDaoImpl();
     OccupationDaoImpl daoOccup = new OccupationDaoImpl();
+ @Override
+    public int findByIdOccup(int id) {
+       int idCOmpte=0;
+        try {
+            //Initialise la requête préparée basée sur la connexion 
+            // la requête SQL passé en argument pour construire l'objet preparedStatement
+            PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_PAR_IDOCCUP);
+            //On execute la requête et on récupère les résultats dans la requête 
+            // dans ResultSet
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                //// la méthode next() pour se déplacer sur l'enregistrement suivant
+                //on parcours ligne par ligne les résultas retournés
+                //on enregistre les données dans un entities (bean, classe java)
+                           idCOmpte=    result.getInt("Occupation_IdOccupation");
 
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EtudiantDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ConnexionBD.closeConnection();
+        return idCOmpte;
+    }
     @Override
     public List<Etudiant> findAll() {
         List<Etudiant> listeEtu = null;

@@ -63,10 +63,13 @@
                 <%=ent.getPersonneReference()%><br><br>
             </p>
             <br>
-            
+            <%  String typeCompte=(String)session.getAttribute("typeCompte");
+                if(typeCompte.equals("etudiant")){%>
             <a href="envoyerDemandePostulation?idOffre=<%=offre.getId()%>&idEnt=<%=ent.getId()%>">
                 <input type="submit" class="search-btn-input" value="Postuler cette offre par courriel">
-            </a>
+            </a>            
+    <%}%>
+        
             
         </main>
     </body>

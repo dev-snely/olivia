@@ -6,8 +6,10 @@ package com.action;
 
 import com.dao.etudiant.EtudiantDao;
 import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.occupation.OccupationDaoImpl;
 import com.model.entities.Compte;
 import com.model.entities.Etudiant;
+import com.model.entities.Occupation;
 import java.util.List;
 
 /**
@@ -17,7 +19,14 @@ import java.util.List;
 public class EtudiantAction {
     public static List<Etudiant> findAllEtudiant(){
         EtudiantDao dao = new EtudiantDaoImpl();
+        OccupationDaoImpl daoOccup=new OccupationDaoImpl();
         List<Etudiant> listeEtu = dao.findAll();
+        for(int i =0; listeEtu.size()>i;i++){
+            
+            int idOccup=dao.findByIdOccup(listeEtu.get(i).getId());
+            Occupation occup=daoOccup.findById(idOccup);
+            listeEtu.get(i).setOccupation(occup);
+        }
         return listeEtu;
     }
     

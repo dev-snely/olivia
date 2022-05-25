@@ -88,6 +88,7 @@ public class FairePub extends HttpServlet {
     Part filePart = request.getPart("file");
       String fileName = filePart.getSubmittedFileName();
     for (Part part : request.getParts()) {
+        //je n'ai pas trouver un path relatif malheureusement
       part.write("C:\\Users\\gabri\\Desktop\\Netbeans\\web-2-projet-de-session\\Olivia\\web\\images\\" + fileName);
     }
     response.getWriter().print("The file uploaded sucessfully.");
