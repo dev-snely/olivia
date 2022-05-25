@@ -6,10 +6,12 @@
 package com.mv2.controllers;
 
 import com.dao.admin.AdminDaoImpl;
+import com.dao.compte.CompteDaoImpl;
 import com.dao.entreprise.EntrepriseDaoImpl;
 import com.dao.etudiant.EtudiantDaoImpl;
 import com.dao.professeur.ProfesseurDaoImpl;
 import com.model.entities.Admin;
+import com.model.entities.Compte;
 import com.model.entities.Entreprise;
 import com.model.entities.Etudiant;
 import com.model.entities.Professeur;
@@ -41,62 +43,171 @@ public class Ajouter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("Ajouter.jsp").forward(request, response);
         ArrayList<String> listCategory = new ArrayList<String>();
+
         HttpSession session = request.getSession(true);
-         session.setAttribute("bool", "true");
-        listCategory.add("etudiant");
-        listCategory.add("entreprise");
-        listCategory.add("professeur");
-        listCategory.add("admin");
-        session.setAttribute("listCategory", listCategory);
-       
-        
-        String inscription = request.getParameter("inscription"); 
-        //
-        session.setAttribute("inscription", "etudiant");
-        
-        session.setAttribute("inscription", inscription);
-        String compte = request.getParameter("inscription"); 
-        String ajouter = request.getParameter("formulaire-ajouter");
-        //
-        
-        switch (compte) {
-            case "entreprise": {
-                EntrepriseDaoImpl dao = new EntrepriseDaoImpl();
-                List<Entreprise> listeEntreprise = dao.findAll();
-                session.setAttribute("listCompte", listeEntreprise);
-                session.setAttribute("bool", "false");
-                break;
+        String typeCompte = request.getParameter("typeCompte");
+            listCategory.add("etudiant");
+            listCategory.add("entreprise");
+            listCategory.add("professeur");
+            listCategory.add("admin");
+            session.setAttribute("listCategory", listCategory);
+        if (typeCompte == null) {
+            session.setAttribute("retourDebut", true);
+
+        } else {
+
+            session.setAttribute("retourDebut", false);
+
+            switch (typeCompte) {
+                case "etudiant": {
+
+                    session.setAttribute("CompteAjout", "etudiant");
+                    break;
+                }
+                case "entreprise": {
+
+                    session.setAttribute("CompteAjout", "entreprise");
+                    break;
+                }
+                case "admin": {
+
+                    session.setAttribute("CompteAjout", "admin");
+                    break;
+                }
+                case "professeur": {
+
+                    session.setAttribute("CompteAjout", "professeur");
+                    break;
+                }
+                default:
+                    break;
+
             }
-            case "admin": {
-                AdminDaoImpl dao = new AdminDaoImpl();
-                List<Admin> listeAdmin = dao.findAll();
-                session.setAttribute("listCompte", listeAdmin);
-                session.setAttribute("bool", "false");
-                break;
-            }
-            case "professeur": {
-                ProfesseurDaoImpl dao = new ProfesseurDaoImpl();
-                List<Professeur> listeProf = dao.findAll();
-                session.setAttribute("listCompte", listeProf);
-                session.setAttribute("bool", "false");
-                break;
-            }
-            case "etudiant": {
-                EtudiantDaoImpl dao = new EtudiantDaoImpl();
-                List<Etudiant> listeEtu = dao.findAll();
-                session.setAttribute("listCompte", listeEtu);
-                session.setAttribute("bool", "false");
-                break;
-            }
-            default:
-                System.out.print("ne fonctionne pas");
-                break;
+
         }
-    }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+        if (request.getParameter("typeForm") != null) {
+            System.out.println("================compteACreer");
+
+
+            PrintWriter out = response.getWriter();
+
+            //Valeurs permettant de valider l'inscription
+            boolean creation1 = false;
+            boolean creation2 = false;
+            boolean inscription = false;
+
+            //On prend les paramètres du formulaire de connexion.
+            //Typeacct est pour savoir il sagit de quel type d'entité
+            //provient le formulaire(etudiant,prof,entreprise)
+            String nom = request.getParameter("nom");
+            String prenom = request.getParameter("prenom");
+            String courriel = request.getParameter("courriel");
+            String mdp = request.getParameter("mdp");
+            String numDA = request.getParameter("numDA");
+            String typeacct = request.getParameter("typeForm");
+
+            //Implementation des daos pouvant 
+            //s'inscrire : Etudiant, Professeur & Entreprise
+            CompteDaoImpl daoCompte = new CompteDaoImpl();
+            AdminDaoImpl daoAdmin = new AdminDaoImpl();
+            EtudiantDaoImpl etudiantDao = new EtudiantDaoImpl();
+            ProfesseurDaoImpl profDao = new ProfesseurDaoImpl();
+            EntrepriseDaoImpl entrepriseDao = new EntrepriseDaoImpl();
+
+            List<Compte> listeCompte = daoCompte.findAll();
+            //Objet Compte à créer dans la BDD
+            Compte compteACreer = new Compte(courriel, mdp, typeacct);
+
+            if (!listeCompte.contains(compteACreer)) {
+                switch (typeacct) {
+                    case "admin": {
+                        creation1 = daoCompte.create(compteACreer);
+                        Admin unAdmin = new Admin();
+                        unAdmin.setCompte(daoCompte.findByCourriel(courriel));
+                        unAdmin.setNom(nom);
+                        unAdmin.setPrenom(prenom);
+                        creation2 = daoAdmin.create(unAdmin);
+                        if (creation1 && creation2) {
+                            inscription = true;
+                            request.setAttribute("succes", inscription);
+                        }
+                        break;
+                    }
+                    case "entreprise": {
+                        creation1 = daoCompte.create(compteACreer);
+                        Entreprise ent = new Entreprise();
+                        ent.setCompte(daoCompte.findByCourriel(courriel));
+                        ent.setNom(nom);
+                        ent.setDescription("Aucune description.");
+                        ent.setPersonneReference("Aucune personne de référence.");
+                        creation2 = entrepriseDao.create(ent);
+                        if (creation1 && creation2) {
+                            inscription = true;
+                            request.setAttribute("succes", inscription);
+                        }
+                        break;
+                    }
+                    case "etudiant": {
+
+                        creation1 = daoCompte.create(compteACreer);
+                        Etudiant etudiant = new Etudiant();
+                        etudiant.setCompte(daoCompte.findByCourriel(courriel));
+                        etudiant.setNom(nom);
+                        etudiant.setPrenom(prenom);
+                        etudiant.setNumeroDa(Integer.valueOf(numDA));
+                        Etudiant etu =etudiantDao.findByNumeroDA(Integer.valueOf(numDA));
+                        if(etu!=null){
+                            inscription = false;
+                            request.setAttribute("succes", inscription);
+                            break;
+                        }
+                        creation2 = etudiantDao.create(etudiant);
+
+                        if (creation1 && creation2) {
+                            inscription = true;
+                            request.setAttribute("succes", inscription);
+                        }
+                        break;
+                    }
+                    case "professeur": {
+                        
+                        Professeur leProf = new Professeur();
+                        leProf.setCompte(daoCompte.findByCourriel(courriel));
+                        leProf.setNom(nom);
+                        leProf.setPrenom(prenom);
+                        leProf.setNumeroDa(Integer.valueOf(numDA));
+                        
+                                                leProf.setNumeroDa(Integer.valueOf(numDA));
+                        Professeur prof =profDao.findByNumeroDA(Integer.valueOf(numDA));
+                          Compte compte = daoCompte.isExiste(courriel, mdp);
+                        if(prof!=null||compte!=null){
+                            inscription = false;
+                            request.setAttribute("succes", inscription);
+                            break;
+                        }
+                        creation1=daoCompte.create(compteACreer);
+                      
+                        creation2 = profDao.create(leProf);
+                        if (creation1 && creation2) {
+                            inscription = true;
+                            request.setAttribute("succes", inscription);
+                        }
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                request.getRequestDispatcher("Ajouter.jsp").forward(request, response);
+
+            } else if (inscription == false) {
+                request.setAttribute("succes", false);
+                request.getRequestDispatcher("Ajouter.jsp").forward(request, response);
+            }
+        }
+
+       request.getRequestDispatcher("Ajouter.jsp").forward(request, response);
+    }// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
      * Handles the HTTP <code>GET</code> method.

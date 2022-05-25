@@ -29,7 +29,9 @@ public class ProfesseurDaoTests {
         System.out.println("-------------------------- findById --------------------------");
         prof = dao.findById(1);
         System.out.println(prof);
-
+ System.out.println("-------------------------- findByDA --------------------------");
+        prof = dao.findByNumeroDA(432123);
+        System.out.println(prof);
         System.out.println("-------------------------- Create --------------------------");
         Compte unCompte = new Compte("proqf1234@gmail.com", "342", "prof");
         daoCompte.create(unCompte);

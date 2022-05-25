@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author gabri
  */
-public class Compte {
+public class Compte{
     private int Id;
     private String courriel;
     private String password;
