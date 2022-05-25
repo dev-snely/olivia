@@ -93,6 +93,7 @@ public class Connexion extends HttpServlet {
                     Entreprise entreprise = daoEntre.findByIdCompte(compteConnexion.getId());
                     session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
                     session.setAttribute("email", courriel);
+                     session.setAttribute("id", entreprise.getId());
                     session.setAttribute("nom", entreprise.getNom());
                     session.setAttribute("description", entreprise.getDescription());
                     session.setAttribute("personneReference", entreprise.getPersonneReference());
