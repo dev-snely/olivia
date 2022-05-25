@@ -44,7 +44,9 @@ public class Cv extends HttpServlet {
         monCV.setCertification(request.getParameter("certification"));
         monCV.setCompetence(request.getParameter("competences"));
         monCV.setLangue(request.getParameter("langages"));
-        cvDao.create(monCV, letudiant);
+        monCV.setId(letudiant.getCv().getId());
+        //cvDao.create(monCV, letudiant);
+        cvDao.update(monCV);
         
         request.getRequestDispatcher("homePage.jsp").forward(request, response);
        

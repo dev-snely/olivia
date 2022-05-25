@@ -12,7 +12,8 @@
         <li><a class="navcoteText" href="HomePage"><i class="fa-solid fa-house-chimney-user"></i>Tableau de bord</a></li>
         <li><a class="navcoteText" href="recherche"><i class="fa-solid fa-magnifying-glass"></i>Recherche</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-box"></i>Boite d'offres</a></li>
-        <li><a class="navcoteText" href="Cv"><i class="fa-solid fa-file-lines"></i>Curriculum Vitae</a></li>
+        <li><a class="navcoteText" href="afficherCV"><i class="fa-solid fa-file-lines"></i>Curriculum Vitae</a></li>
+        <li><a class="navcoteText" href="formulaireCV.jsp"><i class="fa-solid fa-file-lines"></i>Mettre à jour votre CV</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
     </ul>
