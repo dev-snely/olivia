@@ -4,6 +4,7 @@
     Author     : Mahmo
 --%>
 
+<%@page import="com.model.entities.LettreMotivation"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,10 +32,11 @@
         <br>
         
         <form action="mettreAjourLettre">
+              <% LettreMotivation lettre = (LettreMotivation)session.getAttribute("LEttreMotivation");   %>
             <label   for="Resume" >Le titre </label><br>
-            <input id="input_border" type="text"  name="titleLettre" value=""><br>
+            <input id="input_border" type="text"  name="titleLettre" value=" <%=lettre.getTitre()      %>"><br>
             <label   for="ExpTravail" >Contenu de votre Lettre: </label><br>
-            <input id="input_border" type="text"  name="contenuLettre" value=""><br>
+            <input id="input_border" type="text"  name="contenuLettre" value="<%=lettre.getContenu()      %>"><br>
             <br>
             <input type="submit" class="search-btn-input" value="Mettre à Jour">
             
