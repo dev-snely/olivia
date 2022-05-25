@@ -87,7 +87,7 @@ public class Ajouter extends HttpServlet {
 
         }
         if (request.getParameter("typeForm") != null) {
-            System.out.println("================compteACreer");
+           
 
 
             PrintWriter out = response.getWriter();
@@ -173,21 +173,20 @@ public class Ajouter extends HttpServlet {
                     case "professeur": {
                         
                         Professeur leProf = new Professeur();
-                        leProf.setCompte(daoCompte.findByCourriel(courriel));
-                        leProf.setNom(nom);
-                        leProf.setPrenom(prenom);
-                        leProf.setNumeroDa(Integer.valueOf(numDA));
-                        
-                                                leProf.setNumeroDa(Integer.valueOf(numDA));
                         Professeur prof =profDao.findByNumeroDA(Integer.valueOf(numDA));
                           Compte compte = daoCompte.isExiste(courriel, mdp);
-                        if(prof!=null||compte!=null){
+                          System.out.println(leProf+"----");
+                        if(prof.getNumeroDa()!=0||compte!=null){
                             inscription = false;
                             request.setAttribute("succes", inscription);
                             break;
                         }
                         creation1=daoCompte.create(compteACreer);
-                      
+                        leProf.setCompte(daoCompte.findByCourriel(courriel));
+                        leProf.setNom(nom);
+                        leProf.setPrenom(prenom);
+                        leProf.setNumeroDa(Integer.valueOf(numDA));
+                        leProf.setNumeroDa(Integer.valueOf(numDA));
                         creation2 = profDao.create(leProf);
                         if (creation1 && creation2) {
                             inscription = true;
