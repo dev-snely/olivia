@@ -43,5 +43,10 @@ public class PostulationAction {
         listePostulations = dao.findByIdEtudiant(etudiant);
         return listePostulations;
     }
+    public static void signerUnePostulation(Postulation post, Offre offre, Etudiant etudiant){
+        PostulationDaoImpl dao = new PostulationDaoImpl();
+        
+        dao.update(post, offre, etudiant);
+    }
         
 }

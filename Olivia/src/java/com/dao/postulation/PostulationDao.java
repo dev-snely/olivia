@@ -25,4 +25,5 @@ public interface PostulationDao {
     boolean delete(Offre offre, Etudiant etudiant);
 
     boolean update(Postulation post,Offre offre, Etudiant etudiant);
+    
 }

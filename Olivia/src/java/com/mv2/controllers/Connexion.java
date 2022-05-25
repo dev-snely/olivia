@@ -81,6 +81,7 @@ public class Connexion extends HttpServlet {
                     session.setAttribute("nom", etudiant.getNom());
                     session.setAttribute("prenom", etudiant.getPrenom());
                     session.setAttribute("numDA", etudiant.getNumeroDa());
+                    
                     break;
                 case "professeur":
                     Professeur professeur = daoProf.findByIdCompte(compteConnexion.getId());

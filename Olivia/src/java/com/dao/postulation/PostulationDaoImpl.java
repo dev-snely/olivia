@@ -31,6 +31,7 @@ public class PostulationDaoImpl implements PostulationDao {
     private static final String SQL_SELECT_PAR_ID_OFFRE = "select * from postulation where Offre_IdOffre=?";
     private static final String SQL_INSET = "insert into postulation(Signature,Acceptation,Etudiant_IdEtudiant,Offre_IdOffre) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update postulation set Signature =?,Acceptation = ? where  Etudiant_IdEtudiant = ? AND Offre_IdOffre=?";
+    private static final String SQL_UPDATE_SIGNATURE = " update postulation set Signature =?  where Offre_IdOffre=? ";
     private static final String SQL_DELETE = "delete from postulation where  Etudiant_IdEtudiant = ? AND Offre_IdOffre=?";
     OffreDaoImpl daoOffre = new OffreDaoImpl();
     EtudiantDaoImpl daoEtu = new EtudiantDaoImpl();
@@ -225,8 +226,8 @@ public class PostulationDaoImpl implements PostulationDao {
         try {
             ps = ConnexionBD.getConnection().prepareStatement(SQL_UPDATE);
 
-           ps.setBoolean(1, post.isAcceptation());
-            ps.setBoolean(2, post.isSignature());
+           ps.setBoolean(1, post.isSignature());
+            ps.setBoolean(2, post.isAcceptation());
             ps.setInt(3, etudiant.getId());
             ps.setInt(4, offre.getId());
 
@@ -243,5 +244,7 @@ public class PostulationDaoImpl implements PostulationDao {
         }
         ConnexionBD.closeConnection();
         return retour;}
+    
+    
 
 }
