@@ -6,6 +6,7 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
@@ -20,6 +21,10 @@
     </head>
     <body class="wrapper">
 
+        <%
+        ResourceBundle msg = ResourceBundle.getBundle("ressources.MessageBundle");
+        %>
+        
         <div class="wrapper-header">
             <jsp:include page="header.jsp"/>
         </div>
@@ -31,7 +36,7 @@
 
             <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()) {
                     case "etudiant":%>
-            <h1>TABLEAU DE BORD </h1><br>
+            <h1><%= msg.getString("tabord") %></h1><br>
             <h2>Vos informations</h2>
             <hr>
             <table class="tbd-table">

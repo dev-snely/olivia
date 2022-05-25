@@ -111,6 +111,10 @@
         <servlet-name>AfficherCV</servlet-name>
         <servlet-class>com.mv2.controllers.AfficherCV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangerLangue</servlet-name>
+        <servlet-class>com.mv2.controllers.ChangerLangue</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -235,6 +239,16 @@
     <servlet-mapping>
         <servlet-name>AfficherCV</servlet-name>
         <url-pattern>/afficherCV</url-pattern>
+    </servlet-mapping>
+    <locale-config>
+        <default-locale>fr</default-locale>
+        <supported-locale>en</supported-locale>
+        <supported-locale>de</supported-locale>
+        <supported-locale>fr</supported-locale>
+    </locale-config>
+    <servlet-mapping>
+        <servlet-name>ChangerLangue</servlet-name>
+        <url-pattern>/changerLangue</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

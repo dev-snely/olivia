@@ -28,28 +28,28 @@
 
 
 
-    <main>
-        <div class="TextPrincipalAccueil">
-            <h1 class="recherche">Bonjour à tous 👋</h1>
-            <h1 class="whitey">Chers étudiants, <br />les entreprises n’attendent que vous.</h1>
-            <p class="recherche">La recherche de stages ou d’emploi n’est pas forcément une chose aisée. Olivia sera votre
-                
-                guide
-                vers l’embauche.
-            </p>
-            
+        <main>
+            <div class="TextPrincipalAccueil">
+                <h1 class="recherche">Bonjour à tous 👋</h1>
+                <h1 class="whitey">Chers étudiants, <br />les entreprises n’attendent que vous.</h1>
+                <p class="recherche">La recherche de stages ou d’emploi n’est pas forcément une chose aisée. Olivia sera votre
 
-            <h1 class="whitey"> &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</h1>
-
-            <h1 class="whitey">Postulez dès aujourd’hui.</h1>
-
-        </div>
-
-        
-        <img class="imageacc" src="images/image-accueil-1@1x.png" alt="">
+                    guide
+                    vers l’embauche.
+                </p>
 
 
-    </main>
+                <h1 class="whitey"> &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</h1>
+
+                <h1 class="whitey">Postulez dès aujourd’hui.</h1>
+
+            </div>
+
+
+            <img class="imageacc" src="images/image-accueil-1@1x.png" alt="">
+
+
+        </main>
 
 
 
