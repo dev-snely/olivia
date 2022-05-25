@@ -15,7 +15,7 @@
         <li><a class="navcoteText" href="afficherCV"><i class="fa-solid fa-file-lines"></i>Curriculum Vitae</a></li>
         <li><a class="navcoteText" href="formulaireCV.jsp"><i class="fa-solid fa-file-lines"></i>Mettre à jour votre CV</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
-        <li><a class="navcoteText" href="#"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
+        <li><a class="navcoteText" href="pagePostulation"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
     </ul>
     <%break;
         case "admin":%>

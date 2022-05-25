@@ -54,26 +54,7 @@
                 </tbody>
             </table>
             <br>
-            <h2>Statut du stage</h2>
-            <hr>
-            <table class="tbd-table">
-                <thead>
-                    <tr>
-                        <th>Nom de l'entreprise</th>
-                        <th>Retenu par l'entreprise</th>
-                        <th>Date de début</th>
-                        <th>Date de fin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CHUM</td>
-                        <td>Decision non prise</td>
-                        <td>2022-06-02</td>
-                        <td>2022-09-02</td>
-                    </tr>
-                </tbody>
-            </table>
+            
             <%break;
                 case "admin":%>
             <h1>TABLEAU DE BORD </h1><br>
