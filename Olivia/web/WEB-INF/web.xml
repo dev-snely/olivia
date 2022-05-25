@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <welcome-file-list>
-        <welcome-file>pageAccueil.jsp</welcome-file>
-    </welcome-file-list>
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>olivia.postulation</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>teqxwzuhtchqvogu</param-value>
+    </context-param>
     <servlet>
         <servlet-name>ServletTest</servlet-name>
         <servlet-class>com.mv2.controllers.ServletTest</servlet-class>
@@ -112,7 +125,6 @@
         <servlet-class>com.mv2.controllers.AfficherCV</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>PagePostulation</servlet-name>
         <servlet-class>com.mv2.controllers.PagePostulation</servlet-class>
     </servlet>
@@ -121,10 +133,12 @@
         <servlet-class>com.mv2.controllers.AcceptPostulation</servlet-class>
     </servlet>
     <servlet>
-    
         <servlet-name>FairePub</servlet-name>
         <servlet-class>com.mv2.controllers.FairePub</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>OffreRefuse</servlet-name>
+        <servlet-class>com.mv2.controllers.OffreRefuse</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -202,23 +216,6 @@
         <servlet-name>ListeDesEntreprisesController</servlet-name>
         <url-pattern>/listeDesEntreprises</url-pattern>
     </servlet-mapping>
-    <!-- paramètres SMTP  -->
-    <context-param>
-        <param-name>host</param-name>
-        <param-value>smtp.gmail.com</param-value>
-    </context-param>
-    <context-param>
-        <param-name>port</param-name>
-        <param-value>587</param-value>
-    </context-param>
-    <context-param>
-        <param-name>user</param-name>
-        <param-value>olivia.postulation</param-value>
-    </context-param>
-    <context-param>
-        <param-name>pass</param-name>
-        <param-value>teqxwzuhtchqvogu</param-value>
-    </context-param>
     <servlet-mapping>
         <servlet-name>listeEtudiantController</servlet-name>
         <url-pattern>/listeDesEtudiants</url-pattern>
@@ -252,7 +249,6 @@
         <url-pattern>/afficherCV</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>PagePostulation</servlet-name>
         <url-pattern>/pagePostulation</url-pattern>
     </servlet-mapping>
@@ -260,15 +256,18 @@
         <servlet-name>AcceptPostulation</servlet-name>
         <url-pattern>/acceptPostulation</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>FairePub</servlet-name>
         <url-pattern>/FairePub</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OffreRefuse</servlet-name>
+        <url-pattern>/offreRefuse</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>pageAccueil.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

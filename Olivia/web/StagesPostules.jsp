@@ -68,8 +68,9 @@
                                 session.setAttribute("offreAaccepter", loffre);%> href="acceptPostulation"  >  <i class="fa-regular fa-circle-check " style='color: green'> </i>    </a> <%
                             }else{ %> <%  } %>
                               </td>
-                        <td>  <% if(listePost.get(i).isAcceptation()){
-                        %> <button>RefuserOffre</button> <%
+                         <td>  <% if(listePost.get(i).isAcceptation()){
+                            %> <a <%  Offre loffre = listePost.get(i).getOffre(); 
+                                session.setAttribute("offreArefuser", loffre);%> href="offreRefuse"  >  <i class="fa-regular fa-ban"></i> style='color: red'> </i>    </a> <%
                             }else{ %> <%  } %>
                               </td>
                               <td><% if(listePost.get(i).isSignature()){ %>

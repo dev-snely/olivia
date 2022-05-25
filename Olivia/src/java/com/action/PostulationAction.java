@@ -48,5 +48,10 @@ public class PostulationAction {
         
         dao.update(post, offre, etudiant);
     }
+    public static void supprimerunePostulation(Offre offre, Etudiant etudiant){
+         PostulationDaoImpl dao = new PostulationDaoImpl();
+         dao.delete(offre, etudiant);
+        
+    }
         
 }
