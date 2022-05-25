@@ -112,12 +112,19 @@
         <servlet-class>com.mv2.controllers.AfficherCV</servlet-class>
     </servlet>
     <servlet>
+
         <servlet-name>PagePostulation</servlet-name>
         <servlet-class>com.mv2.controllers.PagePostulation</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AcceptPostulation</servlet-name>
         <servlet-class>com.mv2.controllers.AcceptPostulation</servlet-class>
+    </servlet>
+    <servlet>
+    
+        <servlet-name>FairePub</servlet-name>
+        <servlet-class>com.mv2.controllers.FairePub</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
@@ -245,12 +252,19 @@
         <url-pattern>/afficherCV</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
         <servlet-name>PagePostulation</servlet-name>
         <url-pattern>/pagePostulation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AcceptPostulation</servlet-name>
         <url-pattern>/acceptPostulation</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FairePub</servlet-name>
+        <url-pattern>/FairePub</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>
