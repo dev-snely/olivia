@@ -75,6 +75,7 @@ public class Connexion extends HttpServlet {
 
                     Etudiant etudiant = daoEtudiant.findByIdCompte(compteConnexion.getId());
                     System.out.println(etudiant.getCv());
+                    session.setAttribute("id",etudiant.getId());
                     session.setAttribute("cv",etudiant.getCv());
                     session.setAttribute("typeCompte", compteConnexion.getTypeCompte());
                     session.setAttribute("email", courriel);

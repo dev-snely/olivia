@@ -34,7 +34,14 @@ public class EtudiantAction {
 
     public static Etudiant findEtudiantById(int id) {
         EtudiantDao dao = new EtudiantDaoImpl();
+        OccupationDaoImpl daoOccup=new OccupationDaoImpl();
+        
+            
+            
         Etudiant etu = dao.findById(id);
+         int idOccup=dao.findByIdOccup(etu.getId());
+         Occupation occup=daoOccup.findById(idOccup);
+         etu.setOccupation(occup);
         return etu;
     }
 

@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.mv2.controllers;
 
@@ -11,6 +12,7 @@ import com.model.entities.Etudiant;
 import com.model.entities.Postulation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,9 +22,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Mahmo
+ * @author gabri
  */
-public class PagePostulation extends HttpServlet {
+public class StagePostuler extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +38,29 @@ public class PagePostulation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         /* TODO output your page here. You may use following sample code. */
         HttpSession session = request.getSession(true);
         EtudiantDaoImpl daoEtud = new EtudiantDaoImpl();
         EtudiantAction action=new EtudiantAction();
         int id=(int) session.getAttribute("id");
-        Etudiant etudiant =action.findEtudiantById(id);
-        List<Postulation> lesPostulation = PostulationAction.trouverToutLesPostulationsDUnEtudiant(etudiant);
+        List<Etudiant> listeEtudiant =action.findAllEtudiant();
+        System.out.println(listeEtudiant+"============================="); 
+        List<Postulation> lesPostulation=new  ArrayList<Postulation>() ;
+        
+        for(int i = 0; listeEtudiant.size()>i;i++){
+            
+            Etudiant etudiant=listeEtudiant.get(i);
+            List<Postulation> post  =PostulationAction.trouverToutLesPostulationsDUnEtudiant(etudiant);  
+            lesPostulation.addAll(post);   
+        
+        }
+         
         session.setAttribute("listePostulations", lesPostulation);
-                session.setAttribute("etudiant", etudiant);
+                session.setAttribute("etudiant", listeEtudiant);
 
-        request.getRequestDispatcher("StagesPostules.jsp").forward(request, response);
+        request.getRequestDispatcher("SatgeAll.jsp").forward(request, response);
 
     }
 

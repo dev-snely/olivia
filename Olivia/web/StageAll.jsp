@@ -1,7 +1,7 @@
 <%-- 
-    Document   : StagesPostules
+    Document   : StagesAll
     Created on : 2022-05-25, 15:26:39
-    Author     : Mahmo
+    Author     : gabri
 --%>
 
 <%@page import="com.model.entities.Etudiant"%>
@@ -33,7 +33,7 @@
         
         <main class="contenuPrincipal wrapper-main-content">
            <!-- Vérifier si c'est vraiment un étudiant qui accède la page -->
-           <% Etudiant etu=(Etudiant)session.getAttribute("etudiant");
+           <% List<Etudiant> etu=(List<Etudiant>)session.getAttribute("etudiant");
                if ( session.getAttribute("typeCompte").toString().toLowerCase().equals("etudiant")) {
             List<Postulation> listePost = (ArrayList<Postulation>) session.getAttribute("listePostulations");
                     %>
@@ -55,6 +55,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <%   for (int c = 0; c < etu.size(); c++) { %>
                     <%   for (int i = 0; i < listePost.size(); i++) { %>
                             
                     <tr>
@@ -68,11 +69,11 @@
                             }else{ %> Pas retenu <%  } %>
                              </td>                                       
                              <td><% if(listePost.get(i).getEtudiant().getOccupation()==null){  %>
-                                 Aucune date inscrite <% }else{  %> <%=etu.getOccupation().getDateDebut()%> <%} %>
+                                 Aucune date inscrite <% }else{  %> <%=etu.get(c).getOccupation().getDateDebut()%> <%} %>
                                  </td>
                                        
                          <td><% if(listePost.get(i).getEtudiant().getOccupation()==null){  %>
-                             Aucune Date inscrite <% }else{  %> <%=etu.getOccupation().getDatefin()%> <%} %>
+                             Aucune Date inscrite <% }else{  %> <%=etu.get(c).getOccupation().getDatefin()%> <%} %>
                                  </td>
                                  
                                  
@@ -103,13 +104,13 @@
                     
             
             
-            
+ <% } %>           
                     <%}
 else { %>   <h1>Vous n'etes pas supposé être ici Hacker</h1>
 
- <% } %>
+ 
 
-                    
+ <% } %>                   
             
             
             
