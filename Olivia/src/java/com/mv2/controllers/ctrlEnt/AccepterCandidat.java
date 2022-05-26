@@ -1,12 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package com.mv2.controllers;
+package com.mv2.controllers.ctrlEnt;
 
+import com.action.OffreAction;
 import com.action.PostulationAction;
-import com.dao.etudiant.EtudiantDaoImpl;
-import com.model.entities.Etudiant;
+import com.model.entities.Offre;
 import com.model.entities.Postulation;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,9 +20,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Mahmo
+ * @author LysAd
  */
-public class PagePostulation extends HttpServlet {
+public class AccepterCandidat extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +36,27 @@ public class PagePostulation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        /* TODO output your page here. You may use following sample code. */
-        HttpSession session = request.getSession(true);
-        EtudiantDaoImpl daoEtud = new EtudiantDaoImpl();
-        Etudiant etudiant = daoEtud.findByNumeroDA((int) session.getAttribute("numDA"));
-        List<Postulation> lesPostulation = PostulationAction.trouverToutLesPostulationsDUnEtudiant(etudiant);
-        session.setAttribute("listePostulations", lesPostulation);
-        request.getRequestDispatcher("StagesPostules.jsp").forward(request, response);
 
+        HttpSession session = request.getSession(false);
+        int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
+        int idOffre = Integer.parseInt(request.getParameter("idOffre"));
+
+        Postulation p = PostulationAction.findPostulationParIdEtudiantEtIdOffre(idEtudiant, idOffre);
+        p.setAcceptation(true);
+        PostulationAction.MAJPostulationAcceptation(p, idEtudiant, idOffre);
+        
+        Offre offre = OffreAction.chercherOffreParId(idOffre);
+        
+        List<Postulation> listePost = PostulationAction.trouverToutLesPostulationsDUneOffre(offre);
+        if (listePost == null || listePost.size() <= 0){
+            session.setAttribute("lesCandidaturesVide", true);
+        } else {
+            session.setAttribute("lesCandidaturesVide", false);
+            session.setAttribute("listeCandidatures", listePost);
+            session.setAttribute("offreAuditionner", offre);
+        }
+        
+        request.getRequestDispatcher("pageCandidatures.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

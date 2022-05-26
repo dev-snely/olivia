@@ -15,24 +15,24 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body class="wrapper">
-         <div class="wrapper-header">
+        <div class="wrapper-header">
             <jsp:include page="header.jsp"/>
         </div>
         <div class="wrapper-side">
             <jsp:include page="sidenav.jsp"/>
         </div>
-        
+
         <main class="contenuPrincipal wrapper-main-content">
-            <% LettreMotivation lettre = (LettreMotivation)session.getAttribute("LEttreMotivation");   %>
-            
+            <% LettreMotivation lettre = (LettreMotivation) session.getAttribute("LEttreMotivation");%>
+
             <h2>Titre : </h2>
-            <p> <%=lettre.getTitre()      %>  </p>
+            <p> <%=lettre.getTitre()%>  </p>
             <br>
             <h2>Contenu: </h2>
-            <p> <%=lettre.getContenu()      %>  </p>
-            
+            <p> <%=lettre.getContenu()%>  </p>
+
             <br>
-             
+
             <a href="mettreAJourLettreMot.jsp"> <button  class="search-btn-input">  Mettre à jour Votre Lettre  </button></a>
         </main>
     </body>

@@ -37,16 +37,17 @@ public class ListeCandidaturesPourOffre extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //recuperation de l'offre dont nous voulons les candidature(postulations)
+        HttpSession session = request.getSession(false);
         int id = Integer.parseInt(request.getParameter("idOffre"));
         Offre offre = OffreAction.chercherOffreParId(id);
         
         List<Postulation> listePost = PostulationAction.trouverToutLesPostulationsDUneOffre(offre);
         if (listePost == null || listePost.size() <= 0){
-            request.setAttribute("lesCandidaturesVide", true);
+            session.setAttribute("lesCandidaturesVide", true);
         } else {
-            request.setAttribute("lesCandidaturesVide", false);
-            request.setAttribute("listeCandidatures", listePost);
-            request.setAttribute("offreAuditionner", offre);
+            session.setAttribute("lesCandidaturesVide", false);
+            session.setAttribute("listeCandidatures", listePost);
+            session.setAttribute("offreAuditionner", offre);
         }
         request.getRequestDispatcher("pageCandidatures.jsp").forward(request, response);
     }

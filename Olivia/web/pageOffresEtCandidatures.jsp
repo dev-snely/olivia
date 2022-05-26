@@ -28,7 +28,7 @@
 
         <main class="contenuPrincipal wrapper-main-content">
             
-            <h1>Vos offres et candidatures</h1>
+            <h1>VOS OFFRES ET CANDIDATURES</h1>
             <table class="tbd-table">
                 <thead>
                     <tr>
