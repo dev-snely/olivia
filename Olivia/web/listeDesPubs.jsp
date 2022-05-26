@@ -62,7 +62,7 @@
                                 
                                 <tr>   
                     <td><%= lesPubs.get(i).getContenu() %> </td>
-                    <td><%= lesPubs.get(i).getImgLink() %> </td>
+                    <td><img src="<%= lesPubs.get(i).getImgLink() %>" alt="pub" height="250px"> </td>
                    
                     <td style='text-align: center;vertical-align: middle;'>
                             <a href="deletePublicite?id=<%=lesPubs.get(i).getId()%>">
