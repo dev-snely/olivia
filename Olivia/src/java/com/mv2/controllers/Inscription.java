@@ -17,12 +17,17 @@ import com.dao.postulation.PostulationDaoImpl;
 import com.dao.professeur.ProfesseurDaoImpl;
 import com.dao.publicite.PubliciteDaoImp;
 import com.model.entities.Admin;
+import com.model.entities.CV;
 import com.model.entities.Compte;
 import com.model.entities.Entreprise;
 import com.model.entities.Etudiant;
+import com.model.entities.LettreMotivation;
+import com.model.entities.Occupation;
+import com.model.entities.Offre;
 import com.model.entities.Professeur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -107,13 +112,33 @@ public class Inscription extends HttpServlet {
                     break;
                 }
                 case "Etudiant": {
+                    CvDaoImpl daoCV =new CvDaoImpl();
+                    LettreMotivation lettre=new LettreMotivation("","");
+                    CV cv =new CV("","","","","","");
+                    LettreMotivationDaoImpl daoLettre =new LettreMotivationDaoImpl();
+                    Offre offre=new Offre();
+                    Occupation occup=new Occupation("","",offre);
                     creation1 = daoCompte.create(compteACreer);
                     Etudiant etudiant = new Etudiant();
                     etudiant.setCompte(daoCompte.findByCourriel(courriel));
                     etudiant.setNom(nom);
                     etudiant.setPrenom(prenom);
                     etudiant.setNumeroDa(Integer.valueOf(numDA));
+                     daoCV.create(cv,etudiant);
+                     daoLettre.create(lettre, etudiant);
+                    ArrayList<CV> listeCv=(ArrayList<CV>) daoCV.findAll();
+                    ArrayList<LettreMotivation> LettreMotivations=(ArrayList<LettreMotivation>) daoLettre.findAll();
+                    
+                    cv=listeCv.get(LettreMotivations.size()-1);
+                    lettre=LettreMotivations.get(LettreMotivations.size()-1);
+                   
+                    System.out.println("------------"+lettre.getId());
+                     System.out.println("------------"+cv.getId());
                     creation2 = etudiantDao.create(etudiant);
+                    etudiant=etudiantDao.findByNumeroDA(etudiant.getNumeroDa());
+                    boolean bool1= etudiantDao.updateLettre(etudiant,lettre);
+                    boolean bool2= etudiantDao.updateCv(etudiant, cv);
+                    System.out.println("------------"+bool1+bool2);
                     if (creation1 && creation2) {
                         inscription = true;
                         request.setAttribute("succes", inscription);

@@ -7,13 +7,19 @@ package com.mv2.controllers;
 
 import com.dao.admin.AdminDaoImpl;
 import com.dao.compte.CompteDaoImpl;
+import com.dao.cv.CvDaoImpl;
 import com.dao.entreprise.EntrepriseDaoImpl;
 import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.lettreMotivation.LettreMotivationDaoImpl;
 import com.dao.professeur.ProfesseurDaoImpl;
 import com.model.entities.Admin;
+import com.model.entities.CV;
 import com.model.entities.Compte;
 import com.model.entities.Entreprise;
 import com.model.entities.Etudiant;
+import com.model.entities.LettreMotivation;
+import com.model.entities.Occupation;
+import com.model.entities.Offre;
 import com.model.entities.Professeur;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -150,18 +156,33 @@ public class Ajouter extends HttpServlet {
                     }
                     case "etudiant": {
 
-                        creation1 = daoCompte.create(compteACreer);
-                        Etudiant etudiant = new Etudiant();
-                        etudiant.setCompte(daoCompte.findByCourriel(courriel));
-                        etudiant.setNom(nom);
-                        etudiant.setPrenom(prenom);
-                        etudiant.setNumeroDa(Integer.valueOf(numDA));
-                        Etudiant etu =etudiantDao.findByNumeroDA(Integer.valueOf(numDA));
-                        if(etu!=null){
-                            inscription = false;
-                            request.setAttribute("succes", inscription);
-                            break;
-                        }
+                       CvDaoImpl daoCV =new CvDaoImpl();
+                    LettreMotivation lettre=new LettreMotivation("","");
+                    CV cv =new CV("","","","","","");
+                    LettreMotivationDaoImpl daoLettre =new LettreMotivationDaoImpl();
+                    Offre offre=new Offre();
+                    Occupation occup=new Occupation("","",offre);
+                    creation1 = daoCompte.create(compteACreer);
+                    Etudiant etudiant = new Etudiant();
+                    etudiant.setCompte(daoCompte.findByCourriel(courriel));
+                    etudiant.setNom(nom);
+                    etudiant.setPrenom(prenom);
+                    etudiant.setNumeroDa(Integer.valueOf(numDA));
+                     daoCV.create(cv,etudiant);
+                     daoLettre.create(lettre, etudiant);
+                    ArrayList<CV> listeCv=(ArrayList<CV>) daoCV.findAll();
+                    ArrayList<LettreMotivation> LettreMotivations=(ArrayList<LettreMotivation>) daoLettre.findAll();
+                    
+                    cv=listeCv.get(LettreMotivations.size()-1);
+                    lettre=LettreMotivations.get(LettreMotivations.size()-1);
+                   
+                    System.out.println("------------"+lettre.getId());
+                     System.out.println("------------"+cv.getId());
+                    creation2 = etudiantDao.create(etudiant);
+                    etudiant=etudiantDao.findByNumeroDA(etudiant.getNumeroDa());
+                    boolean bool1= etudiantDao.updateLettre(etudiant,lettre);
+                    boolean bool2= etudiantDao.updateCv(etudiant, cv);
+                       
                         creation2 = etudiantDao.create(etudiant);
 
                         if (creation1 && creation2) {

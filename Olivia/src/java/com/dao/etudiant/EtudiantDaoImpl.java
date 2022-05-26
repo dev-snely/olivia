@@ -37,7 +37,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
     private static final String SQL_SELECT_PAR_NOM = "select * from etudiant where Nom = ?";
     private static final String SQL_SELECT_PAR_PRENOM = "select * from etudiant where Prenom = ?";
     private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";
-    private static final String SQL_INSET = "insert into etudiant(Nom,Prenom,NumeroDA,Compte_IdCompte) value(?,?,?,?)";
+    private static final String SQL_INSET = "insert into etudiant(Nom,Prenom,NumeroDA,Compte_IdCompte ) value(?,?,?,?)";
     private static final String SQL_UPDATE = "update etudiant set Nom =?,Prenom = ?,NumeroDA=? where IdEtudiant = ?";
     private static final String SQL_UPDATE_CV = "update etudiant set CV_IdCV =? where IdEtudiant = ?";
     private static final String SQL_UPDATE_LETTRE = "update etudiant set LettreMotivation_IdLettreMotivation =? where IdEtudiant = ?";
