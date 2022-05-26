@@ -33,6 +33,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
     private static final String SQL_SELECT = "select * from etudiant";
     private static final String SQL_SELECT_PAR_ID = "select * from etudiant where IdEtudiant = ?";
     private static final String SQL_SELECT_PAR_IDOCCUP = "select Occupation_IdOccupation from etudiant where IdEtudiant = ?";
+
     private static final String SQL_SELECT_PAR_NOM = "select * from etudiant where Nom = ?";
     private static final String SQL_SELECT_PAR_PRENOM = "select * from etudiant where Prenom = ?";
     private static final String SQL_SELECT_PAR_NUMERODA = "select * from etudiant where NumeroDA = ?";

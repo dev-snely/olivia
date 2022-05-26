@@ -44,23 +44,24 @@ public class StagePostuler extends HttpServlet {
         HttpSession session = request.getSession(true);
         EtudiantDaoImpl daoEtud = new EtudiantDaoImpl();
         EtudiantAction action=new EtudiantAction();
-        int id=(int) session.getAttribute("id");
-        List<Etudiant> listeEtudiant =action.findAllEtudiant();
+       
+        List<Etudiant> listeEtudiant =EtudiantAction.findAllEtudiant();
         System.out.println(listeEtudiant+"============================="); 
         List<Postulation> lesPostulation=new  ArrayList<Postulation>() ;
         
         for(int i = 0; listeEtudiant.size()>i;i++){
             
             Etudiant etudiant=listeEtudiant.get(i);
-            List<Postulation> post  =PostulationAction.trouverToutLesPostulationsDUnEtudiant(etudiant);  
+            List<Postulation> post  =PostulationAction.trouverToutLesPostulationsDUnEtudiant(etudiant); 
+            
             lesPostulation.addAll(post);   
         
         }
          
         session.setAttribute("listePostulations", lesPostulation);
-                session.setAttribute("etudiant", listeEtudiant);
+                
 
-        request.getRequestDispatcher("SatgeAll.jsp").forward(request, response);
+        request.getRequestDispatcher("StageAll.jsp").forward(request, response);
 
     }
 

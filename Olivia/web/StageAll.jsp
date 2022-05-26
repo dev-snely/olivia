@@ -1,7 +1,7 @@
 <%-- 
-    Document   : StagesAll
+    Document   : StagesPostules
     Created on : 2022-05-25, 15:26:39
-    Author     : gabri
+    Author     : Mahmo
 --%>
 
 <%@page import="com.model.entities.Etudiant"%>
@@ -33,8 +33,8 @@
         
         <main class="contenuPrincipal wrapper-main-content">
            <!-- Vérifier si c'est vraiment un étudiant qui accède la page -->
-           <% List<Etudiant> etu=(List<Etudiant>)session.getAttribute("etudiant");
-               if ( session.getAttribute("typeCompte").toString().toLowerCase().equals("etudiant")) {
+           <% 
+               if ( session.getAttribute("typeCompte").toString().toLowerCase().equals("professeur")) {
             List<Postulation> listePost = (ArrayList<Postulation>) session.getAttribute("listePostulations");
                     %>
                     <h1>Tableau des stages</h1>
@@ -47,6 +47,7 @@
                         <th>Nom du Poste</th>
                         <th>Nom de l'entreprise</th>
                         <th>Retenu par l'entreprise</th>
+                        <th>Nom Étudiant</th>
                         <th>Date de début</th>
                         <th>Date de fin</th>
                         <th>Accepter Offre</th>
@@ -55,7 +56,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%   for (int c = 0; c < etu.size(); c++) { %>
                     <%   for (int i = 0; i < listePost.size(); i++) { %>
                             
                     <tr>
@@ -67,13 +67,14 @@
                         <td><% if(listePost.get(i).isAcceptation()){
                              %> Retenu <%
                             }else{ %> Pas retenu <%  } %>
-                             </td>                                       
+                             </td>  
+                             <td><%= listePost.get(i).getEtudiant().getPrenom() %></td>
                              <td><% if(listePost.get(i).getEtudiant().getOccupation()==null){  %>
-                                 Aucune date inscrite <% }else{  %> <%=etu.get(c).getOccupation().getDateDebut()%> <%} %>
+                                 Aucune date inscrite <% }else{  %> <%=listePost.get(i).getEtudiant().getOccupation().getDateDebut()%> <%} %>
                                  </td>
                                        
                          <td><% if(listePost.get(i).getEtudiant().getOccupation()==null){  %>
-                             Aucune Date inscrite <% }else{  %> <%=etu.get(c).getOccupation().getDatefin()%> <%} %>
+                             Aucune Date inscrite <% }else{  %> <%=listePost.get(i).getEtudiant().getOccupation().getDatefin()%> <%} %>
                                  </td>
                                  
                                  
@@ -104,13 +105,13 @@
                     
             
             
- <% } %>           
+            
                     <%}
 else { %>   <h1>Vous n'etes pas supposé être ici Hacker</h1>
 
- 
+ <% } %>
 
- <% } %>                   
+                    
             
             
             

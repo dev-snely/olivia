@@ -45,7 +45,7 @@
         <li><a class="navcoteText" href="listeDesEtudiants"><i class="fa-solid fa-graduation-cap"></i><%=msg.getString("liste-etu") %></a></li>
         <li><a class="navcoteText" href="listeDesPubs"><i class="fa-solid fa-sack-dollar"></i><%=msg.getString("list-pub")%></a></li>
         <li><a class="navcoteText" href="listeDesOccup"><i class="fa-solid fa-clock"></i><%=msg.getString("occupations")%></a></li>
-        
+         <li><a class="navcoteText" href="StagePostuler"><i class="fa-solid fa-building"></i><%=msg.getString("stage-postules") %></a></li>
     </ul>
     <%break;
         default:%>
