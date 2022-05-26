@@ -37,14 +37,14 @@
             <% switch ((String) session.getAttribute("typeCompte").toString().toLowerCase()) {
                     case "etudiant":%>
             <h1><%= msg.getString("tabord") %></h1><br>
-            <h2>Vos informations</h2>
+            <h2><%= msg.getString("vos-infos") %></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Courriel</th>
+                        <th><%= msg.getString("nom") %></th>
+                        <th><%= msg.getString("prenom") %></th>
+                        <th><%= msg.getString("courriel") %></th>
                         
                     </tr>
                 </thead>
@@ -62,16 +62,16 @@
             
             <%break;
                 case "admin":%>
-            <h1>TABLEAU DE BORD </h1><br>
-            <h2>Vos informations</h2>
+            <h1><%= msg.getString("tabord") %></h1><br>
+            <h2><%= msg.getString("vos-infos") %></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Courriel</th>
-                        <th>Lien vers Curriculum Vitae</th>
+                        <th><%= msg.getString("nom") %></th>
+                        <th><%= msg.getString("prenom") %></th>
+                        <th><%= msg.getString("courriel") %></th>
+                        <th><%= msg.getString("lien-vers-curriculum-vitae") %></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,16 +85,16 @@
             </table>
             <%break;
                 case "entreprise":%>
-            <h1>TABLEAU DE BORD </h1><br>
-            <h2>Vos informations</h2>
+            <h1><%= msg.getString("tabord") %></h1><br>
+            <h2><%= msg.getString("vos-infos") %></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Nom de l'entreprise</th>
-                        <th>Description</th>
-                        <th>Personne Référence</th>
-                        <th>Email</th>
+                        <th><%= msg.getString("nom-entreprise") %></th>
+                        <th><%= msg.getString("description") %></th>
+                        <th><%= msg.getString("person-ref") %></th>
+                        <th><%= msg.getString("courriel") %></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,14 +107,14 @@
                 </tbody>
             </table>
             <br>
-            <h2>Vos offres de stage</h2>
+            <h2><%=msg.getString("vos-offres-de-stage")%></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Nom du poste</th>
-                        <th>Description</th>
-                        <th>Rémuneration</th>
+                        <th><%= msg.getString("nom-du-poste") %></th>
+                        <th><%= msg.getString("description") %></th>
+                        <th><%= msg.getString("renum") %></th>
 
                     </tr>
                 </thead>
@@ -134,15 +134,15 @@
             </table>
             <% break;
                 case "professeur":%>
-                      <h1>TABLEAU DE BORD </h1><br>
-            <h2>Vos informations</h2>
+                      <h1><%= msg.getString("tabord") %></h1><br>
+            <h2><%= msg.getString("vos-infos") %></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Courriel</th>
+                        <th><%= msg.getString("nom") %></th>
+                        <th><%= msg.getString("prenom") %></th>
+                        <th><%= msg.getString("courriel") %></th>
                         
                     </tr>
                 </thead>

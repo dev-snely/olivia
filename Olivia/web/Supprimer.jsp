@@ -6,11 +6,15 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="com.model.entities.Compte"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ResourceBundle msg = ResourceBundle.getBundle("ressources.MessageBundle");
+%>
 <!DOCTYPE html>
 <html>
     <head>

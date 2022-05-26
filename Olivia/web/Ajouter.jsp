@@ -6,20 +6,24 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="com.model.entities.Compte"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ResourceBundle msg = ResourceBundle.getBundle("ressources.MessageBundle");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ajouter</title>
+        <title><%=msg.getString("add") %></title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-  <body class="wrapper">
+    <body class="wrapper">
 
         <div class="wrapper-header">
             <jsp:include page="header.jsp"/>
@@ -38,7 +42,7 @@
                     <option value="<%=listCategory.get(i)%>" name = "typeCompte" > <%=listCategory.get(i)%> </option>
                     <%}%>
                 </select>   
-                <button class="btn-inscription" type="submit">Rechercher</button>
+                <button class="btn-inscription" type="submit"><%=msg.getString("Rechercher") %></button>
                 <%
                 } else {%>
                 <%  switch ((String) session.getAttribute("CompteAjout")) {
@@ -69,22 +73,22 @@
                         default:
                             break;
                     }%>
-                <%} %>
+                <%}%>
 
 
             </form>
         </main>
-                        <script>
-            var compteCreerAvecSucces = <%=request.getAttribute("succes")%>;
-            if (compteCreerAvecSucces === true) {
-                alert("Inscription effectué avec succèes! Vous pouvez maintenant vous connecter! ?");
-            } else if (compteCreerAvecSucces === false) {
-                alert("? L'inscription n'a pas fonctionné. Veuillez nous contacter via courriel pour de l'assistance.");
-            }
-            console.log(document.characterSet);
+        <script>
+                            var compteCreerAvecSucces = <%=request.getAttribute("succes")%>;
+                            if (compteCreerAvecSucces === true) {
+                                alert("Inscription effectué avec succèes! Vous pouvez maintenant vous connecter! ?");
+                            } else if (compteCreerAvecSucces === false) {
+                                alert("? L'inscription n'a pas fonctionné. Veuillez nous contacter via courriel pour de l'assistance.");
+                            }
+                            console.log(document.characterSet);
 
         </script>
     </body>
-    
+
 </html>
 

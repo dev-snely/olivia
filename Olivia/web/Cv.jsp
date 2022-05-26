@@ -6,11 +6,15 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="com.model.entities.CV"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ResourceBundle msg = ResourceBundle.getBundle("ressources.MessageBundle");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,17 +36,17 @@
             
         <% CV cv=(CV)session.getAttribute("cv");%>
             <h1>Curriculum Vitae </h1><br>
-            <h2>Vos informations</h2>
+            <h2><%=msg.getString("vos-infos")%></h2>
             <hr>
             <table class="tbd-table">
                 <thead>
                     <tr>
-                        <th>Résume</th>
-                        <th>Experience de travail</th>
-                        <th>Éducation</th>
+                        <th><%=msg.getString("Resume")%></th>
+                        <th><%=msg.getString("exp")%></th>
+                        <th><%=msg.getString("Education")%></th>
                         <th>Certification</th>
-                        <th>Compétence</th>
-                        <th>Langue(s) parlés</th>
+                        <th><%=msg.getString("Competences")%></th>
+                        <th><%=msg.getString("lang")%></th>
                         
                     </tr>
                 </thead>
@@ -52,8 +56,8 @@
                         <td><%=cv.getExperienceTravail()%></td>
                         <td><%=cv.getEducation()%></td>
                         <td><%=cv.getCertification()%></td>
-                         <td><%=cv.getCompetence()%></td>
-                          <td><%=cv.getLangue()%></td>
+                        <td><%=cv.getCompetence()%></td>
+                        <td><%=cv.getLangue()%></td>
                     </tr>
                 </tbody>
             </table>

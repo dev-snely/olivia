@@ -6,11 +6,15 @@
     on          : 28th-Apr-2022
 --%>
 
+<%@page import="java.util.ResourceBundle"%>
 <%@page import="com.model.entities.Compte"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.model.entities.Offre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    ResourceBundle msg = ResourceBundle.getBundle("ressources.MessageBundle");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,7 +75,7 @@
                     }%>
                 <%} else {
                     ArrayList<Compte> listCompte = (ArrayList) session.getAttribute("compte");%>
-                <h2>Compte à supprimer  :</h2><br>
+                <h2><%= msg.getString("acctToDelete") %></h2><br>
                 <select name="modifier" id="modifier">
                     <% for (int i = 0; listCompte.size() > i; i++) {
                             Compte unCompte = listCompte.get(i);%>
@@ -79,7 +83,7 @@
 
                     <% }%>
                 </select>   
-                <button class="btn-inscription" type="submit">Modifier</button>
+                <button class="btn-inscription" type="submit"><%= msg.getString("Modifier") %></button>
                 <%}%>
 
 
