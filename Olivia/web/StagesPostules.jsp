@@ -64,13 +64,14 @@
                                  
                         <td>  <% if(listePost.get(i).isAcceptation()){
                             %> <a <% Postulation post = listePost.get(i);
-                                   session.setAttribute("postilationAaccepter", post); Offre loffre = listePost.get(i).getOffre(); 
-                                session.setAttribute("offreAaccepter", loffre);%> href="acceptPostulation"  >  <i class="fa-regular fa-circle-check " style='color: green'> </i>    </a> <%
+                                   session.setAttribute("postilationAaccepter", post);
+                                   Offre loffre = listePost.get(i).getOffre(); 
+                            session.setAttribute("offreAaccepter", loffre);%> href="acceptPostulation?idOffre=<%=listePost.get(i).getOffre().getId() %>"  >  <i class="fa-regular fa-circle-check " style='color: green'> </i>    </a> <%
                             }else{ %> <%  } %>
                               </td>
                          <td>  <% if(listePost.get(i).isAcceptation()){
                             %> <a <%  Offre loffre = listePost.get(i).getOffre(); 
-                                session.setAttribute("offreArefuser", loffre);%> href="offreRefuse"  >  <i class="fa-regular fa-ban"></i> style='color: red'> </i>    </a> <%
+                                session.setAttribute("offreArefuser", loffre);%> href="offreRefuse?idOffre=<%=listePost.get(i).getOffre().getId() %>"  >  <i class="fa-solid fa-ban" style='color: red'></i>  </i>    </a> <%
                             }else{ %> <%  } %>
                               </td>
                               <td><% if(listePost.get(i).isSignature()){ %>

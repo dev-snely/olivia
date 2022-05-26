@@ -53,5 +53,11 @@ public class PostulationAction {
          dao.delete(offre, etudiant);
         
     }
+    public static List<Postulation> findbyIdOffre(int idOffre){
+        PostulationDaoImpl dao = new PostulationDaoImpl();
+        Offre off = OffreAction.chercherOffreParId(idOffre);
+        List<Postulation> lesPOSt=    dao.findByIdOffre(off);
+        return lesPOSt;
+    }
         
 }

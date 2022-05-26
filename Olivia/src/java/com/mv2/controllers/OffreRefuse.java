@@ -6,10 +6,13 @@ package com.mv2.controllers;
 
 import com.action.PostulationAction;
 import com.dao.etudiant.EtudiantDaoImpl;
+import com.dao.postulation.PostulationDaoImpl;
 import com.model.entities.Etudiant;
 import com.model.entities.Offre;
+import com.model.entities.Postulation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,11 +40,25 @@ public class OffreRefuse extends HttpServlet {
          PrintWriter out = response.getWriter();
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
-             Offre LeOffre = (Offre)session.getAttribute("offreArefuser");
-             EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
-            Etudiant etudiant = daoEtudiant.findByNumeroDA((int)session.getAttribute("numDA"));
-            PostulationAction.supprimerunePostulation(LeOffre, etudiant);
-            request.getRequestDispatcher("pagePostulation").forward(request, response);
+             EtudiantDaoImpl daoEtud = new EtudiantDaoImpl();
+        Etudiant etudiant = daoEtud.findByNumeroDA((int) session.getAttribute("numDA"));
+        PostulationDaoImpl daodao = new PostulationDaoImpl();
+        List<Postulation> laPostulation = PostulationAction.findbyIdOffre(Integer.parseInt(request.getParameter("idOffre")));
+        Postulation laBonne = new Postulation();
+        for (int i = 0; i < laPostulation.size(); i++) {
+            if (laPostulation.get(i).getEtudiant().getId() == etudiant.getId()) {
+                laBonne = laPostulation.get(i);
+            }
+
+        }
+
+       
+        Offre LeOffre = (Offre) session.getAttribute("offreAaccepter");
+        EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
+        daodao.delete(LeOffre, etudiant);
+        
+
+        request.getRequestDispatcher("pagePostulation").forward(request, response);
             
            
     }

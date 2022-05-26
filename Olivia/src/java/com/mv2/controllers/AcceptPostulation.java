@@ -12,6 +12,7 @@ import com.model.entities.Offre;
 import com.model.entities.Postulation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,18 +37,30 @@ public class AcceptPostulation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter();
-            /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
-            Postulation laPostulation = (Postulation)session.getAttribute("postilationAaccepter");
-            Offre LeOffre = (Offre)session.getAttribute("offreAaccepter");
-            EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
-            Etudiant etudiant = daoEtudiant.findByNumeroDA((int)session.getAttribute("numDA"));
-            PostulationAction.signerUnePostulation(laPostulation, LeOffre, etudiant);
-            request.getRequestDispatcher("pagePostulation").forward(request, response);
-            
-            
-        
+        PrintWriter out = response.getWriter();
+        /* TODO output your page here. You may use following sample code. */
+
+        HttpSession session = request.getSession(true);
+        EtudiantDaoImpl daoEtud = new EtudiantDaoImpl();
+        Etudiant etudiant = daoEtud.findByNumeroDA((int) session.getAttribute("numDA"));
+        PostulationDaoImpl daodao = new PostulationDaoImpl();
+        List<Postulation> laPostulation = PostulationAction.findbyIdOffre(Integer.parseInt(request.getParameter("idOffre")));
+        Postulation laBonne = new Postulation();
+        for (int i = 0; i < laPostulation.size(); i++) {
+            if (laPostulation.get(i).getEtudiant().getId() == etudiant.getId()) {
+                laBonne = laPostulation.get(i);
+            }
+
+        }
+
+        laBonne.setSignature(true);
+        Offre LeOffre = (Offre) session.getAttribute("offreAaccepter");
+        EtudiantDaoImpl daoEtudiant = new EtudiantDaoImpl();
+
+        PostulationAction.signerUnePostulation(laBonne, LeOffre, etudiant);
+
+        request.getRequestDispatcher("pagePostulation").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
