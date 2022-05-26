@@ -115,6 +115,18 @@
         <servlet-name>ChangerLangue</servlet-name>
         <servlet-class>com.mv2.controllers.ChangerLangue</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>afficherPageCvEtudiant</servlet-name>
+        <servlet-class>com.mv2.controllers.ctrlEnt.afficherPageCvEtudiant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanifierDateEntrevue</servlet-name>
+        <servlet-class>com.mv2.controllers.ctrlEnt.PlanifierDateEntrevue</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PriseDeRendezVousParCourriel</servlet-name>
+        <servlet-class>com.mv2.controllers.ctrlEnt.PriseDeRendezVousParCourriel</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletTest</servlet-name>
         <url-pattern>/ServletTest</url-pattern>
@@ -249,6 +261,18 @@
     <servlet-mapping>
         <servlet-name>ChangerLangue</servlet-name>
         <url-pattern>/changerLangue</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherPageCvEtudiant</servlet-name>
+        <url-pattern>/afficherPageCvEtudiant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanifierDateEntrevue</servlet-name>
+        <url-pattern>/planifierDateEntrevue</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PriseDeRendezVousParCourriel</servlet-name>
+        <url-pattern>/priseDeRendezVousParCourriel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -38,8 +38,9 @@
             } else if ((boolean) request.getAttribute("lesCandidaturesVide") == false) {
             %>
             <h1>Candidatures<h1>
-                    <br>
+                    <p>Vous pouvez mener vos entrevues avec les candidats en accédant au lien du CV.</p>
                     <h2>Infos sur le poste<h2>
+                            <hr><br>
                             <%
                                 Offre offre = (Offre) request.getAttribute("offreAuditionner");
                                 List<Postulation> listePost = (List<Postulation>) request.getAttribute("listeCandidatures");
@@ -77,7 +78,7 @@
                                     <%if (p.getEtudiant().getCv() == null) {%>
                                         L'etudiant n'a pas de CV pour le moment.
                                     <%} else {%>
-                                    <a href="afficherPageCvEtudiant?etudiant<%=p.getEtudiant().getId()%>"><i style='color:#3C8D93;' class="fa-solid fa-up-right-from-square"></i></a>
+                                    <a href="afficherPageCvEtudiant?idEtudiant=<%=p.getEtudiant().getId()%>"><i style='color:#3C8D93;' class="fa-solid fa-up-right-from-square"></i></a>
                                     <%}%>
                                 </td>
                             </tr>
