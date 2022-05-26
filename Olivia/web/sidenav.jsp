@@ -15,6 +15,8 @@
         <li><a class="navcoteText" href="formulaireCV.jsp"><i class="fa-solid fa-file-lines"></i>Mettre à jour votre CV</a></li>
         <li><a class="navcoteText" href="#"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
         <li><a class="navcoteText" href=""><i class="fa-solid fa-building"></i>Stages postulés</a></li>
+        <li><a class="navcoteText" href="afficherLettreMotivation"><i class="fa-solid fa-file-lines"></i>Lettre motivation</a></li>
+        <li><a class="navcoteText" href="pagePostulation"><i class="fa-solid fa-building"></i>Stages postulés</a></li>
     </ul>
     <%break;
         case "admin":%>
@@ -29,15 +31,18 @@
         <li><a class="navcoteText" href="HomePage"><i class="fa-solid fa-house-chimney-user"></i>Tableau de bord</a></li>
         <li><a class="navcoteText" href="listeOffre"><i class="fa-solid fa-handshake"></i></i>Vos offres</a></li>
         <li><a class="navcoteText" href="listeOffreAvecLiensCandidatures"><i class="fa-solid fa-handshake"></i>Candidatures</a></li>
+          <li><a class="navcoteText" href="FairePub"><i class="fa-solid fa-pen-nib"></i>Création de Publicité</a></li>
     </ul>
     <%break;
         case "professeur":%>
     <ul>
-        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>professeur</a></li>
-        <li><a class="navcoteText" href="listeDesEntreprises"><i class="fa-solid fa-house"></i>liste Entreprises</a></li>
-        <li><a class="navcoteText" href="listeDesEtudiants"><i class="fa-solid fa-house"></i>liste Etudiants</a></li>
-        <li><a class="navcoteText" href="listeDesPubs"><i class="fa-solid fa-house"></i>liste Publicités</a></li>
-        <li><a class="navcoteText" href="listeDesOccup"><i class="fa-solid fa-house"></i>liste des occupations</a></li>
+        <li><a class="navcoteText" href="#"><i class="fa-solid fa-house"></i>Accueil</a></li>
+        <li><a class="navcoteText" href="HomePage"><i class="fa-solid fa-school"></i>professeur</a></li>
+        <li><a class="navcoteText" href="recherche"><i class="fa-solid fa-magnifying-glass"></i>Recherche</a></li>
+        <li><a class="navcoteText" href="listeDesEntreprises"><i class="fa-solid fa-briefcase"></i>liste Entreprises</a></li>
+        <li><a class="navcoteText" href="listeDesEtudiants"><i class="fa-solid fa-graduation-cap"></i>liste Etudiants</a></li>
+        <li><a class="navcoteText" href="listeDesPubs"><i class="fa-solid fa-sack-dollar"></i>liste Publicités</a></li>
+        <li><a class="navcoteText" href="listeDesOccup"><i class="fa-solid fa-clock"></i>liste des occupations</a></li>
     </ul>
     <%break;
         default:%>

@@ -19,7 +19,7 @@ public interface EtudiantDao {
     List<Etudiant> findAll();
 Etudiant findByIdCompte(int id);
     Etudiant findById(int id);
-
+    int findByIdOccup(int id);
     List<Etudiant> findByNom(String nom);
     List<Etudiant> findByPrenom(String prenom);
     Etudiant findByNumeroDA(int DA);

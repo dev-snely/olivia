@@ -63,11 +63,21 @@
                                 %>
                                 
                                 <tr>   
-                    <td><%= lesEtudiants.get(i).getNom() %> </td>
-                    <td><%= lesEtudiants.get(i).getPrenom()%> </td>
-                    <td><%= lesEtudiants.get(i).getNumeroDa()%> </td>
-                    <td><%= lesEtudiants.get(i).getOccupation() %> </td>
-                    
+                        <td><%= lesEtudiants.get(i).getNom()%> </td>
+                        <td><%= lesEtudiants.get(i).getPrenom()%> </td>
+                         <td><%= lesEtudiants.get(i).getNumeroDa()%> </td>
+                        <%if (lesEtudiants.get(i).getOccupation() == null) {%>
+                        <td>non</td>
+
+                            <%} else {%>
+                        <td>    <%=lesEtudiants.get(i).getOccupation().isDisponible()%>
+                               
+                             </td>
+   
+                        <%}%>
+                      
+
+                     
                         <td style='text-align: center;vertical-align: middle;'>
                             <a href="deleteEtudiant?id=<%=lesEtudiants.get(i).getId()%>">
                                 <i class="delete-icon fa-solid fa-trash-can"></i>

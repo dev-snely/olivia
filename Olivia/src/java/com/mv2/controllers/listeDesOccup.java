@@ -4,20 +4,24 @@
  */
 package com.mv2.controllers;
 
+import com.action.EtudiantAction;
+import com.model.entities.Etudiant;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Mahmo
  */
-@WebServlet(name = "ListedesOccup", urlPatterns = {"/listedesOccup"})
-public class listedesOccup extends HttpServlet {
+
+public class listeDesOccup extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +37,12 @@ public class listedesOccup extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); 
             /* TODO output your page here. You may use following sample code. */
-            
-          
+            HttpSession session = request.getSession(true);
+                    EtudiantAction actionEtu = new EtudiantAction();
+           List<Etudiant> listeEtudiants = actionEtu.findAllEtudiant();
+           session.setAttribute("listeEtudiant", listeEtudiants);
+           request.getRequestDispatcher("listeDesOccupations.jsp").forward(request, response);
+           
         
     }
 

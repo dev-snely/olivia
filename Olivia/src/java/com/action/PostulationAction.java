@@ -43,5 +43,21 @@ public class PostulationAction {
         listePostulations = dao.findByIdEtudiant(etudiant);
         return listePostulations;
     }
+    public static void signerUnePostulation(Postulation post, Offre offre, Etudiant etudiant){
+        PostulationDaoImpl dao = new PostulationDaoImpl();
+        
+        dao.update(post, offre, etudiant);
+    }
+    public static void supprimerunePostulation(Offre offre, Etudiant etudiant){
+         PostulationDaoImpl dao = new PostulationDaoImpl();
+         dao.delete(offre, etudiant);
+        
+    }
+    public static List<Postulation> findbyIdOffre(int idOffre){
+        PostulationDaoImpl dao = new PostulationDaoImpl();
+        Offre off = OffreAction.chercherOffreParId(idOffre);
+        List<Postulation> lesPOSt=    dao.findByIdOffre(off);
+        return lesPOSt;
+    }
         
 }
