@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +32,11 @@ public class ServletTest extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-
+ String contextPath = request.getContextPath().toString();
+ System.out.print("====================="+contextPath);
+     HttpSession session = request.getSession(false);
+  request.getRequestDispatcher("test.jsp").forward(request, response);
+   session.setAttribute("test", contextPath);   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

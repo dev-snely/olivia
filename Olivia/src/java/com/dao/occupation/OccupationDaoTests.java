@@ -9,6 +9,7 @@ import com.dao.compte.CompteDaoImpl;
 import com.dao.etudiant.EtudiantDaoImpl;
 import com.model.entities.Etudiant;
 import com.model.entities.Occupation;
+
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,9 @@ import java.util.List;
  * @author gabri
  */
 public class OccupationDaoTests {
+    
        public static void main(String[] args) {
+            
         EtudiantDaoImpl daoEtu = new EtudiantDaoImpl();
         CompteDaoImpl daoCompte=new CompteDaoImpl();
         OccupationDaoImpl dao = new OccupationDaoImpl();

@@ -94,7 +94,7 @@ request.getRequestDispatcher("fairePub.jsp").forward(request, response);
       String fileName = filePart.getSubmittedFileName();
     for (Part part : request.getParts()) {
         //je n'ai pas trouver un path relatif malheureusement
-      part.write("C:\\Users\\gabri\\Desktop\\web-2-projet-de-session\\Olivia\\web\\images\\" + fileName);
+      part.write(request.getContextPath().toString()+"\\web\\images\\" + fileName);
     }
     response.getWriter().print("The file uploaded sucessfully.");
 }
