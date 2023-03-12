@@ -2,6 +2,10 @@
 
 Olivia est le projet de session pour le cours d'application web 2 qui a comme thème la recherche de stages ou d'emploi pour les étudiants.
 
+# Apreçu du projet
+
+![Animation](/uploads/f025cdd16193f032535b44aca9ff3302/Animation.gif)
+
 # Installation 
 
 Voici une liste d'étape à suivre qui devrait vous permettre d'installer et de démarrer une instance d'Olivia: 
